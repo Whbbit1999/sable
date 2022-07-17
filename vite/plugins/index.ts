@@ -1,9 +1,15 @@
 import vue from "@vitejs/plugin-vue";
-import Components from "unplugin-vue-components/vite";
+import autoImport from "./autoImport";
+
 import setupMockPlugin from "./mock";
 
 import setupUnocssPlugin from "./unocss";
 
 export default function setupPlugins(isBuild: boolean, env: ViteEnv) {
-  return [vue(), Components(), setupUnocssPlugin(), setupMockPlugin(isBuild)];
+  return [
+    vue(),
+    autoImport(isBuild, env),
+    setupUnocssPlugin(),
+    setupMockPlugin(isBuild),
+  ];
 }

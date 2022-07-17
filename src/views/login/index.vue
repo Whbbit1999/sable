@@ -1,15 +1,18 @@
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+import LoginForm from "./LoginForm/index.vue";
+</script>
 
 <template>
   <div
-    class="bg-bluegray-200 dark:bg-bluegray-800 min-h-screen text-gray-200/50 flex items-center justify-center"
+    class="bg-bluegray-800 min-h-screen text-gray-200/50 flex items-center justify-center"
   >
     <div
-      class="login dark:bg-gray-700 p-3 rounded hover:bg-gray-600 transition shadow"
+      class="login bg-gray-700 p-3 rounded hover:bg-gray-600 transition shadow"
     >
-      <div>登录</div>
-      <div>表单组件</div>
-      <div>登录按钮</div>
+      <h2 class="text-lg text-center">登录</h2>
+      <main>
+        <LoginForm></LoginForm>
+      </main>
     </div>
   </div>
 </template>
