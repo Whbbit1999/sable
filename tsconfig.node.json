@@ -4,12 +4,13 @@
     "module": "esnext",
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
+    "resolveJsonModule": true,
     "esModuleInterop": true,
     "baseUrl": "./",
     "paths": {
       "@/*": ["src/*"]
     },
-    "jsx": "preserve"
+    "jsx": "preserve",
   },
   
   "include": [
@@ -20,6 +21,7 @@
     "src/**/*.vue",
     "vite/**/*.ts",
     "mock/**/*.ts",
-    "types/**/*.d.ts"
+    "types/**/*.d.ts",
+    "**/package.json"
   ]
 }

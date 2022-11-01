@@ -1,13 +1,25 @@
-import { RouteRecordRaw } from "vue-router";
+import { RouteRecordRaw } from 'vue-router'
 
 const routes = [
   {
-    path: "/",
-    component: () => import("@/views/home.vue"),
+    path: '/',
+    component: () => import('@/layouts/default/index.vue'),
+    children: [
+      {
+        path: '/',
+        component: () => import('@/views/home.vue'),
+      },
+
+      {
+        path: '/about',
+        name: 'about',
+        component: () => import('@/views/about/index.vue'),
+      },
+    ],
   },
   {
-    path: "/login",
-    component: () => import("@/views/login/index.vue"),
+    path: '/login',
+    component: () => import('@/views/login/index.vue'),
   },
   // {
   //   path: "/admin",
@@ -23,6 +35,6 @@ const routes = [
   //     { path: "", component: () => import("@/views/member/member.vue") },
   //   ],
   // },
-] as RouteRecordRaw[];
+] as RouteRecordRaw[]
 
-export default routes;
+export default routes

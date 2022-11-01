@@ -1,4 +1,6 @@
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+const handleUpdateChecked = (value: boolean) => {};
+</script>
 
 <template>
   <div class="mx-2">
@@ -12,12 +14,26 @@
         <input class="bg-transparent border-1 border-rd outline-0 px-2 py-1" />
       </div>
     </main>
+    <div>
+      <n-checkbox
+        checked-value="周末加班"
+        unchecked-value="周末支持一下"
+        @update:checked="handleUpdateChecked"
+      >
+        自动登录
+      </n-checkbox>
+      <n-button
+        text
+        tag="a"
+        href="https://anyway.fm/news.php"
+        target="_blank"
+        type="primary"
+      >
+        忘记密码
+      </n-button>
+    </div>
     <div class="flex flex-col gap-3 mt-4 justify-center">
-      <NButton class="w-full" type="primary"> 登录 </NButton>
-      <div class="flex gap-1 justify-between">
-        <NButton type="warning" quaternary>忘记密码</NButton>
-        <NButton type="primary" quaternary>注册账户</NButton>
-      </div>
+      <n-button type="primary">登录</n-button>
     </div>
   </div>
 </template>

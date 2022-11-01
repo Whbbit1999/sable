@@ -1,36 +1,39 @@
 {
   "name": "sable",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.0.1",
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
     "preview": "vite preview"
   },
   "dependencies": {
-    "@unocss/reset": "^0.44.0",
+    "@unocss/reset": "^0.44.7",
     "axios": "^0.27.2",
+    "dayjs": "^1.11.6",
     "lodash": "^4.17.21",
     "mockjs": "^1.1.0",
-    "pinia": "^2.0.14",
-    "vue": "^3.2.25",
-    "vue-router": "^4.1.1"
+    "pinia": "^2.0.23",
+    "vue": "^3.2.41",
+    "vue-router": "^4.1.6"
   },
   "devDependencies": {
     "@types/lodash-es": "^4.17.6",
-    "@types/node": "^18.0.3",
-    "@unocss/core": "^0.44.3",
-    "@unocss/preset-wind": "^0.44.0",
-    "@unocss/transformer-directives": "^0.44.3",
-    "@vitejs/plugin-vue": "^2.3.3",
-    "naive-ui": "^2.31.0",
+    "@types/node": "^18.11.7",
+    "@unocss/core": "^0.44.7",
+    "@unocss/preset-wind": "^0.44.7",
+    "@unocss/transformer-directives": "^0.44.7",
+    "@vicons/ionicons5": "^0.12.0",
+    "@vicons/utils": "^0.1.4",
+    "@vitejs/plugin-vue": "^2.3.4",
+    "naive-ui": "^2.33.5",
     "path": "^0.12.7",
-    "sass": "^1.53.0",
-    "typescript": "^4.5.4",
-    "unocss": "^0.44.3",
-    "unplugin-vue-components": "^0.21.1",
-    "vite": "^2.9.9",
+    "sass": "^1.55.0",
+    "typescript": "^4.8.4",
+    "unocss": "^0.44.7",
+    "unplugin-vue-components": "^0.21.2",
+    "vite": "^3.2.0",
     "vite-plugin-mock": "^2.9.6",
-    "vue-tsc": "^0.34.7"
+    "vue-tsc": "^0.34.17"
   }
 }
