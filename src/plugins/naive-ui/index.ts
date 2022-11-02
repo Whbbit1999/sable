@@ -1,3 +1,3 @@
-import { App } from "vue";
+import { App } from 'vue'
 
 export function setupNaiveUI(app: App) {}

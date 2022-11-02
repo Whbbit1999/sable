@@ -1,28 +1,30 @@
-import { MockMethod } from "vite-plugin-mock";
+import { MockMethod } from 'vite-plugin-mock'
 
 export default [
   {
-    url: "/api/getUserInfo",
-    method: "get",
+    url: '/api/getUserInfo',
+    method: 'get',
     response: ({}) => {
       return {
         code: 200,
         data: {
-          name: "sable",
+          name: 'sable',
+          password: '123456',
         },
-        message: "success",
-      };
+        message: 'success',
+      }
     },
   },
   {
-    url: "/api/post",
-    method: "post",
+    url: '/api/login',
+    method: 'post',
     timeout: 2000,
     response: {
-      code: 0,
+      code: 200,
+      message: '登录成功',
       data: {
-        name: "vben",
+        token: 'asldfjlasjdflajsdl',
       },
     },
   },
-] as MockMethod[];
+] as MockMethod[]

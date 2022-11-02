@@ -1,7 +1,7 @@
 // 路由自动注册
 // 只支持文件夹下的.vue布局文件，文件夹暂不支持
 
-import { env } from '@/utils/helper'
+import { env } from '@/utils'
 import { RouteRecordRaw } from 'vue-router'
 
 const layouts = import.meta.globEager('../../layouts/*.vue')
