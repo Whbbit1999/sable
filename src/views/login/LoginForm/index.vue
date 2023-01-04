@@ -3,13 +3,14 @@ import { login } from '@/api/user'
 import type { ILoginForm } from '@/api/user'
 import { ref, unref } from 'vue'
 import { storage } from '@/utils'
+import { useRouter } from 'vue-router'
 const handleUpdateChecked = (value: boolean) => {}
 
 const loginFormData = ref<ILoginForm>({
   username: 'sable',
   password: '123456',
 })
-
+const router = useRouter()
 const onSubmit = async () => {
   const res = await login(unref(loginFormData))
   console.log(res.data.token)
@@ -17,12 +18,14 @@ const onSubmit = async () => {
     token: res.data.token,
     expire: 60 * 20,
   })
+  router.push({ name: 'home' })
 }
 </script>
 
 <template>
-  <div class="mx-2">
+  <div class="w-full md:w-3/5 md:shadow-xl p-1 md:p-10 rounded-md border-0 md:border border-slate-200">
     <main class="flex flex-col gap-2">
+      <n-h2 class="text-center">用户登录</n-h2>
       <div class="flex flex-col">
         <span class="mb-1">用户名</span>
         <n-input v-model:value="loginFormData.username"></n-input>
