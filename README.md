@@ -6,11 +6,12 @@
 
 这是一套完备的后台管理系统，使用技术：
 
-- UI 组件库：Navie UI
-- http 请求：axios
-- 路由切换： Vue Router
-- 全局状态管理： Pinia
-- css ： `unocss` & `scss`
+- UI 组件库：`Navie UI`
+- http 请求：`axios`
+- 路由切换： `Vue Router`
+- 全局状态管理： `Pinia`
+- css： `tailwindcss` & `scss`
+- 工具函数：`lodash` & `vueuse`
 - 等
 
 ## 自动注册路由

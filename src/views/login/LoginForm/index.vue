@@ -4,6 +4,7 @@ import type { ILoginForm } from '@/api/user'
 import { ref, unref } from 'vue'
 import { storage } from '@/utils'
 import { useRouter } from 'vue-router'
+
 const handleUpdateChecked = (value: boolean) => {}
 
 const loginFormData = ref<ILoginForm>({
@@ -32,7 +33,7 @@ const onSubmit = async () => {
       </div>
       <div class="flex flex-col">
         <span class="mb-1">密码</span>
-        <n-input v-model:value="loginFormData.password" type="password"></n-input>
+        <n-input v-model:value="loginFormData.password" type="password" show-password-on="mousedown"></n-input>
       </div>
     </main>
     <div>
