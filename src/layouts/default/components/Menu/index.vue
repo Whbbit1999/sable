@@ -9,7 +9,7 @@ const { selectedKey, menuOptions, defaultExpandedKeys } = defineProps<{
 </script>
 
 <template>
-  <n-menu v-model:value="selectedKey" :options="menuOptions" :default-expanded-keys="defaultExpandedKeys" accordion />
+  <n-menu :options="menuOptions" :default-expanded-keys="defaultExpandedKeys" accordion />
 </template>
 
 <style scoped lang="scss"></style>

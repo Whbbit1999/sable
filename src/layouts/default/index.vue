@@ -7,7 +7,7 @@ import Header from './components/Header/index.vue'
 import Main from './components/Main/index.vue'
 import Tags from './components/Tags/index.vue'
 
-import { NIcon, NEllipsis, darkTheme } from 'naive-ui'
+import { NIcon } from 'naive-ui'
 import type { MenuOption } from 'naive-ui'
 import { useRoute, useRouter } from 'vue-router'
 

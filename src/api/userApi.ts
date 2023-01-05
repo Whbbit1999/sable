@@ -7,6 +7,7 @@ export async function getUserInfoApi() {
     url: `getUserInfo`,
   })
 }
+
 interface LoginInterface {
   token: string
 }

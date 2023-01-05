@@ -57,17 +57,17 @@ Object.entries(devDependencies).forEach(([key, value]: [string, string]) => {
         </n-descriptions>
       </n-card>
 
-      <n-card title="开发环境依赖">
+      <n-card title="生产环境依赖">
         <n-descriptions label-placement="left" bordered>
-          <n-descriptions-item v-for="item in devSchema" :key="item.field" :label="item.label">
+          <n-descriptions-item v-for="item in schema" :key="item.field" :label="item.label">
             {{ item.field }}
           </n-descriptions-item>
         </n-descriptions>
       </n-card>
 
-      <n-card title="生产环境依赖">
+      <n-card title="开发环境依赖">
         <n-descriptions label-placement="left" bordered>
-          <n-descriptions-item v-for="item in schema" :key="item.field" :label="item.label">
+          <n-descriptions-item v-for="item in devSchema" :key="item.field" :label="item.label">
             {{ item.field }}
           </n-descriptions-item>
         </n-descriptions>

@@ -1,5 +1,5 @@
 import { MockMethod } from 'vite-plugin-mock'
-
+import mock from 'mockjs'
 export default [
   {
     url: '/api/getUserInfo',
@@ -23,7 +23,7 @@ export default [
       code: 200,
       message: '登录成功',
       data: {
-        token: 'asldfjlasjdflajsdl',
+        token: mock.Random.word(15),
       },
     },
   },

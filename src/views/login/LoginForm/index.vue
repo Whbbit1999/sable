@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { login } from '@/api/user'
-import type { ILoginForm } from '@/api/user'
+import { login } from '@/api/userApi'
+import type { ILoginForm } from '@/api/userApi'
 import { ref, unref } from 'vue'
 import { storage } from '@/utils'
 import { useRouter } from 'vue-router'
@@ -24,7 +24,7 @@ const onSubmit = async () => {
 </script>
 
 <template>
-  <div class="w-full md:w-3/5 md:shadow-xl p-1 md:p-10 rounded-md border-0 md:border border-slate-200">
+  <div class="w-full p-1 border-0 rounded-md md:w-3/5 md:shadow-xl md:p-10 md:border border-slate-200">
     <main class="flex flex-col gap-2">
       <n-h2 class="text-center">用户登录</n-h2>
       <div class="flex flex-col">
@@ -42,7 +42,7 @@ const onSubmit = async () => {
       </n-checkbox>
       <n-button text tag="a" href="https://anyway.fm/news.php" target="_blank" type="primary"> 忘记密码 </n-button>
     </div>
-    <div class="flex flex-col gap-3 mt-4 justify-center">
+    <div class="flex flex-col justify-center gap-3 mt-4">
       <n-button type="primary" @click="onSubmit">登录</n-button>
     </div>
   </div>

@@ -1,9 +1,4 @@
-<script lang="ts" setup>
-import { getUserInfoApi } from '@/api/user'
-
-const userInfo = await getUserInfoApi()
-console.log(userInfo.data.name)
-</script>
+<script lang="ts" setup></script>
 
 <template>
   <div>home.vue</div>
