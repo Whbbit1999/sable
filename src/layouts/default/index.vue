@@ -42,11 +42,11 @@ const defaultExpandedKeys = ref(['fish', 'braise'])
       <Menu :selected-key="selectedKey" :default-expanded-keys="defaultExpandedKeys" :menu-options="menuOptions" />
     </aside>
 
-    <main class="flex-1 h-screen overflow-auto">
-      <Header />
-      <Tags />
-      <Main />
-      <Footer />
+    <main class="flex flex-col flex-1 h-screen overflow-auto bg-gray-100">
+      <Header class="bg-white" />
+      <Tags class="bg-white" />
+      <Main class="flex-1" />
+      <Footer class="bg-white" />
     </main>
   </main>
 </template>
