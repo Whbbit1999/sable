@@ -1,53 +1,67 @@
-import axios, { AxiosInstance, AxiosRequestConfig } from "axios";
+import axios, { AxiosInstance, AxiosRequestConfig } from 'axios'
+import { RequestOptions } from 'https'
 
 class Axios {
-  private instance: AxiosInstance;
+  private instance: AxiosInstance
 
   constructor(config: AxiosRequestConfig) {
-    this.instance = axios.create(config);
-    this.interceptors();
+    this.instance = axios.create(config)
+    this.interceptors()
   }
 
   public request<T, D = ResponseResult<T>>(config: AxiosRequestConfig) {
     return new Promise(async (resolve, reject) => {
       try {
-        const response = await this.instance.request<D>(config);
-        resolve(response.data);
+        const response = await this.instance.request<D>(config)
+        resolve(response.data)
       } catch (error) {
-        reject(error);
+        reject(error)
       }
-    }) as Promise<D>;
+    }) as Promise<D>
+  }
+
+  public get<T>(config: AxiosRequestConfig, options?: RequestOptions) {
+    return this.request<T>({ ...config, method: 'GET' })
+  }
+  public post<T>(config: AxiosRequestConfig, options?: RequestOptions) {
+    return this.request<T>({ ...config, method: 'POST' })
+  }
+  public put<T>(config: AxiosRequestConfig, options?: RequestOptions) {
+    return this.request<T>({ ...config, method: 'PUT' })
+  }
+  public delete<T>(config: AxiosRequestConfig, options?: RequestOptions) {
+    return this.request<T>({ ...config, method: 'DELETE' })
   }
 
   private interceptors() {
-    this.interceptorsRequest();
-    this.interceptorsResponse();
+    this.interceptorsRequest()
+    this.interceptorsResponse()
   }
 
   // 请求拦截
   private interceptorsRequest() {
     this.instance.interceptors.request.use(
       (config) => {
-        return config;
+        return config
       },
 
       (error) => {
-        return Promise.reject(error);
-      }
-    );
+        return Promise.reject(error)
+      },
+    )
   }
 
   // 响应拦截
   private interceptorsResponse() {
     this.instance.interceptors.response.use(
       (response) => {
-        return response;
+        return response
       },
 
       (error) => {
-        return Promise.reject(error);
-      }
-    );
+        return Promise.reject(error)
+      },
+    )
   }
 }
-export default Axios;
+export default Axios

@@ -15,10 +15,10 @@ export interface ILoginForm {
   username: string
   password: string
 }
+
 export async function login(data: ILoginForm) {
-  return http.request<LoginInterface>({
+  return http.post<LoginInterface>({
     url: `login`,
-    method: 'POST',
     data,
   })
 }
