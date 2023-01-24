@@ -19,25 +19,14 @@ function renderIcon(icon: Component) {
 }
 
 const menuOptions: MenuOption[] = [
+  { label: renderLink('admin.home', '首页'), key: 'workplace' },
+
   {
-    label: '控制台',
+    label: '运营管理',
     key: 'disboard',
     children: [
-      { label: renderLink('home', '首页'), key: 'console' },
-      { label: '工作台', key: 'workplace' },
-      {
-        label: () =>
-          h(
-            'a',
-            {
-              href: 'https://baike.baidu.com/item/%E4%B8%94%E5%90%AC%E9%A3%8E%E5%90%9F',
-              target: '_blank',
-              rel: 'noopenner noreferrer',
-            },
-            '且听风吟',
-          ),
-        key: 'workplace',
-      },
+      { label: '用户管理', key: 'user' },
+      { label: '广告管理', key: 'ad' },
     ],
   },
   {
@@ -50,17 +39,19 @@ const defaultExpandedKeys = ref(['fish', 'braise'])
 
 <template>
   <main class="flex bg-[#f7f7f7]">
-    <aside class="w-[200px] m-2 mr-0 p-2 rounded-md bg-white">
-      <Logo />
+    <aside class="w-[200px] m-2 mr-0 rounded-md bg-white">
+      <Logo class="px-2" />
       <Menu :selected-key="selectedKey" :default-expanded-keys="defaultExpandedKeys" :menu-options="menuOptions" />
     </aside>
 
     <main class="flex flex-col flex-1 h-screen">
       <Header class="mb-0 bg-white" />
       <Tags class="px-2 my-2" />
-      <n-scrollbar>
-        <Main class="flex-1 p-2 mx-2 bg-white rounded-md" />
-      </n-scrollbar>
+      <div class="flex-1 mx-2 overflow-hidden bg-white rounded-md">
+        <n-scrollbar>
+          <Main class="p-2" />
+        </n-scrollbar>
+      </div>
       <Footer class="p-2 m-2 bg-white" />
     </main>
   </main>

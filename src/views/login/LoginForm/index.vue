@@ -19,7 +19,7 @@ const onSubmit = async () => {
     token: res.data.token,
     expire: 60 * 30,
   })
-  router.push({ name: 'home' })
+  router.push({ name: 'admin.home' })
 }
 </script>
 

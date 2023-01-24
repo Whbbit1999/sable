@@ -1,43 +1,17 @@
-// 路由自动注册
-// 只支持文件夹下的.vue布局文件，文件夹暂不支持
-
+// 自动注册路由
 import { env } from '@/utils'
 import { RouteRecordRaw } from 'vue-router'
+import autoloadModuleRoutes from './modules'
+import getRoutes from './view'
 
-const layouts = import.meta.globEager('../../layouts/*.vue')
-const views = import.meta.globEager('../../views/**/*.vue')
+let routes = [] as RouteRecordRaw[]
 
-function getRoutes() {
-  const layoutRoutes = [] as RouteRecordRaw[]
-
-  Object.entries(layouts).forEach(([file, module]) => {
-    const route = getRouteByModule(file, module)
-    route.children = getRouteChildren(route)
-    layoutRoutes.push(route)
-  })
-  return layoutRoutes
+if (env.VITE_ROUTE_AUTOLOAD) {
+  routes = getRoutes()
+} else {
+  routes = autoloadModuleRoutes()
 }
 
-function getRouteChildren(layoutRoute: RouteRecordRaw) {
-  const routes = [] as RouteRecordRaw[]
+// todo 根据权限过滤
 
-  Object.entries(views).forEach(([file, module]) => {
-    if (file.includes(`../views/${layoutRoute.name as string}`)) {
-      const route = getRouteByModule(file, module)
-      routes.push(route)
-    }
-  })
-  return routes
-}
-
-function getRouteByModule(file: string, module: { [key: string]: any }) {
-  const name = file.replace(/.+layouts\/|.+views\/|\.vue/gi, '') // 获取layout文件名称
-  const route = {
-    path: `/${name}`,
-    name: name.replace('/', '.'),
-    component: module.default,
-  } as RouteRecordRaw
-  return Object.assign(route, module.default?.route)
-}
-
-export default env.VITE_ROUTE_AUTOLOAD ? getRoutes() : ([] as RouteRecordRaw[])
+export default routes
