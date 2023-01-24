@@ -1,7 +1,7 @@
 import { App } from 'vue'
+import dayjs from './dayjs'
 import { setupNaiveUI } from './naive-ui'
 import setupPinia from './pinia'
-import dayjs from './dayjs'
 import setupTailwindcss from './tailwindcss'
 
 export default function (app: App) {

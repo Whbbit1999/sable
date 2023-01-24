@@ -1,8 +1,8 @@
 <script lang="ts" setup>
-import { login } from '@/api/userApi'
 import type { ILoginForm } from '@/api/userApi'
-import { ref, unref } from 'vue'
+import { login } from '@/api/userApi'
 import { storage } from '@/utils'
+import { ref, unref } from 'vue'
 import { useRouter } from 'vue-router'
 
 const handleUpdateChecked = (value: boolean) => {}
@@ -17,14 +17,14 @@ const onSubmit = async () => {
   console.log(res.data.token)
   storage.set('token', {
     token: res.data.token,
-    expire: 60 * 20,
+    expire: 60 * 30,
   })
   router.push({ name: 'home' })
 }
 </script>
 
 <template>
-  <div class="w-full p-1 border-0 rounded-md md:w-3/5 md:shadow-xl md:p-10 md:border border-slate-200">
+  <div class="w-full p-1 rounded-md md:w-3/5 md:p-10">
     <main class="flex flex-col gap-2">
       <n-h2 class="text-center">用户登录</n-h2>
       <div class="flex flex-col">

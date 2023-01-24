@@ -2,8 +2,7 @@
 
 <template>
   <div>home.vue</div>
-  <n-button>Default</n-button>
-  <n-card title="卡片" hoverable> 卡片内容 </n-card>
+  <n-button>asdf</n-button>
 </template>
 
 <style scoped lang="scss"></style>
