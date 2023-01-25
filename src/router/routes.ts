@@ -8,12 +8,7 @@ const routes = [
     meta: { guest: true },
     component: () => import('@/views/login/index.vue'),
   },
-  { path: '/', redirect: '/admin/home' }, // 默认首页{
-  {
-    path: '',
-    component: () => import('@/layouts/default/index.vue'),
-    children: [{ path: '/about', name: 'about', component: () => import('@/views/about/index.vue') }],
-  },
+  { path: '/', redirect: '/disboard/home' }, // 默认首页{
 ] as RouteRecordRaw[]
 
 export default routes

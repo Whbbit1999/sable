@@ -7,7 +7,7 @@ import Main from './components/Main/index.vue'
 import Menu from './components/Menu/index.vue'
 import Tags from './components/Tags/index.vue'
 
-import { renderLink } from '@/utils'
+import { useMenu } from '@/store/useMenu'
 import type { MenuOption } from 'naive-ui'
 import { NIcon } from 'naive-ui'
 import { useRoute, useRouter } from 'vue-router'
@@ -17,23 +17,9 @@ const selectedKey = ref(route.name as string)
 function renderIcon(icon: Component) {
   return () => h(NIcon, null, { default: () => h(icon) })
 }
-
-const menuOptions: MenuOption[] = [
-  { label: renderLink('admin.home', '首页'), key: 'workplace' },
-
-  {
-    label: '运营管理',
-    key: 'disboard',
-    children: [
-      { label: '用户管理', key: 'user' },
-      { label: '广告管理', key: 'ad' },
-    ],
-  },
-  {
-    label: renderLink('about', '关于我'),
-    key: 'about',
-  },
-]
+const menu = useMenu()
+console.log(menu.getMenus)
+const menuOptions: MenuOption[] = menu.getMenus
 const defaultExpandedKeys = ref(['fish', 'braise'])
 </script>
 

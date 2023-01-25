@@ -1,5 +1,5 @@
 <script lang="ts" setup></script>
 
-<template>home</template>
+<template><router-view></router-view></template>
 
 <style scoped lang="scss"></style>

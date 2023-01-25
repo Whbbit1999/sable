@@ -19,7 +19,7 @@ const { name } = withDefaults(
 
 <style scoped lang="scss">
 .tag {
-  @apply inline-flex justify-between items-center bg-white px-3 py-2 rounded-md hover:shadow-md duration-300 cursor-pointer text-sm;
+  @apply inline-flex justify-between items-center bg-white px-3 py-2 rounded-md  duration-300 cursor-pointer text-sm;
   &.active {
     @apply text-rose-400;
   }

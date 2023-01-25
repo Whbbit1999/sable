@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import FullScreen from '@/components/Custom/FullScreen.vue'
 import { useTheme } from '@/store/useTheme'
-import { renderIcon } from '@/utils'
+import { renderIcon, storage } from '@/utils'
 import {
   LogOutOutline as LogoutIcon,
   MoonOutline,
@@ -10,7 +10,8 @@ import {
 } from '@vicons/ionicons5'
 import dayjs from 'dayjs'
 import { ref } from 'vue'
-
+import { useRouter } from 'vue-router'
+const router = useRouter()
 const theme = useTheme()
 const options = ref([
   {
@@ -40,7 +41,7 @@ const onSelect = (key, option) => {
       ''
       break
     case 'logout':
-      ''
+      logout()
       break
   }
 }
@@ -53,6 +54,11 @@ const handleChangeTheme = (key, option) => {
     key: 'theme',
     icon: renderIcon(theme.getTheme ? SunnyOutline : MoonOutline),
   }
+}
+const logout = () => {
+  // 清空缓存
+  storage.remove('token')
+  router.push({ name: 'login' })
 }
 </script>
 

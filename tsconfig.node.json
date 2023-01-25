@@ -8,11 +8,12 @@
     "esModuleInterop": true,
     "baseUrl": "./",
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": [
+        "src/*"
+      ]
     },
     "jsx": "preserve",
   },
-  
   "include": [
     "vite.config.ts",
     "src/**/*.ts",
