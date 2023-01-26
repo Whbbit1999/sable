@@ -21,7 +21,7 @@ const collapsed = ref<boolean>(false)
 
 <template>
   <main class="flex bg-[#f7f7f7]">
-    <aside class="m-2 mr-0 bg-white rounded-md">
+    <aside class="m-2 mr-0 !w-[200px] bg-white rounded-md">
       <Logo class="px-2" :collapsed="collapsed" />
       <Menu :selected-key="selectedKey" :default-expanded-keys="defaultExpandedKeys" :menu-options="menuOptions" />
     </aside>
