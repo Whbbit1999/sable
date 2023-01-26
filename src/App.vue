@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { darkTheme } from 'naive-ui'
-import { useTheme } from './store/useTheme'
-const theme = useTheme()
+import { themeStore } from './store/themeStore'
+const theme = themeStore()
 </script>
 
 <template>

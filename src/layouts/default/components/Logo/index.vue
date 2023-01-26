@@ -1,9 +1,24 @@
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+import { ref, watch } from 'vue'
+
+const props = defineProps<{
+  collapsed: boolean
+}>()
+
+const collapsed = ref<boolean>(props.collapsed)
+
+watch(
+  () => props.collapsed,
+  (newVal) => {
+    collapsed.value = newVal
+  },
+)
+</script>
 
 <template>
-  <section class="flex items-center justify-start">
+  <section class="flex items-center justify-start" :class="[collapsed ? 'justify-center p-2' : '']">
     <img src="/images/logo.svg" alt="logo" class="w-8 h-8" draggable="false" />
-    <div class="flex items-center justify-center p-2 text-2xl font-light">SableAdmin</div>
+    <div v-show="!collapsed" class="flex items-center justify-center p-2 text-2xl font-light">SableAdmin</div>
   </section>
 </template>
 

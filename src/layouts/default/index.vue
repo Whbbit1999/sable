@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { Component, h, ref } from 'vue'
+import { ref } from 'vue'
 import Footer from './components/Footer/index.vue'
 import Header from './components/Header/index.vue'
 import Logo from './components/Logo/index.vue'
@@ -7,26 +7,22 @@ import Main from './components/Main/index.vue'
 import Menu from './components/Menu/index.vue'
 import Tags from './components/Tags/index.vue'
 
-import { useMenu } from '@/store/useMenu'
+import { menuStore } from '@/store/menuStore'
 import type { MenuOption } from 'naive-ui'
-import { NIcon } from 'naive-ui'
-import { useRoute, useRouter } from 'vue-router'
-const router = useRouter()
+import { useRoute } from 'vue-router'
 const route = useRoute()
 const selectedKey = ref(route.name as string)
-function renderIcon(icon: Component) {
-  return () => h(NIcon, null, { default: () => h(icon) })
-}
-const menu = useMenu()
-console.log(menu.getMenus)
+
+const menu = menuStore()
 const menuOptions: MenuOption[] = menu.getMenus
 const defaultExpandedKeys = ref(['fish', 'braise'])
+const collapsed = ref<boolean>(false)
 </script>
 
 <template>
   <main class="flex bg-[#f7f7f7]">
-    <aside class="w-[200px] m-2 mr-0 rounded-md bg-white">
-      <Logo class="px-2" />
+    <aside class="m-2 mr-0 bg-white rounded-md">
+      <Logo class="px-2" :collapsed="collapsed" />
       <Menu :selected-key="selectedKey" :default-expanded-keys="defaultExpandedKeys" :menu-options="menuOptions" />
     </aside>
 

@@ -10,7 +10,7 @@ export default {
       path: '/about',
       name: 'about.about',
       component: () => import('@/views/about/index.vue'),
-      meta: { menu: { title: '关于', show: true } },
+      meta: { menu: { title: '关于', show: true, showTag: true } },
     },
   ],
 } as RouteRecordRaw

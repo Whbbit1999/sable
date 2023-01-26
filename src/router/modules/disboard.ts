@@ -12,7 +12,7 @@ export default {
       path: 'home',
       name: 'disboard.home',
       component: () => import('@/views/dashboard/home.vue'),
-      meta: { auth: true, menu: { show: true, title: '首页' } },
+      meta: { auth: true, menu: { show: true, title: '首页', showTag: true } },
     },
   ],
 } as RouteRecordRaw

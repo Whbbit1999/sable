@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia'
 
 // system theme
-export const useTheme = defineStore('theme', {
+export const themeStore = defineStore('themeStore', {
   state: () => {
     return {
       theme: undefined,

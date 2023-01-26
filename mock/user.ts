@@ -1,5 +1,5 @@
-import { MockMethod } from 'vite-plugin-mock'
 import mock from 'mockjs'
+import { MockMethod } from 'vite-plugin-mock'
 export default [
   {
     url: '/api/getUserInfo',
@@ -10,6 +10,9 @@ export default [
         data: {
           name: 'sable',
           password: '123456',
+          avatar: 'https://07akioni.oss-cn-beijing.aliyuncs.com/07akioni.jpeg',
+          createdAt: new Date(),
+          permissions: ['admin', 'editor'],
         },
         message: 'success',
       }

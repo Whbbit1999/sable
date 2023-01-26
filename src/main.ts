@@ -1,8 +1,8 @@
+import '@/styles/global.scss'
 import { createApp } from 'vue'
 import App from './App.vue'
-import router, { setupRouter } from './router/index'
 import setupPlugins from './plugins/index'
-import '@/styles/global.scss'
+import router, { setupRouter } from './router/index'
 
 // -------------------- 处理NaiveUI样式被覆盖的问题 START --------------------
 const meta = document.createElement('meta')
@@ -12,8 +12,10 @@ document.head.appendChild(meta)
 
 async function bootstrap(): Promise<void> {
   const app = createApp(App)
-  setupRouter(app)
+
   setupPlugins(app)
+
+  setupRouter(app)
   await router.isReady() // 路由全部挂载后
 
   app.mount('#app')

@@ -1,6 +1,8 @@
 <script lang="ts" setup>
+import Breadcrump from '@/components/Custom/Breadcrump.vue'
 import FullScreen from '@/components/Custom/FullScreen.vue'
-import { useTheme } from '@/store/useTheme'
+import { themeStore } from '@/store/themeStore'
+import { userStore } from '@/store/userStore'
 import { renderIcon, storage } from '@/utils'
 import {
   LogOutOutline as LogoutIcon,
@@ -12,7 +14,11 @@ import dayjs from 'dayjs'
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 const router = useRouter()
-const theme = useTheme()
+const theme = themeStore()
+
+const user = userStore()
+const userInfo = await user.getUserInfo()
+
 const options = ref([
   {
     label: '个人空间',
@@ -64,17 +70,19 @@ const logout = () => {
 
 <template>
   <header class="flex items-center justify-between p-2 m-2 rounded-md">
-    Sable Admin
+    <div>
+      <Breadcrump />
+    </div>
     <div class="flex items-center">
       <FullScreen />
       <n-dropdown :options="options" :on-select="onSelect">
         <div class="flex items-center px-3">
           <!-- 头像 -->
-          <n-avatar class="mr-2" size="small" round src="https://07akioni.oss-cn-beijing.aliyuncs.com/07akioni.jpeg" />
+          <n-avatar class="mr-2" size="small" round :src="userInfo.avatar" />
           <!-- 用户名/注册时间 -->
           <div class="flex flex-col ml-2">
-            <span class="text-sm">{{ username }}</span>
-            <span class="text-sm text-gray-500">{{ dayjs(new Date()).format('YYYY-MM-DD') }}</span>
+            <span class="text-sm">{{ userInfo.name }}</span>
+            <span class="text-sm text-gray-500">{{ dayjs(userInfo.createdAt).format('YYYY/MM/DD') }}</span>
           </div>
         </div>
       </n-dropdown>

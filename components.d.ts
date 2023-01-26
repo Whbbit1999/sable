@@ -7,9 +7,13 @@ export {}
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
+    Breadcrump: typeof import('./src/components/Custom/Breadcrump.vue')['default']
     Card: typeof import('./src/components/Custom/Card.vue')['default']
     FullScreen: typeof import('./src/components/Custom/FullScreen.vue')['default']
     NAvatar: typeof import('naive-ui')['NAvatar']
+    NBackTop: typeof import('naive-ui')['NBackTop']
+    NBreadcrumb: typeof import('naive-ui')['NBreadcrumb']
+    NBreadcrumbItem: typeof import('naive-ui')['NBreadcrumbItem']
     NButton: typeof import('naive-ui')['NButton']
     NButtonn: typeof import('naive-ui')['NButtonn']
     NCard: typeof import('naive-ui')['NCard']
@@ -24,7 +28,11 @@ declare module '@vue/runtime-core' {
     NH2: typeof import('naive-ui')['NH2']
     NIcon: typeof import('naive-ui')['NIcon']
     NInput: typeof import('naive-ui')['NInput']
+    NLayout: typeof import('naive-ui')['NLayout']
+    NLayoutContent: typeof import('naive-ui')['NLayoutContent']
+    NLayoutSider: typeof import('naive-ui')['NLayoutSider']
     NMenu: typeof import('naive-ui')['NMenu']
+    NPopover: typeof import('naive-ui')['NPopover']
     NRow: typeof import('naive-ui')['NRow']
     NScrollbar: typeof import('naive-ui')['NScrollbar']
     NSpace: typeof import('naive-ui')['NSpace']

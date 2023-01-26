@@ -1,14 +1,31 @@
 <script lang="ts" setup>
-import CustomTag from '@/components/Custom/Tag.vue'
+import { menuStore } from '@/store/menuStore'
+const historyMenu = menuStore().historyMenu
+
+const handleRemoveTag = (tag) => {
+  menuStore().removeHistoryMenu(tag.key)
+}
 </script>
 
 <template>
-  <!-- <n-scrollbar x-scrollable> -->
   <nav class="flex gap-2 overflow-auto">
-    <CustomTag name="tag" v-for="i in 5" />
-    <CustomTag name="tag" :active="true" />
+    <n-tag
+      v-for="tag in historyMenu"
+      :bordered="false"
+      size="large"
+      :type="$route.name === tag.key ? 'success' : undefined"
+      class="tag"
+      closable
+      trigger-click-on-close
+      @click="$router.push({ name: tag.key as string })"
+      @close="handleRemoveTag(tag)">
+      {{ tag.label }}
+    </n-tag>
   </nav>
-  <!-- </n-scrollbar> -->
 </template>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+.tag {
+  @apply inline-flex justify-between items-center bg-white px-3 py-2 rounded-md  duration-300 cursor-pointer text-sm;
+}
+</style>

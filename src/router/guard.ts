@@ -1,3 +1,4 @@
+import { menuStore } from '@/store/menuStore'
 import { storage } from '@/utils'
 import { RouteLocationNormalized, Router } from 'vue-router'
 
@@ -24,6 +25,9 @@ class Guard {
       }
 
       // TODO: 对用户权限进行限制
+
+      // 增加历史菜单
+      menuStore().addHistoryMenu(to)
     })
   }
 

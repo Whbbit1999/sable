@@ -1,7 +1,7 @@
 <script lang="ts" setup>
-import { useTheme } from '@/store/useTheme'
+import { themeStore } from '@/store/themeStore'
 import { MoonOutline, SunnyOutline } from '@vicons/ionicons5'
-const theme = useTheme()
+const theme = themeStore()
 </script>
 
 <template>

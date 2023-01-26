@@ -17,13 +17,15 @@ export default {
     const item = localStorage.getItem(key)
     if (item) {
       const data = JSON.parse(item)
-      if (data.expire) {
+      if (data?.expire) {
         if (data.expire < new Date().getTime()) {
           localStorage.removeItem(key)
           return null
         } else {
           return data as IData
         }
+      } else {
+        return data as any
       }
     } else {
       return null
