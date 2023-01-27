@@ -9,6 +9,7 @@ declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     Breadcrump: typeof import('./src/components/Custom/Breadcrump.vue')['default']
     Card: typeof import('./src/components/Custom/Card.vue')['default']
+    copy: typeof import('./src/components/markdown/editor copy.vue')['default']
     Editor: typeof import('./src/components/markdown/editor.vue')['default']
     FullScreen: typeof import('./src/components/Custom/FullScreen.vue')['default']
     NAvatar: typeof import('naive-ui')['NAvatar']
@@ -33,6 +34,7 @@ declare module '@vue/runtime-core' {
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     ToggleTheme: typeof import('./src/components/Custom/ToggleTheme.vue')['default']
+    Viewer: typeof import('./src/components/markdown/viewer.vue')['default']
     Wangeditor: typeof import('./src/components/wangeditor/index.vue')['default']
   }
 }
