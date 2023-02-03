@@ -8,20 +8,24 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@toast-ui/editor": "^3.2.1",
+    "@vavt/md-editor-extension": "^1.5.0",
     "@wangeditor/editor": "^5.1.23",
     "@wangeditor/editor-for-vue": "^5.1.12",
     "axios": "^0.27.2",
     "dayjs": "^1.11.7",
     "lodash": "^4.17.21",
+    "md-editor-v3": "^2.7.2",
     "pinia": "^2.0.29",
+    "qrcode": "^1.5.1",
     "vue": "^3.2.45",
     "vue-router": "^4.1.6"
   },
   "devDependencies": {
     "@types/lodash-es": "^4.17.6",
+    "@types/marked": "^4.0.8",
     "@types/mockjs": "^1.0.7",
     "@types/node": "^18.11.18",
+    "@types/qrcode": "^1.5.0",
     "@vicons/ionicons5": "^0.12.0",
     "@vicons/utils": "^0.1.4",
     "@vitejs/plugin-vue": "^2.3.4",

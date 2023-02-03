@@ -31,6 +31,8 @@ declare module '@vue/runtime-core' {
     NScrollbar: typeof import('naive-ui')['NScrollbar']
     NSpace: typeof import('naive-ui')['NSpace']
     NTag: typeof import('naive-ui')['NTag']
+    Preview: typeof import('./src/components/markdown/preview.vue')['default']
+    Qrcode: typeof import('./src/components/Qrcode/index.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     ToggleTheme: typeof import('./src/components/Custom/ToggleTheme.vue')['default']
