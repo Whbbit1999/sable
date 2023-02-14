@@ -1,4 +1,3 @@
-import { menuStore } from '@/store/menuStore'
 import { storage } from '@/utils'
 import { RouteLocationNormalized, Router } from 'vue-router'
 
@@ -11,7 +10,6 @@ class Guard {
     console.log('guard is running')
 
     this.router.beforeEach((to, from) => {
-      console.log(to, from)
       const token = storage.get('token')
 
       // 对需要登录的路由进行拦截
@@ -25,9 +23,6 @@ class Guard {
       }
 
       // TODO: 对用户权限进行限制
-
-      // 增加历史菜单
-      menuStore().addHistoryMenu(to)
     })
   }
 

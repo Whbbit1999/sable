@@ -35,3 +35,9 @@ function autoload(router: Router) {
   })
 }
 export default autoload
+
+// 动态菜单
+async function addDynamicRoutes() {
+  try {
+  } catch (error) {}
+}

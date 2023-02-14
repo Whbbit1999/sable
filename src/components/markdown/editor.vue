@@ -10,12 +10,14 @@ const props = withDefaults(
     previewTheme?: 'default' | 'github' | 'vuepress' | 'mk-cute' | 'smart-blue' | 'cyanosis'
     codeTheme?: 'atom' | 'a11y' | 'github' | 'gradient' | 'kimbie' | 'paraiso' | 'qtcreator' | 'stackoverflow'
     previewOnly?: boolean
+    placeholder?: string
   }>(),
   {
     theme: 'light',
     codeTheme: 'atom',
     previewTheme: 'github',
     previewOnly: false,
+    placeholder: '请输入markdown格式内容',
   },
 )
 
@@ -47,12 +49,14 @@ const handleUpdateImage = async (files: Array<File>, callback: (urls: string[]) 
 <template>
   <MdEditor
     v-model="props.modelValue"
+    :placeholder="props.placeholder"
     :on-change="handleChangeContent"
     :on-upload-img="handleUpdateImage"
     :theme="props.theme"
     :code-theme="props.codeTheme"
     :preview-theme="props.previewTheme"
-    :preview-only="props.previewOnly" />
+    :preview-only="props.previewOnly"
+    :toolbarsExclude="['github']" />
 </template>
 
 <style scoped lang="scss"></style>

@@ -13,7 +13,7 @@ const handleRemoveTag = (tag) => {
       v-for="tag in historyMenu"
       :bordered="false"
       size="large"
-      :type="$route.name === tag.key ? 'success' : undefined"
+      :type="$route.name === tag.key ? 'primary' : undefined"
       class="tag"
       closable
       trigger-click-on-close

@@ -1,5 +1,7 @@
 <script lang="ts" setup>
-import { ref } from 'vue'
+import { appStore } from '@/store/appStore'
+import { ChevronBackOutline } from '@vicons/ionicons5'
+import { ref, watch } from 'vue'
 import Footer from './components/Footer/index.vue'
 import Header from './components/Header/index.vue'
 import Logo from './components/Logo/index.vue'
@@ -7,23 +9,31 @@ import Main from './components/Main/index.vue'
 import Menu from './components/Menu/index.vue'
 import Tags from './components/Tags/index.vue'
 
-import { menuStore } from '@/store/menuStore'
-import type { MenuOption } from 'naive-ui'
-import { useRoute } from 'vue-router'
-const route = useRoute()
-const selectedKey = ref(route.name as string)
-
-const menu = menuStore()
-const menuOptions: MenuOption[] = menu.getMenus
-const defaultExpandedKeys = ref(['fish', 'braise'])
-const collapsed = ref<boolean>(false)
+const collapsed = ref<boolean>(appStore().collapsed)
+watch(
+  () => appStore().collapsed,
+  (val) => {
+    collapsed.value = val
+  },
+)
 </script>
 
 <template>
   <main class="flex bg-[#f7f7f7]">
-    <aside class="m-2 mr-0 !w-[200px] bg-white rounded-md">
+    <aside
+      class="relative m-2 mr-0 duration-300 bg-white rounded-md"
+      :class="[appStore().collapsed ? 'w-[64px]' : 'w-[200px]']">
       <Logo class="px-2" :collapsed="collapsed" />
-      <Menu :selected-key="selectedKey" :default-expanded-keys="defaultExpandedKeys" :menu-options="menuOptions" />
+      <Menu :collapsed="collapsed" class="flex-1" />
+
+      <div
+        class="!absolute top-1/2 right-0 translate-x-1/2 translate-y-1/2 duration-300 rounded-full bg-white p-1 flex items-center justify-center border cursor-pointer"
+        :class="[appStore().collapsed ? 'rotate-180' : '']"
+        @click="appStore().changeCollapsed">
+        <n-icon :size="16">
+          <ChevronBackOutline />
+        </n-icon>
+      </div>
     </aside>
 
     <main class="flex flex-col flex-1 h-screen">

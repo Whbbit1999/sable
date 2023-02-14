@@ -5,7 +5,7 @@ export default {
   path: '/error',
   component: BlankLayout,
   name: 'error',
-  meta: { menu: { show: true, title: '错误页面', key: 'error', order: 3 } },
+  meta: { menu: { show: true, title: '错误页面', key: 'error', order: 3 }, type: 'layout' },
   children: [
     {
       path: '404',
