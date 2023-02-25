@@ -7,19 +7,26 @@ import { useRouter } from 'vue-router'
 
 const handleUpdateChecked = (value: boolean) => {}
 
+const loading = ref<boolean>(false)
 const loginFormData = ref<ILoginForm>({
   username: 'sable',
   password: '123456',
 })
 const router = useRouter()
 const onSubmit = async () => {
-  const res = await login(unref(loginFormData))
-  console.log(res.data.token)
-  storage.set('token', {
-    token: res.data.token,
-    expire: 60 * 30,
-  })
-  router.push({ name: 'disboard.home' })
+  try {
+    loading.value = true
+    const res = await login(unref(loginFormData))
+    console.log(res.data.token)
+    storage.set('token', {
+      token: res.data.token,
+      expire: 60 * 30,
+    })
+    router.push({ name: 'disboard.home' })
+  } catch (error) {
+  } finally {
+    loading.value = false
+  }
 }
 </script>
 
@@ -43,7 +50,7 @@ const onSubmit = async () => {
       <n-button text tag="a" href="https://anyway.fm/news.php" target="_blank" type="primary"> 忘记密码 </n-button>
     </div>
     <div class="flex flex-col justify-center gap-3 mt-4">
-      <n-button type="primary" @click="onSubmit">登录</n-button>
+      <n-button type="primary" @click="onSubmit" :loading="loading">登录</n-button>
     </div>
   </div>
 </template>
