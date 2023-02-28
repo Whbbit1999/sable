@@ -36,7 +36,7 @@ const handleRemoveTag = async (tag) => {
       :bordered="false"
       size="large"
       :type="$route.name === tag.key ? 'primary' : undefined"
-      class="inline-flex items-center justify-between px-3 py-2 text-sm duration-300 bg-white rounded-md cursor-pointer"
+      class="tag"
       closable
       trigger-click-on-close
       @click="$router.push({ name: tag.key as string })"
@@ -46,4 +46,8 @@ const handleRemoveTag = async (tag) => {
   </nav>
 </template>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+.tag {
+  @apply inline-flex justify-between items-center bg-white px-3 py-2 rounded-md  duration-300 cursor-pointer text-sm;
+}
+</style>
