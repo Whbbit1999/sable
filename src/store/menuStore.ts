@@ -69,6 +69,7 @@ export const menuStore = defineStore('menuStore', {
     },
 
     addHistoryMenu(route: RouteLocationNormalized) {
+      this.historyMenu = this.getHistoryMenu()
       const isHas = this.historyMenu.some((i) => i.label === route.meta?.menu?.title)
       const isShow = route.meta.menu?.showTag !== false
 
