@@ -1,8 +1,10 @@
 import { CacheEnum } from '@/enum/cacheEnums'
-import { renderLink, storage } from '@/utils'
+import { Config } from '@/enum/config'
+import { routes as allRoutes } from '@/router/autoload'
+import { isShowMenu, renderLink, storage } from '@/utils'
 import type { MenuOption } from 'naive-ui'
 import { defineStore } from 'pinia'
-import { RouteLocationNormalized, useRouter } from 'vue-router'
+import { RouteLocationNormalized } from 'vue-router'
 export const menuStore = defineStore('menuStore', {
   state: () => {
     return {
@@ -15,16 +17,12 @@ export const menuStore = defineStore('menuStore', {
     getMenus() {
       return this.composeMenus()
     },
-    getHistoryMenu() {
-      return storage.get(CacheEnum.HISTORY_MENU) as any
-    },
   },
 
   actions: {
     // menu 规定第一层一定是布局菜单
     // 组合menus数据
     composeMenus(routes = this.getRoutes()) {
-      // const routes = this.getRoutes()
       const menus: MenuOption[] = []
       console.log('routes', routes)
       routes.forEach((route, index) => {
@@ -54,41 +52,54 @@ export const menuStore = defineStore('menuStore', {
 
       return menus
     },
+
     getRoutes() {
-      const router = useRouter()
-      const routes = router
-        .getRoutes()
-        .filter((route) => route.children.length && route?.meta?.menu?.show)
+      return allRoutes
+        .filter((route) => route.children.length && isShowMenu(route))
         .map((route) => {
-          route.children = route.children.filter((route) => route?.meta?.menu?.show)
+          route.children = route.children.filter((route) => isShowMenu(route))
           return route
         })
         .sort((a, b) => a.meta.menu.order - b.meta.menu.order)
-      return routes
     },
 
-    // 历史菜单
-    // 添加历史菜单
+    // history menu
+    getHistoryMenu() {
+      return storage.get(CacheEnum.HISTORY_MENU) as MenuOption[]
+    },
+
     addHistoryMenu(route: RouteLocationNormalized) {
-      if (!route.meta.menu?.showTag) return
-      if (route.meta.menu?.showTag && !this.historyMenu.some((i) => i.label === route.meta.menu.title)) {
-        let menu = {
-          key: route.name,
-          label: route.meta.menu.title,
-        }
+      const isHas = this.historyMenu.some((i) => i.label === route.meta?.menu?.title)
+      const isShow = route.meta.menu?.showTag !== false
+
+      if (!isShow) return
+
+      const menu = { key: route.name, label: route.meta.menu.title }
+
+      if (isShow && !isHas) {
         this.historyMenu.push(menu)
       }
-      console.log('history menu', this.historyMenu)
 
-      // TODO 历史菜单刷新后处理
+      if (this.historyMenu.length > Config.HISTORY_MAX) {
+        this.historyMenu.shift()
+      }
+
       storage.set(CacheEnum.HISTORY_MENU, this.historyMenu)
     },
 
     removeHistoryMenu(key) {
+      if (this.historyMenu.length === 1) {
+        storage.set(CacheEnum.HISTORY_MENU, this.historyMenu)
+        return { isCurrent: false, currentIndex: undefined }
+      }
+
       const index = this.historyMenu.findIndex((i) => i.key === key)
       this.historyMenu.splice(index, 1)
-
+      console.log(this.historyMenu)
       storage.set(CacheEnum.HISTORY_MENU, this.historyMenu)
+
+      const isCurrent = index === this.historyMenu.length
+      return { isCurrent, currentIndex: index }
     },
   },
 })

@@ -7,7 +7,7 @@ export default {
   name: 'editor',
   meta: {
     auth: true,
-    menu: { show: true, title: '编辑器', key: 'editor', order: 2, icon: 'Home' },
+    menu: { title: '编辑器', order: 2, icon: 'Home', showParentMenu: false },
     type: 'layout',
   },
   children: [
@@ -15,7 +15,7 @@ export default {
       path: 'base',
       name: 'editor.base',
       component: () => import('@/views/editor/base.vue'),
-      meta: { menu: { show: true, title: '富文本编辑器', key: 'editor.base', showTag: true } },
+      meta: { menu: { title: '富文本编辑器' } },
     },
     {
       path: 'markdown',
@@ -23,7 +23,7 @@ export default {
       component: () => import('@/views/editor/markdown.vue'),
       meta: {
         permissions: ['admin'],
-        menu: { show: true, title: 'markdown编辑器', key: 'editor.base', showTag: true },
+        menu: { title: 'markdown编辑器' },
       },
     },
   ],

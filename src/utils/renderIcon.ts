@@ -1,7 +1,7 @@
+import SvgIcon from '@/components/Icon/SvgIcon.vue'
 import { NIcon } from 'naive-ui'
-import { h } from 'vue'
 import type { Component } from 'vue'
-
+import { h } from 'vue'
 /**
  * 渲染icon
  * @param icon 图标名称
@@ -9,6 +9,10 @@ import type { Component } from 'vue'
  */
 export function renderIcon(icon: Component) {
   return () => h(NIcon, null, { default: () => h(icon) })
+}
+
+export function renderCustomIcon(icon: Component) {
+  return () => h(NIcon, null, { default: () => h(SvgIcon, { icon }) })
 }
 
 /**

@@ -33,7 +33,7 @@ function loopChildren(route: RouteRecordRaw[]) {
 
   route.forEach((item) => {
     if (item.children) {
-      console.log(item.children) // 有子元素就继续往下查找
+      // console.log(item.children) // 有子元素就继续往下查找
       item.children = item.children.filter((r) => {
         if (r.meta?.permissions?.length) {
           // 需要权限进行访问
@@ -47,4 +47,6 @@ function loopChildren(route: RouteRecordRaw[]) {
     }
   })
 }
+
 export default autoload
+export { routes }

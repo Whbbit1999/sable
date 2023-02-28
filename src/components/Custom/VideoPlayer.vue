@@ -1,41 +1,38 @@
 <script lang="ts" setup>
-import { VideoPlayer, VideoPlayerProps } from '@videojs-player/vue'
-import 'video.js/dist/video-js.css'
-import { shallowReactive } from 'vue'
+import Artplayer from 'artplayer'
+import { onMounted, ref } from 'vue'
 
-const { url, cover } = defineProps<{
+const props = defineProps<{
   url: string
-  cover: string
+  poster: string
 }>()
 
-const config = shallowReactive<VideoPlayerProps>({
-  autoplay: false,
-  volume: 0.8,
-  controls: true,
-  loop: false,
-  playbackRate: 1,
-  muted: false,
-  fluid: true,
-  playbackRates: [0.5, 1, 1.5, 2],
+const artplayer = ref()
+onMounted(() => {
+  new Artplayer({
+    container: artplayer.value,
+    url: props.url,
+    poster: props.poster,
+    theme: '#ffad00',
+    autoMini: true,
+    screenshot: true,
+    hotkey: true,
+    pip: true,
+    mutex: true,
+    fullscreen: true,
+    fullscreenWeb: true,
+    airplay: true,
+
+    setting: true,
+    flip: true,
+    playbackRate: true,
+    aspectRatio: true,
+  })
 })
 </script>
 
 <template>
-  <main>
-    <VideoPlayer
-      class="video-player"
-      :src="url"
-      :poster="cover"
-      :volume="config.volume"
-      :autoplay="config.autoplay"
-      :loop="config.loop"
-      :playbackRates="config.playbackRates"
-      :fluid="config.fluid"
-      :techOrder="['html5']"
-      v-model:playbackRate="config.playbackRate"
-      v-model:controls="config.controls"
-      v-model:muted="config.muted" />
-  </main>
+  <div ref="artplayer"></div>
 </template>
 
 <style scoped lang="scss"></style>
