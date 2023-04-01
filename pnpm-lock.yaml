@@ -1,6 +1,7 @@
 lockfileVersion: 5.4
 
 specifiers:
+  '@purge-icons/generated': ^0.9.0
   '@types/lodash-es': ^4.17.6
   '@types/marked': ^4.0.8
   '@types/mockjs': ^1.0.7
@@ -56,6 +57,7 @@ dependencies:
   vuedraggable: 4.1.0_vue@3.2.47
 
 devDependencies:
+  '@purge-icons/generated': 0.9.0
   '@types/lodash-es': 4.17.6
   '@types/marked': 4.0.8
   '@types/mockjs': 1.0.7
@@ -165,6 +167,12 @@ packages:
     dev: true
     optional: true
 
+  /@iconify/iconify/3.1.0:
+    resolution: {integrity: sha512-Xyz+N5NSIiHj7G228CvFUcMKBz3BbpUTAuPnK2ariEUM7891F8ysD6Gh8782f3En1U4Qz70F0tzuyF8BhCfTQg==}
+    dependencies:
+      '@iconify/types': 2.0.0
+    dev: true
+
   /@iconify/types/2.0.0:
     resolution: {integrity: sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==}
     dev: true
@@ -209,6 +217,12 @@ packages:
     dependencies:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.15.0
+    dev: true
+
+  /@purge-icons/generated/0.9.0:
+    resolution: {integrity: sha512-s2t+1oVtGDV6KtqfCXtUOhxfeYvOdDF90IVm+nMs/6bUP0HeGZLslguuL/AibpwtfL4FA/oCsIu/RhwapgAdJw==}
+    dependencies:
+      '@iconify/iconify': 3.1.0
     dev: true
 
   /@rollup/plugin-node-resolve/13.3.0:

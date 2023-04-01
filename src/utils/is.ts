@@ -11,3 +11,10 @@ export function isExternal(path: string): boolean {
 export function isShowMenu(route) {
   return route?.meta?.menu?.show !== false
 }
+
+export function is(val: unknown, type: string) {
+  return toString.call(val) === `[object ${type}]`
+}
+export function isString(val: unknown) {
+  return is(val, 'String')
+}
