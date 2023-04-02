@@ -1,20 +1,28 @@
 <script lang="ts" setup>
 import { menuStore } from '@/store/menuStore'
+import { isExternal } from '@/utils'
 import { onMounted, ref } from 'vue'
-import { useRoute, useRouter } from 'vue-router'
+import { RouteLocationNormalizedLoaded, useRoute, useRouter } from 'vue-router'
+
 const historyMenu = ref()
 const router = useRouter()
 const route = useRoute()
 
 onMounted(() => {
-  menuStore().addHistoryMenu(route)
-  historyMenu.value = menuStore().getHistoryMenu()
+  addHistoryMenu(route)
 })
 
 router.beforeResolve((to) => {
-  menuStore().addHistoryMenu(to)
-  historyMenu.value = menuStore().getHistoryMenu()
+  addHistoryMenu(to)
 })
+
+function addHistoryMenu(route: RouteLocationNormalizedLoaded) {
+  const path = route.matched[route.matched.length - 1]?.path?.replace('/', '') ?? ''
+  if (isExternal(path)) return
+
+  menuStore().addHistoryMenu(route)
+  historyMenu.value = menuStore().getHistoryMenu()
+}
 
 const handleRemoveTag = async (tag) => {
   const { isCurrent, currentIndex } = menuStore().removeHistoryMenu(tag.key)

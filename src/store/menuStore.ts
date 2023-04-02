@@ -1,10 +1,12 @@
+import config from '@/config/config'
 import { CacheEnum } from '@/enum/cacheEnums'
-import { Config } from '@/enum/config'
 import { routes as allRoutes } from '@/router/autoload'
-import { isShowMenu, renderLink, storage } from '@/utils'
+import { isExternal, isShowMenu, renderLink, storage } from '@/utils'
+import { renderCustomIcon } from '@/utils/renderIcon'
 import type { MenuOption } from 'naive-ui'
 import { defineStore } from 'pinia'
 import { RouteLocationNormalized } from 'vue-router'
+
 export const menuStore = defineStore('menuStore', {
   state: () => {
     return {
@@ -29,21 +31,28 @@ export const menuStore = defineStore('menuStore', {
         if (route.children.length) {
           if (route.meta?.menu?.showParentMenu === false && route.children.length === 1) {
             menus.push({
-              label: renderLink(route.children[0].name as string, route.children[0].meta.menu.title),
+              label: renderLink(route.children[0].name as string, route.children[0].meta?.menu?.title),
               key: route.children[0].name as string,
+              icon: renderCustomIcon(route.meta?.menu?.icon),
+              path: isExternal(route.children[0].path) ? route.children[0].path : null,
             })
           } else {
             // 一级菜单
             menus.push({
-              label: route.meta.menu.title,
+              label: route?.meta?.menu?.title,
               key: route.name as string,
+              icon: renderCustomIcon(route.meta?.menu?.icon),
               children: [],
             })
             // 二级菜单
             route.children.forEach((route) => {
               menus[index].children.push({
-                label: renderLink(route.name as string, route.meta.menu.title),
+                label: renderLink(route?.name as string, route?.meta?.menu?.title),
                 key: route.name as string,
+                icon: config.menu.showChildrenRouteIcon
+                  ? renderCustomIcon(route.meta?.menu?.icon ?? config.menu.defaultRouteIcon)
+                  : null,
+                path: isExternal(route.path) ? route.path : null,
               })
             })
           }
@@ -60,7 +69,7 @@ export const menuStore = defineStore('menuStore', {
           route.children = route.children.filter((route) => isShowMenu(route))
           return route
         })
-        .sort((a, b) => a.meta.menu.order - b.meta.menu.order)
+        .sort((a, b) => a.meta?.menu?.order - b.meta?.menu?.order)
     },
 
     // history menu
@@ -75,13 +84,13 @@ export const menuStore = defineStore('menuStore', {
 
       if (!isShow) return
 
-      const menu = { key: route.name, label: route.meta.menu.title }
+      const menu = { key: route?.name, label: route?.meta?.menu?.title }
 
       if (isShow && !isHas) {
         this.historyMenu.push(menu)
       }
 
-      if (this.historyMenu.length > Config.HISTORY_MAX) {
+      if (this.historyMenu.length > config.historyMenuMax) {
         this.historyMenu.shift()
       }
 

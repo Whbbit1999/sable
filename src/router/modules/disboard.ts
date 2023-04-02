@@ -6,7 +6,7 @@ export default {
   name: 'disboard',
   meta: {
     auth: true,
-    menu: { title: '工作台', key: 'disboard', order: 1, showParentMenu: false },
+    menu: { title: '工作台', key: 'disboard', order: 1, showParentMenu: false, icon: 'ion:home' },
     type: 'layout',
   },
 
@@ -15,7 +15,7 @@ export default {
       path: 'home',
       name: 'disboard.home',
       component: () => import('@/views/dashboard/home.vue'),
-      meta: { auth: true, menu: { title: '首页', icon: 'Home' } },
+      meta: { auth: true, menu: { title: '首页' } },
     },
   ],
 } as RouteRecordRaw

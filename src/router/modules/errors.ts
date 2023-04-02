@@ -5,7 +5,8 @@ export default {
   path: '/error',
   component: BlankLayout,
   name: 'error',
-  meta: { menu: { show: true, title: '错误页面', order: 3 }, type: 'layout' },
+  meta: { menu: { show: true, title: '错误页面', order: 3, icon: 'ion:ios-close-circle' }, type: 'layout' },
+
   children: [
     {
       path: '404',

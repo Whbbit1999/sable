@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { toCanvas, toDataURL } from 'qrcode'
-import { onMounted, ref, unref } from 'vue'
+import { QRCodeRenderersOptions, toCanvas, toDataURL } from 'qrcode'
+import { onMounted, ref } from 'vue'
 
 export interface IQrcodeLogo {
   src: string
@@ -15,49 +15,76 @@ export interface IQrcodeLogo {
 
 export interface IQrcode {
   value: string
-  options?: {
-    margin?: number | undefined
-    scale?: number | undefined
-    width?: number | undefined
-    color?: {
-      dark?: string | undefined
-      light?: string | undefined
-    }
-  }
+
   width?: number
   logo?: string
   tag?: 'canvas' | 'img'
+  margin?: number
+  frontColor?: string
+  bgColor?: string
+  errorCorrectionLevel?: 'L' | 'M' | 'Q' | 'H'
 }
 
 const props = withDefaults(defineProps<IQrcode>(), {
   value: '',
   width: 200,
-  tag: 'img',
+  tag: 'canvas',
+  frontColor: '#000',
+  bgColor: '#fff',
+  margin: 3,
+  errorCorrectionLevel: 'H',
 })
 
-const qrcode = ref(null)
+const qrcode = ref<HTMLImageElement | HTMLCanvasElement>(null)
+
 onMounted(() => {
-  console.log(qrcode)
   createQrcode()
 })
 
 async function createQrcode() {
   try {
     if (props.tag === 'img') {
-      const url = await toDataURL(props.value, {
-        errorCorrectionLevel: 'H',
-        width: 200,
-      })
-      unref(qrcode).src = url
+      await renderImg()
     } else if (props.tag === 'canvas') {
-      await toCanvas(props.value, {})
+      await renderCanvas()
     }
-  } catch (error) {}
+  } catch (error) {
+    // useMessage().error(error)
+  }
+}
+
+const qrcodeOptions: QRCodeRenderersOptions = {
+  errorCorrectionLevel: props.errorCorrectionLevel,
+  width: props.width,
+  margin: props.margin,
+  color: {
+    dark: props.frontColor,
+    light: props.bgColor,
+  },
+}
+
+async function renderCanvas() {
+  await toCanvas(qrcode.value, props.value, qrcodeOptions)
+  await drawLogo()
+}
+
+// 绘制logo图标
+async function drawLogo() {
+  if (!props.logo) {
+    return new Promise((resolve) => resolve(true))
+  }
+
+  const canvasWidth = (qrcode.value as HTMLCanvasElement).width
+}
+
+async function renderImg() {
+  const url = await toDataURL(props.value, qrcodeOptions)
+  ;(qrcode.value as HTMLImageElement).src = url
 }
 </script>
 
 <template>
-  <img class="" ref="qrcode" />
+  <component :is="tag" ref="qrcode" />
 </template>
 
 <style scoped lang="scss"></style>

@@ -22,7 +22,7 @@ watch(
   <main class="flex bg-[#f7f7f7]">
     <aside
       class="relative m-2 mr-0 duration-300 bg-white rounded-md"
-      :class="[appStore().collapsed ? 'w-[64px]' : 'w-[200px]']">
+      :class="[appStore().collapsed ? 'w-[48px]' : 'w-[200px]']">
       <Logo class="px-2" :collapsed="collapsed" />
       <Menu :collapsed="collapsed" class="flex-1" />
 
