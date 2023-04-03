@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { menuStore } from '@/store/menuStore'
+import { useHistoryMenuStore } from '@/store/historyMenuStore'
 import { isExternal } from '@/utils'
 import { onMounted, ref } from 'vue'
 import { RouteLocationNormalizedLoaded, useRoute, useRouter } from 'vue-router'
@@ -7,7 +7,7 @@ import { RouteLocationNormalizedLoaded, useRoute, useRouter } from 'vue-router'
 const historyMenu = ref()
 const router = useRouter()
 const route = useRoute()
-
+const historyMenuStore = useHistoryMenuStore()
 onMounted(() => {
   addHistoryMenu(route)
 })
@@ -17,15 +17,14 @@ router.beforeResolve((to) => {
 })
 
 function addHistoryMenu(route: RouteLocationNormalizedLoaded) {
-  const path = route.matched[route.matched.length - 1]?.path?.replace('/', '') ?? ''
-  if (isExternal(path)) return
+  if (isExternal(route.path)) return
 
-  menuStore().addHistoryMenu(route)
-  historyMenu.value = menuStore().getHistoryMenu()
+  historyMenuStore.addHistoryMenu(route)
+  historyMenu.value = historyMenuStore.getHistoryMenu()
 }
 
 const handleRemoveTag = async (tag) => {
-  const { isCurrent, currentIndex } = menuStore().removeHistoryMenu(tag.key)
+  const { isCurrent, currentIndex } = historyMenuStore.removeHistoryMenu(tag.key)
   console.log({ isCurrent, currentIndex })
 
   // 移除当前元素，页面跳转至上一个标签
@@ -33,7 +32,7 @@ const handleRemoveTag = async (tag) => {
     router.push({ name: historyMenu.value[currentIndex - 1].key })
   }
 
-  historyMenu.value = menuStore().getHistoryMenu()
+  historyMenu.value = historyMenuStore.getHistoryMenu()
 }
 </script>
 

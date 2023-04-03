@@ -1,14 +1,15 @@
 <script lang="ts" setup>
 import Breadcrump from '@/components/Custom/Breadcrump.vue'
 import FullScreen from '@/components/Custom/FullScreen.vue'
+import config from '@/config/config'
 import { themeStore } from '@/store/themeStore'
 import { userStore } from '@/store/userStore'
 import { renderIcon, storage } from '@/utils'
 import {
   LogOutOutline as LogoutIcon,
   MoonOutline,
-  PersonCircleOutline as UserIcon,
   SunnyOutline,
+  PersonCircleOutline as UserIcon,
 } from '@vicons/ionicons5'
 import dayjs from 'dayjs'
 import { ref } from 'vue'
@@ -44,7 +45,7 @@ const onSelect = (key, option) => {
       handleChangeTheme(key, option)
       break
     case 'userspace':
-      ''
+      router.push({ name: 'user.base' })
       break
     case 'logout':
       logout()
@@ -71,7 +72,7 @@ const logout = () => {
 <template>
   <header class="flex items-center justify-between p-2 m-2 rounded-md">
     <div>
-      <Breadcrump />
+      <Breadcrump v-if="config.layout.showBreadCrump" />
     </div>
     <div class="flex items-center">
       <FullScreen />

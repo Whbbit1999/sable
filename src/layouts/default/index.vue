@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import config from '@/config/config'
 import { appStore } from '@/store/appStore'
 import { ChevronBackOutline } from '@vicons/ionicons5'
 import { ref, watch } from 'vue'
@@ -40,11 +41,9 @@ watch(
       <Header class="mb-0 bg-white" />
       <Tags class="px-2 my-2" />
       <div class="flex-1 mx-2 overflow-hidden bg-white rounded-md">
-        <n-scrollbar>
-          <Main class="p-2" />
-        </n-scrollbar>
+        <n-scrollbar><Main class="p-2" /></n-scrollbar>
       </div>
-      <Footer class="p-2 m-2 bg-white" />
+      <Footer v-if="config.layout.showFooter" class="p-2 m-2 bg-white" />
     </main>
   </main>
 </template>

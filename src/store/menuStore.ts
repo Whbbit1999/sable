@@ -1,17 +1,14 @@
 import config from '@/config/config'
-import { CacheEnum } from '@/enum/cacheEnums'
 import { routes as allRoutes } from '@/router/autoload'
-import { isExternal, isShowMenu, renderLink, storage } from '@/utils'
+import { isExternal, isShowMenu } from '@/utils'
 import { renderCustomIcon } from '@/utils/renderIcon'
 import type { MenuOption } from 'naive-ui'
 import { defineStore } from 'pinia'
-import { RouteLocationNormalized } from 'vue-router'
-
+import { RouteRecordNormalized } from 'vue-router'
 export const menuStore = defineStore('menuStore', {
   state: () => {
     return {
       menus: [] as MenuOption[],
-      historyMenu: [] as MenuOption[],
     }
   },
 
@@ -22,44 +19,54 @@ export const menuStore = defineStore('menuStore', {
   },
 
   actions: {
+    getMenuItem(route: RouteRecordNormalized, basePath = '') {
+      let menuItem = {
+        label: route.meta?.menu?.title || route.name,
+        key: route.name,
+        path: resolvePath(basePath, route.path),
+        icon: renderCustomIcon(route?.meta?.menu?.icon ?? config.menu.defaultRouteIcon),
+        order: route?.meta?.menu?.order || 0,
+        children: null,
+      }
+
+      const visibleChildren = route.children
+        ? route?.children?.filter((item) => item.name && (item?.meta?.menu?.show ?? true))
+        : []
+
+      if (!visibleChildren.length) return menuItem
+
+      if (visibleChildren.length === 1) {
+        const singleRoute = visibleChildren[0]
+
+        menuItem = {
+          ...menuItem,
+          label: singleRoute.meta?.menu.title || singleRoute.name,
+          key: singleRoute.name,
+          path: resolvePath(menuItem.path, singleRoute.path),
+          icon: renderCustomIcon(singleRoute.meta?.menu?.icon ?? config.menu.defaultRouteIcon),
+        }
+        const visibleItems = singleRoute.children
+          ? singleRoute.children.filter((item) => item.name && (item?.meta?.menu?.show ?? true))
+          : []
+        if (visibleItems.length === 1) {
+          menuItem = this.getMenuItem(visibleItems[0], menuItem.path)
+        } else if (visibleItems.length > 1) {
+          menuItem.children = visibleItems
+            .map((item) => this.getMenuItem(item, menuItem.path))
+            .sort((a, b) => a?.order - b?.order)
+        }
+      } else {
+        menuItem.children = visibleChildren
+          .map((item) => this.getMenuItem(item, menuItem.path))
+          .sort((a, b) => a?.order - b?.order)
+      }
+
+      return menuItem
+    },
     // menu 规定第一层一定是布局菜单
     // 组合menus数据
-    composeMenus(routes = this.getRoutes()) {
-      const menus: MenuOption[] = []
-      console.log('routes', routes)
-      routes.forEach((route, index) => {
-        if (route.children.length) {
-          if (route.meta?.menu?.showParentMenu === false && route.children.length === 1) {
-            menus.push({
-              label: renderLink(route.children[0].name as string, route.children[0].meta?.menu?.title),
-              key: route.children[0].name as string,
-              icon: renderCustomIcon(route.meta?.menu?.icon),
-              path: isExternal(route.children[0].path) ? route.children[0].path : null,
-            })
-          } else {
-            // 一级菜单
-            menus.push({
-              label: route?.meta?.menu?.title,
-              key: route.name as string,
-              icon: renderCustomIcon(route.meta?.menu?.icon),
-              children: [],
-            })
-            // 二级菜单
-            route.children.forEach((route) => {
-              menus[index].children.push({
-                label: renderLink(route?.name as string, route?.meta?.menu?.title),
-                key: route.name as string,
-                icon: config.menu.showChildrenRouteIcon
-                  ? renderCustomIcon(route.meta?.menu?.icon ?? config.menu.defaultRouteIcon)
-                  : null,
-                path: isExternal(route.path) ? route.path : null,
-              })
-            })
-          }
-        }
-      })
-
-      return menus
+    composeMenus(routes = this.getRoutes(), bashPath = '') {
+      return routes.map((item) => this.getMenuItem(item)).sort((a, b) => a?.order - b?.order)
     },
 
     getRoutes() {
@@ -71,45 +78,13 @@ export const menuStore = defineStore('menuStore', {
         })
         .sort((a, b) => a.meta?.menu?.order - b.meta?.menu?.order)
     },
-
-    // history menu
-    getHistoryMenu() {
-      return storage.get(CacheEnum.HISTORY_MENU) as MenuOption[]
-    },
-
-    addHistoryMenu(route: RouteLocationNormalized) {
-      this.historyMenu = this.getHistoryMenu()
-      const isHas = this.historyMenu.some((i) => i.label === route.meta?.menu?.title)
-      const isShow = route.meta.menu?.showTag !== false
-
-      if (!isShow) return
-
-      const menu = { key: route?.name, label: route?.meta?.menu?.title }
-
-      if (isShow && !isHas) {
-        this.historyMenu.push(menu)
-      }
-
-      if (this.historyMenu.length > config.historyMenuMax) {
-        this.historyMenu.shift()
-      }
-
-      storage.set(CacheEnum.HISTORY_MENU, this.historyMenu)
-    },
-
-    removeHistoryMenu(key) {
-      if (this.historyMenu.length === 1) {
-        storage.set(CacheEnum.HISTORY_MENU, this.historyMenu)
-        return { isCurrent: false, currentIndex: undefined }
-      }
-
-      const index = this.historyMenu.findIndex((i) => i.key === key)
-      this.historyMenu.splice(index, 1)
-      console.log(this.historyMenu)
-      storage.set(CacheEnum.HISTORY_MENU, this.historyMenu)
-
-      const isCurrent = index === this.historyMenu.length
-      return { isCurrent, currentIndex: index }
-    },
   },
 })
+
+function resolvePath(basePath, path) {
+  if (isExternal(path)) return path
+  return `/${[basePath, path]
+    .filter((path) => path && path !== '/')
+    .map((path) => path.replace(/(^\/)|(\/$)/g, ''))
+    .join('/')}`
+}

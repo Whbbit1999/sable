@@ -15,7 +15,7 @@ export default {
       path: 'base',
       name: 'editor.base',
       component: () => import('@/views/editor/base.vue'),
-      meta: { menu: { title: '富文本编辑器' } },
+      meta: { menu: { title: '富文本编辑器', icon: 'ion:edit' } },
     },
     {
       path: 'markdown',
@@ -23,7 +23,7 @@ export default {
       component: () => import('@/views/editor/markdown.vue'),
       meta: {
         permissions: ['admin'],
-        menu: { title: 'markdown编辑器' },
+        menu: { title: 'markdown编辑器', icon: 'ion:logo-markdown' },
       },
     },
   ],

@@ -5,8 +5,9 @@ import { isExternal } from '@/utils'
 import { ref, unref, watch } from 'vue'
 import { useRoute } from 'vue-router'
 
+import { useHistoryMenuStore } from '@/store/historyMenuStore'
 import type { MenuOption } from 'naive-ui'
-import { RouteLocationNormalized, onBeforeRouteLeave, useRouter } from 'vue-router'
+import { useRouter } from 'vue-router'
 
 type IMenuOption = MenuOption & {
   path: string | null
@@ -14,7 +15,6 @@ type IMenuOption = MenuOption & {
 const route = useRoute()
 const router = useRouter()
 const selectedKey = ref(route.name as string)
-
 const menu = menuStore()
 const menuOptions: IMenuOption[] = menu.getMenus
 const defaultExpandedKeys = ref()
@@ -35,23 +35,28 @@ watch(
   },
 )
 
-const fromRoute = ref<RouteLocationNormalized>()
-onBeforeRouteLeave((to, from) => {
-  fromRoute.value = from
-})
-
+// -------------------- 点击menu，选中项的处理 START --------------------
+const historyMenuStore = useHistoryMenuStore()
 function handleMenuSelect(key: string, item: IMenuOption) {
+  console.log(key, item)
   if (isExternal(item?.path)) {
     window.open(item.path)
-
-    // 这里处理路由跳转至之前路由
-    router.push({ name: fromRoute.value.name })
   } else {
     selectedKey.value = key
+    router.push({ name: key })
     // 增加历史菜单
-    menuStore().addHistoryMenu(unref(route))
+    historyMenuStore.addHistoryMenu(unref(route))
   }
 }
+// -------------------- 点击menu，选中项的处理 END ----------------------
+
+// -------------------- 路由发生变化，选中项的处理 START --------------------
+router.beforeEach((to) => {
+  if (isExternal(to.path)) return
+
+  selectedKey.value = to.name as string
+})
+// -------------------- 路由发生变化，选中项的处理 END ----------------------
 </script>
 
 <template>
