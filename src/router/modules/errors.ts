@@ -16,6 +16,13 @@ export default {
     },
 
     {
+      path: '500',
+      name: 'error.500',
+      component: () => import('@/views/errors/500.vue'),
+      meta: { menu: { title: '500页面' } },
+    },
+
+    {
       path: '502',
       name: 'error.502',
       component: () => import('@/views/errors/502.vue'),

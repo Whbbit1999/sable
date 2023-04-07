@@ -5,28 +5,49 @@ export default {
   path: '/components',
   component: Layout,
   name: 'components',
-  meta: { auth: true, menu: { show: true, title: '自定义组件', key: 'components', order: 10 }, type: 'layout' },
+  meta: { auth: true, menu: { title: '自定义组件', order: 10, icon: 'ion:layers' }, type: 'layout' },
 
   children: [
+    {
+      path: 'icon',
+      name: 'components.icon',
+      component: () => import('@/views/customComponents/icon.vue'),
+      meta: { auth: true, menu: { title: '图标', icon: 'ion:ios-construct' } },
+    },
+
+    {
+      path: 'crudTable',
+      name: 'components.crudTable',
+      component: () => import('@/views/customComponents/crudTable.vue'),
+      meta: { auth: true, menu: { title: 'CRUD表格', icon: 'ion:tablet-landscape' } },
+    },
+
+    {
+      path: 'uploadImage',
+      name: 'components.uploadImage',
+      component: () => import('@/views/customComponents/uploadImage.vue'),
+      meta: { auth: true, menu: { title: '上传图片', icon: 'ion:md-cloud-upload' } },
+    },
+
     {
       path: 'qrcode',
       name: 'components.qrcode',
       component: () => import('@/views/customComponents/qrcode.vue'),
-      meta: { auth: true, menu: { show: true, title: '二维码', showTag: true } },
+      meta: { auth: true, menu: { title: '二维码', icon: 'ion:qr-code' } },
     },
 
     {
       path: 'draggable',
       name: 'components.draggable',
       component: () => import('@/views/customComponents/draggable.vue'),
-      meta: { auth: true, menu: { show: true, title: '拖拽', showTag: true } },
+      meta: { auth: true, menu: { title: '拖拽' } },
     },
 
     {
-      path: 'xgplayer',
-      name: 'components.xgplayer',
+      path: 'videoPlayer',
+      name: 'components.videoPlayer',
       component: () => import('@/views/customComponents/player.vue'),
-      meta: { auth: true, menu: { show: true, title: '视频播放器', showTag: true } },
+      meta: { auth: true, menu: { title: '视频播放器', icon: 'ion:film' } },
     },
   ],
 } as RouteRecordRaw

@@ -1,16 +1,20 @@
 <script lang="ts" setup>
-import { ArrowBackOutline } from '@vicons/ionicons5'
+import Icon from '@/components/Icon'
 </script>
 
 <template>
   <div class="flex flex-col items-center justify-center h-screen p-10">
-    <img draggable="false" class="w-2/3" src="../../../public/images/5xx.svg" alt="" />
-    <p class="my-3 text-3xl text-gray-500">网站暂时无法访问</p>
-    <n-button @click="$router.push({ name: 'disboard.home' })">
-      <n-icon class="mr-1"><ArrowBackOutline /></n-icon>
-      返回首页
-    </n-button>
+    <n-result title="502 服务器错误" description="服务器出错可能说明该雇更多程序员了" size="huge">
+      <template #icon>
+        <Icon icon="twemoji:anxious-face-with-sweat" size="125" />
+      </template>
+      <template #footer>
+        <n-button @click="$router.push({ name: 'disboard.home' })">
+          <Icon icon="ion:arrow-back" size="16" class="mr-2" />
+          返回首页
+        </n-button>
+      </template>
+    </n-result>
   </div>
 </template>
-
 <style scoped lang="scss"></style>

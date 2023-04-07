@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import { useRoute } from 'vue-router'
+import Icon from '../Icon'
 const route = useRoute()
 </script>
 
@@ -7,8 +8,11 @@ const route = useRoute()
   <n-breadcrumb>
     <template v-if="route">
       <n-breadcrumb-item v-for="(r, i) in route.matched" :key="i" :href="`#${r.path}`" :clickable="false">
-        {{ r.meta.menu.title }}</n-breadcrumb-item
-      >
+        <div class="flex items-center gap-1">
+          <Icon :icon="r.meta.menu.icon" size="14" />
+          {{ r.meta.menu.title }}
+        </div>
+      </n-breadcrumb-item>
     </template>
   </n-breadcrumb>
 </template>

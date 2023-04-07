@@ -30,4 +30,37 @@ export default [
       },
     },
   },
+  {
+    url: '/api/users',
+    method: 'get',
+    timeout: 2000,
+    response: () => {
+      return {
+        code: 200,
+        message: '获取成功',
+        data: users(),
+        meta: {
+          current_page: 1,
+          page_size: 10,
+          total: 50,
+        },
+      }
+    },
+  },
 ] as MockMethod[]
+
+function users() {
+  const list = Array.from({ length: 50 }).map((_, index) => {
+    const tags = Array.from({ length: 3 }).map(() => mock.Random.cword())
+    return {
+      id: index,
+      name: mock.Random.cname(),
+      avatar: mock.Random.image('200x100'),
+      email: mock.Random.email(),
+      created_at: mock.Random.datetime(),
+      updated_at: mock.Random.datetime(),
+      tags: tags,
+    }
+  })
+  return list
+}
