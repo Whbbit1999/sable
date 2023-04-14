@@ -11,7 +11,7 @@
     "preview": "vite preview"
   },
   "lint-staged": {
-    "*.{vue,js,ts,tsx}": "pnpm run lint && pnpm run format"
+    "*.{vue,js,ts,tsx}": "pnpm lint"
   },
   "dependencies": {
     "@vavt/md-editor-extension": "^1.5.0",
