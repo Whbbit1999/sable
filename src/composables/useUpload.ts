@@ -7,7 +7,7 @@ export default () => {
    * @param url 接口地址
    * @returns
    */
-  function uploadImage(data: FormData, url: string = 'upload/image') {
+  function uploadImage(data: FormData, url = 'upload/image') {
     return http.post<{ url: string }>({
       url,
       data,

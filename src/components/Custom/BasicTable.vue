@@ -7,7 +7,7 @@ const props = withDefaults(
     columns: any[]
     height: number
     button?: TableButton[]
-    api: (page?: number) => Promise<ResponsePageResult<Record<string, any>>>
+    api: (page?: number) => Promise<ResponsePageResult<Record<any, any>>>
   }>(),
   {
     height: 250,

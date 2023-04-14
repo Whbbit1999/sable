@@ -2,13 +2,13 @@ import { App } from 'vue'
 import dayjs from './dayjs'
 import { setupNaiveUI } from './naive-ui'
 import setupPinia from './pinia'
-import setupTailwindcss from './tailwindcss'
+import './tailwindcss'
 
 export default function (app: App) {
   setupNaiveUI(app)
   setupPinia(app)
   dayjs()
-  setupTailwindcss()
+  // setupTailwindcss()
   autoRegisterComponent(app)
 }
 

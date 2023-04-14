@@ -22,7 +22,7 @@ const request = async (options: any) => {
   const form = new FormData()
   form.append('file', options.file)
 
-  const { code, data } = await uploadImage(form, props.url)
+  const { data } = await uploadImage(form, props.url)
   const { url } = data
   imageUrl.value = url
 

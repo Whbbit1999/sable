@@ -3,6 +3,7 @@ import MdEditor from 'md-editor-v3'
 import 'md-editor-v3/lib/style.css' // docs https://imzbf.github.io/md-editor-v3/docs#%F0%9F%A7%B1%20toolbarsExclude
 
 import { uploadImage } from '@/api/uploadApi'
+import { ref } from 'vue'
 const props = withDefaults(
   defineProps<{
     modelValue: string
@@ -20,21 +21,23 @@ const props = withDefaults(
     placeholder: '请输入markdown格式内容',
   },
 )
-
+const content = ref(props.modelValue)
 const emits = defineEmits(['update:modelValue'])
 
 const handleChangeContent = (v: string) => {
+  content.value = v
   emits('update:modelValue', v)
 }
 const handleUpdateImage = async (files: Array<File>, callback: (urls: string[]) => void) => {
   const res = (await Promise.all(
     files.map((file) => {
-      return new Promise(async (resolve, reject) => {
+      return new Promise((resolve, reject) => {
         const form = new FormData()
         form.append('file', file)
         try {
-          const { data } = await uploadImage(form)
-          resolve(data.url)
+          uploadImage(form).then(({ data }) => {
+            resolve(data.url)
+          })
         } catch (error) {
           reject(error)
         }
@@ -48,7 +51,7 @@ const handleUpdateImage = async (files: Array<File>, callback: (urls: string[]) 
 
 <template>
   <MdEditor
-    v-model="props.modelValue"
+    v-model="content"
     :placeholder="props.placeholder"
     :on-change="handleChangeContent"
     :on-upload-img="handleUpdateImage"

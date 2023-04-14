@@ -4,7 +4,7 @@ export default [
   {
     url: '/api/getUserInfo',
     method: 'get',
-    response: ({}) => {
+    response: () => {
       return {
         code: 200,
         data: {

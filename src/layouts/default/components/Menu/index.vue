@@ -42,6 +42,7 @@ function handleMenuSelect(key: string, item: IMenuOption) {
   if (isExternal(item?.path)) {
     window.open(item.path)
   } else {
+    console.log(route)
     selectedKey.value = key
     router.push({ name: key })
     // 增加历史菜单

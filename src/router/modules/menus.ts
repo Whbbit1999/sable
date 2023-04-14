@@ -3,7 +3,7 @@ import { RouteRecordRaw } from 'vue-router'
 export default {
   path: '/menu',
   component: () => import('@/layouts/default/index.vue'),
-  name: 'about',
+  name: 'menu',
   meta: { menu: { title: '多级菜单', order: 98, icon: 'ion:md-list-box' }, type: 'layout' },
   children: [
     {

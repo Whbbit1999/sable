@@ -10,10 +10,11 @@ class Axios {
   }
 
   public request<T, D = ResponseResult<T>>(config: AxiosRequestConfig) {
-    return new Promise(async (resolve, reject) => {
+    return new Promise((resolve, reject) => {
       try {
-        const response = await this.instance.request<D>(config)
-        resolve(response.data)
+        this.instance.request<D>(config).then((response) => {
+          resolve(response.data)
+        })
       } catch (error) {
         reject(error)
       }

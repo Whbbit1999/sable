@@ -4,7 +4,7 @@ export default [
   {
     url: '/api/upload/image',
     method: 'post',
-    response: ({}) => {
+    response: () => {
       return {
         code: 200,
         data: {

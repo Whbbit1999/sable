@@ -1,2 +1,2 @@
 import './index.css'
-export default function setupTailwindcss() {}
+// export default function setupTailwindcss() {}

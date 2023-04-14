@@ -1,11 +1,16 @@
 <script setup lang="ts">
 import { zhCN, dateZhCN, darkTheme } from 'naive-ui'
 import { themeStore } from './store/themeStore'
+import { lightThemeOverrides, darkThemeOverrides } from '@/config/theme'
 const theme = themeStore()
 </script>
 
 <template>
-  <n-config-provider :locale="zhCN" :date-locale="dateZhCN" :theme="theme.getTheme === 'dark' ? darkTheme : undefined">
+  <n-config-provider
+    :locale="zhCN"
+    :date-locale="dateZhCN"
+    :theme="theme.getTheme === 'dark' ? darkTheme : undefined"
+    :theme-overrides="theme === null ? lightThemeOverrides : darkThemeOverrides">
     <Suspense>
       <router-view></router-view>
     </Suspense>

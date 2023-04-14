@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { AirplaneOutline } from '@vicons/ionicons5'
 import { ref } from 'vue'
-import draggable from 'vuedraggable'
+import Draggable from 'vuedraggable'
 const myArray = ref([
   { id: 1, name: 1 },
   { id: 2, name: 2 },
@@ -28,11 +28,11 @@ const myArray = ref([
     </n-alert>
 
     拖拽示例：
-    <draggable v-model="myArray" item-key="id" class="grid grid-cols-3 gap-3">
+    <Draggable v-model="myArray" item-key="id" class="grid grid-cols-3 gap-3">
       <template #item="{ element }">
         <div class="flex items-center justify-center p-3 border cursor-pointer">{{ element.name }}</div>
       </template>
-    </draggable>
+    </Draggable>
   </div>
 </template>
 

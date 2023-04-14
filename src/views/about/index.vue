@@ -36,7 +36,9 @@ Object.entries(devDependencies).forEach(([key, value]: [string, string]) => {
           </n-descriptions-item>
 
           <n-descriptions-item label="文档地址">
-            <n-button text tag="a" href="" target="_blank" type="info"> 文档地址 </n-button>
+            <n-button text tag="a" href="https://www.whbbit.cn/wiki/sable/index.html" target="_blank" type="info">
+              文档地址
+            </n-button>
           </n-descriptions-item>
 
           <n-descriptions-item label="预览地址">

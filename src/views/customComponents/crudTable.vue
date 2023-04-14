@@ -2,7 +2,6 @@
 import { userList } from '@/api/userApi'
 import BasicTable from '@/components/Custom/BasicTable.vue'
 import { UserTableField } from '@/config/table'
-import { ref } from 'vue'
 </script>
 
 <template>

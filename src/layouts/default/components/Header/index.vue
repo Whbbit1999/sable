@@ -37,7 +37,6 @@ const options = ref([
     icon: renderIcon(LogoutIcon),
   },
 ])
-const username = 'whbbit'
 
 const onSelect = (key, option) => {
   switch (key) {
@@ -52,8 +51,10 @@ const onSelect = (key, option) => {
       break
   }
 }
+
 const handleChangeTheme = (key, option) => {
   theme.toggleTheme()
+
   const index = options.value.indexOf(option)
 
   options.value[index] = {

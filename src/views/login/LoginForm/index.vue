@@ -5,7 +5,9 @@ import { storage } from '@/utils'
 import { ref, unref } from 'vue'
 import { useRouter } from 'vue-router'
 
-const handleUpdateChecked = (value: boolean) => {}
+const handleUpdateChecked = (value: boolean) => {
+  return false
+}
 
 const loading = ref<boolean>(false)
 const loginFormData = ref<ILoginForm>({
@@ -24,6 +26,7 @@ const onSubmit = async () => {
     })
     router.push({ name: 'disboard.home' })
   } catch (error) {
+    throw new Error(error)
   } finally {
     loading.value = false
   }

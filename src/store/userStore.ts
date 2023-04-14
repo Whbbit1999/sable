@@ -10,7 +10,7 @@ export const userStore = defineStore('userStore', {
   getters: {},
   actions: {
     async getUserInfo(): Promise<IUserModel> {
-      const { code, data } = await getUserInfoApi()
+      const { data } = await getUserInfoApi()
 
       this.userInfo = data
       return this.userInfo

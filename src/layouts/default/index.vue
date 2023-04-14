@@ -20,15 +20,15 @@ watch(
 </script>
 
 <template>
-  <main class="flex bg-[#f7f7f7]">
+  <main class="flex bg-[#f7f7f7] dark:bg-[#18181C]">
     <aside
-      class="relative m-2 mr-0 duration-300 bg-white rounded-md"
+      class="relative m-2 mr-0 duration-300 bg-white dark:bg-[#18181C] rounded-md"
       :class="[appStore().collapsed ? 'w-[48px]' : 'w-[200px]']">
       <Logo class="px-2" :collapsed="collapsed" />
       <Menu :collapsed="collapsed" class="flex-1" />
 
       <div
-        class="!absolute top-1/2 right-0 translate-x-1/2 translate-y-1/2 duration-300 rounded-full bg-white p-1 flex items-center justify-center border cursor-pointer"
+        class="!absolute top-1/2 right-0 translate-x-1/2 translate-y-1/2 duration-300 rounded-full bg-white dark:bg-[#18181C] p-1 flex items-center justify-center border cursor-pointer"
         :class="[appStore().collapsed ? 'rotate-180' : '']"
         @click="appStore().changeCollapsed">
         <n-icon :size="16">
@@ -38,12 +38,12 @@ watch(
     </aside>
 
     <main class="flex flex-col flex-1 h-screen">
-      <Header class="mb-0 bg-white" />
+      <Header class="mb-0 bg-white dark:bg-[#18181C]" />
       <Tags class="px-2 my-2" />
-      <div class="flex-1 mx-2 overflow-hidden bg-white rounded-md">
+      <div class="flex-1 mx-2 overflow-hidden bg-white dark:bg-[#18181C] rounded-md">
         <n-scrollbar><Main class="p-2" /></n-scrollbar>
       </div>
-      <Footer v-if="config.layout.showFooter" class="p-2 m-2 bg-white" />
+      <Footer v-if="config.layout.showFooter" class="p-2 m-2 bg-white dark:bg-[#18181C]" />
     </main>
   </main>
 </template>

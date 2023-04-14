@@ -12,6 +12,9 @@ export const appStore = defineStore('appStore', {
     async changeCollapsed() {
       this.collapsed = !this.collapsed
     },
-    async reloadPage() {},
+
+    async reloadPage() {
+      // TODO
+    },
   },
 })

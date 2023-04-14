@@ -9,7 +9,11 @@ export type RenderColumnType = {
   imageProps?: ImageProps
 }
 
-export type TableButton = {}
+export type TableButton = {
+  title: string
+  command: string
+  type: 'default' | 'tertiary' | 'primary' | 'info' | 'success' | 'warning' | 'error'
+}
 
 export const pageSizes = [
   { label: '10 每页', value: 10 },

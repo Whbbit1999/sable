@@ -4,7 +4,7 @@ export default {
   path: '',
   component: () => import('@/layouts/default/index.vue'),
   name: 'about',
-  meta: { menu: { title: '关于', order: 99, showParentMenu: false, icon: 'ion:information-circle' }, type: 'layout' },
+  meta: { menu: { title: '关于', order: 99, icon: 'ion:information-circle' }, type: 'layout' },
   children: [
     {
       path: '/about',

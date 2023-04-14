@@ -40,6 +40,7 @@ const handleRemoveTag = async (tag) => {
   <nav class="flex gap-2 overflow-auto">
     <n-tag
       v-for="tag in historyMenu"
+      :key="tag.key"
       :bordered="false"
       size="large"
       :type="$route.name === tag.key ? 'primary' : undefined"
