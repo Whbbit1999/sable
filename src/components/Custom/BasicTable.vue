@@ -1,19 +1,58 @@
 <script lang="ts" setup>
 import { TableButton, pageSizes } from '@/config/table'
-import { ref } from 'vue'
+import { NButton, NSpace } from 'naive-ui'
+import { computed, ref, h } from 'vue'
 
 const props = withDefaults(
   defineProps<{
     columns: any[]
     height: number
     button?: TableButton[]
-    api: (page?: number) => Promise<ResponsePageResult<Record<any, any>>>
+    api: (page?: number) => Promise<ResponsePageResult<Record<string, any>>>
   }>(),
   {
     height: 250,
   },
 )
+const columns = computed(() => {
+  return props.columns
+})
 
+if (props.button) {
+  const hasAction = columns.value.some((item) => item.key === 'actions')
+  if (!hasAction) {
+    columns.value.push({
+      key: 'actions',
+      title: '操作',
+      type: 'actions',
+      render: (row) =>
+        h(
+          NSpace,
+          {},
+          {
+            default: () =>
+              props.button.map((action) =>
+                h(
+                  NButton,
+                  {
+                    type: action.type || 'default',
+                    onClick() {
+                      console.log(action.command)
+                      emit('action', row, action.command)
+                    },
+                  },
+                  { default: () => action.title },
+                ),
+              ),
+          },
+        ),
+    })
+  }
+}
+
+const emit = defineEmits<{
+  (e: 'action', mode: Record<string, any>, command: string): void
+}>()
 const loading = ref(false)
 const response = ref(await props.api())
 
@@ -36,7 +75,7 @@ const pagination = ref({
   <main>
     <n-data-table
       :loading="loading"
-      :columns="props.columns"
+      :columns="columns"
       :data="response.data"
       virtual-scroll
       striped

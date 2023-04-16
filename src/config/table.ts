@@ -1,5 +1,6 @@
 import { renderTag, renderImage, renderTime } from '@/utils/render'
 import { ImageProps, TagProps } from 'naive-ui'
+
 export type RenderColumnType = {
   key: string
   title: string
@@ -9,6 +10,7 @@ export type RenderColumnType = {
   imageProps?: ImageProps
 }
 
+// 需要操作栏时，传递此参数
 export type TableButton = {
   title: string
   command: string
@@ -31,6 +33,11 @@ export const UserTableField = makeColumn([
   { key: 'created_at', title: '创建时间', type: 'date' },
   { key: 'updated_at', title: '更新时间', type: 'date' },
 ] as RenderColumnType[])
+
+export const UserTableButton: TableButton[] = [
+  { title: '编辑', type: 'primary', command: 'edit' },
+  { title: '删除', type: 'error', command: 'delete' },
+]
 
 function makeColumn(column: RenderColumnType[]) {
   return column.map((item) => {

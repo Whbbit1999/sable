@@ -49,5 +49,12 @@ export default {
       component: () => import('@/views/customComponents/player.vue'),
       meta: { auth: true, menu: { title: '视频播放器', icon: 'ion:film' } },
     },
+
+    {
+      path: 'formFieldList',
+      name: 'components.formFieldList',
+      component: () => import('@/views/customComponents/form.vue'),
+      meta: { auth: true, menu: { title: '自动生成表单', icon: 'ion:md-list-box' } },
+    },
   ],
 } as RouteRecordRaw

@@ -2,11 +2,12 @@ import { userStore } from '@/store/userStore'
 import { App } from 'vue'
 import { createRouter, createWebHashHistory } from 'vue-router'
 import autoload from './autoload'
-import guard from './guard'
-import routes from './routes'
+import guard from './guard/index'
+import globalRoutes from './globalRoutes'
+
 const router = createRouter({
   history: createWebHashHistory(),
-  routes: [...routes],
+  routes: [...globalRoutes],
 })
 
 export async function setupRouter(app: App) {

@@ -47,14 +47,18 @@ Object.entries(devDependencies).forEach(([key, value]: [string, string]) => {
 
           <n-descriptions-item label="仓库地址">
             <n-space>
-              <n-button text tag="a" href="" target="_blank" type="info"> Github </n-button>
-              <n-divider vertical />
-              <n-button text tag="a" href="" target="_blank" type="info"> Gitee </n-button>
+              <n-button text tag="a" href="https://github.com/Whbbit1999/sable" target="_blank" type="info">
+                Github
+              </n-button>
+              <!-- <n-divider vertical /> -->
+              <!-- <n-button text tag="a" href="" target="_blank" type="info"> Gitee </n-button> -->
             </n-space>
           </n-descriptions-item>
 
           <n-descriptions-item label="交流">
-            <n-button text tag="a" href="" target="_blank" type="info"> 交流 </n-button>
+            <n-button text tag="a" href="https://pd.qq.com/s/3oksi7bke" target="_blank" type="info">
+              交流（QQ频道）
+            </n-button>
           </n-descriptions-item>
         </n-descriptions>
       </n-card>

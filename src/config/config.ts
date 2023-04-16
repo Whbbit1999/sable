@@ -8,4 +8,7 @@ export default {
     showFooter: true, // 显示网页底部
     showBreadCrump: true, // 显示面包屑导航
   },
+  routes: {
+    home: { path: '/', redirect: '/disboard/home' }, // 默认首页
+  },
 }

@@ -1,14 +1,14 @@
 import { RouteRecordRaw } from 'vue-router'
-
+import config from '@/config/config'
 // global routes
 const routes = [
+  config.routes.home, // 默认首页
   {
     path: '/login',
     name: 'login',
     meta: { guest: true },
     component: () => import('@/views/login/index.vue'),
   },
-  { path: '/', redirect: '/disboard/home' }, // 默认首页{
   {
     path: '/:any(.*)',
     name: 'notFound',
