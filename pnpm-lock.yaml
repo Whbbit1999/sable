@@ -29,7 +29,6 @@ specifiers:
   eslint-config-prettier: ^8.8.0
   eslint-plugin-prettier: ^4.2.1
   eslint-plugin-vue: ^9.11.0
-  husky: ^8.0.3
   lint-staged: ^13.2.1
   lodash: ^4.17.21
   md-editor-v3: ^2.11.2
@@ -93,7 +92,6 @@ devDependencies:
   eslint-config-prettier: 8.8.0_eslint@8.38.0
   eslint-plugin-prettier: 4.2.1_mrzcadguhkbme6yx3ehduvsjxu
   eslint-plugin-vue: 9.11.0_eslint@8.38.0
-  husky: 8.0.3
   lint-staged: 13.2.1
   mockjs: 1.1.0
   naive-ui: 2.34.3_vue@3.2.47
@@ -3392,12 +3390,6 @@ packages:
   /human-signals/4.3.1:
     resolution: {integrity: sha512-nZXjEF2nbo7lIw3mgYjItAfgQXog3OjJogSbKa2CQIIvSGWcKgeJnQlNXip6NglNzYH45nSRiEVimMvYL8DDqQ==}
     engines: {node: '>=14.18.0'}
-    dev: true
-
-  /husky/8.0.3:
-    resolution: {integrity: sha512-+dQSyqPh4x1hlO1swXBiNb2HzTDN1I2IGLQx1GrBuiqFJfoMrnZWwVmatvSiO+Iz8fBUnf+lekwNo4c2LlXItg==}
-    engines: {node: '>=14'}
-    hasBin: true
     dev: true
 
   /i18next/20.6.1:
