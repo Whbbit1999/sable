@@ -81,7 +81,11 @@ const pagination = ref({
       striped
       :max-height="props.height"
       :pagination="pagination"
-      :on-update:page="load" />
+      :on-update:page="load">
+      <template #empty>
+        <n-empty description="暂无数据"></n-empty>
+      </template>
+    </n-data-table>
   </main>
 </template>
 

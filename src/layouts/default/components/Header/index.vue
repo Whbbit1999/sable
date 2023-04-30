@@ -1,17 +1,21 @@
 <script lang="ts" setup>
 import Breadcrump from '@/components/Custom/Breadcrump.vue'
 import FullScreen from '@/components/Custom/FullScreen.vue'
+import useWait from '@/composables/useWait'
 import config from '@/config/config'
+import { appStore } from '@/store/appStore'
 import { themeStore } from '@/store/themeStore'
 import { userStore } from '@/store/userStore'
 import { renderIcon, storage } from '@/utils'
 import {
+  ChevronBackOutline,
   LogOutOutline as LogoutIcon,
   MoonOutline,
   SunnyOutline,
   PersonCircleOutline as UserIcon,
 } from '@vicons/ionicons5'
 import dayjs from 'dayjs'
+import { useNotification } from 'naive-ui'
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 const router = useRouter()
@@ -51,8 +55,11 @@ const onSelect = (key, option) => {
       break
   }
 }
+const notification = useNotification()
 
 const handleChangeTheme = (key, option) => {
+  useWait().createWaiting(notification)
+
   theme.toggleTheme()
 
   const index = options.value.indexOf(option)
@@ -75,6 +82,7 @@ const logout = () => {
     <div>
       <Breadcrump v-if="config.layout.showBreadCrump" />
     </div>
+
     <div class="flex items-center">
       <FullScreen />
       <n-dropdown :options="options" :on-select="onSelect">

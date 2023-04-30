@@ -8,7 +8,11 @@ const route = useRoute()
 <template>
   <n-breadcrumb>
     <template v-if="route">
-      <n-breadcrumb-item v-for="(r, i) in route.matched" :key="i" :href="`#${r.path}`" :clickable="false">
+      <n-breadcrumb-item
+        v-for="(r, i) in route.matched"
+        :key="i"
+        :href="i === route.matched.length - 1 ? `#${r.path}` : ''"
+        :clickable="false">
         <div class="flex items-center gap-1">
           <Icon :icon="r.meta?.menu?.icon ?? config.menu.defaultRouteIcon" size="14" />
           {{ r.meta.menu.title }}

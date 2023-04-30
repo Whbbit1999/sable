@@ -2,6 +2,7 @@
 import { zhCN, dateZhCN, darkTheme } from 'naive-ui'
 import { themeStore } from './store/themeStore'
 import { lightThemeOverrides, darkThemeOverrides } from '@/config/theme'
+import config from './config/config'
 const theme = themeStore()
 </script>
 
@@ -11,9 +12,11 @@ const theme = themeStore()
     :date-locale="dateZhCN"
     :theme="theme.getTheme === 'dark' ? darkTheme : undefined"
     :theme-overrides="theme === null ? lightThemeOverrides : darkThemeOverrides">
-    <Suspense>
-      <router-view></router-view>
-    </Suspense>
+    <n-notification-provider :max="config.naiveUI.notificationMax">
+      <Suspense>
+        <router-view></router-view>
+      </Suspense>
+    </n-notification-provider>
   </n-config-provider>
 </template>
 

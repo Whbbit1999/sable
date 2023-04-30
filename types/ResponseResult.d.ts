@@ -26,3 +26,7 @@ interface IUserModel {
   createdAt: string
   permissions: string[]
 }
+
+interface IArticle {
+  title: string
+}

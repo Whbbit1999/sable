@@ -1,10 +1,8 @@
 <script lang="ts" setup>
-import { menuStore } from '@/store/menuStore'
-import { isExternal } from '@/utils'
-
 import { ref, unref, watch } from 'vue'
 import { useRoute } from 'vue-router'
-
+import { menuStore } from '@/store/menuStore'
+import { isExternal } from '@/utils'
 import { useHistoryMenuStore } from '@/store/historyMenuStore'
 import type { MenuOption } from 'naive-ui'
 import { useRouter } from 'vue-router'

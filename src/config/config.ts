@@ -11,4 +11,7 @@ export default {
   routes: {
     home: { path: '/', redirect: '/disboard/home' }, // 默认首页
   },
+  naiveUI: {
+    notificationMax: 3,
+  },
 }
