@@ -20,7 +20,7 @@ const cards = [
       <n-card :title="card.title" size="medium" v-for="card in cards" :key="card.title"> {{ card.count }}</n-card>
     </section>
 
-    <n-space>
+    <n-space class="mt-2">
       <n-button>Default</n-button>
       <n-button type="tertiary"> Tertiary </n-button>
       <n-button type="primary"> Primary </n-button>
@@ -28,8 +28,7 @@ const cards = [
       <n-button type="success"> Success </n-button>
       <n-button type="warning"> Warning </n-button>
       <n-button type="error"> Error </n-button>
-    </n-space>
-    <n-space>
+
       <n-button dashed> Default </n-button>
       <n-button type="primary" dashed> Primary </n-button>
       <n-button type="info" dashed> Info </n-button>
