@@ -5,10 +5,6 @@ import { storage } from '@/utils'
 import { ref, unref } from 'vue'
 import { useRouter } from 'vue-router'
 
-const handleUpdateChecked = (value: boolean) => {
-  return false
-}
-
 const loading = ref<boolean>(false)
 const loginFormData = ref<ILoginForm>({
   username: 'sable',
@@ -24,7 +20,7 @@ const onSubmit = async () => {
       token: res.data.token,
       expire: 60 * 30,
     })
-    router.push({ name: 'disboard.home' })
+    router.push({ name: 'dashboard.home' })
   } catch (error) {
     throw new Error(error)
   } finally {
@@ -52,8 +48,8 @@ const onSubmit = async () => {
     </div>
     <div class="flex justify-end mt-2">
       <n-space>
-        <n-button type="primary" text>忘记密码</n-button>
-        <n-button type="primary" text>注册</n-button>
+        <n-button type="primary" text @click="$router.push({ name: 'auth.forgetPassword' })">忘记密码</n-button>
+        <n-button type="primary" text @click="$router.push({ name: 'auth.register' })">注册</n-button>
       </n-space>
     </div>
   </div>
