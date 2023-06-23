@@ -1,9 +1,9 @@
 module.exports = {
-  plugins: {
-    '@unocss/postcss': {
-      // Optional
-      content: ['**/*.{html,js,ts,jsx,tsx,vue,svelte,astro}'],
-    },
-    autoprefixer: {},
-  },
+  // plugins: {
+  //   '@unocss/postcss': {
+  //     // Optional
+  //     content: ['**/*.{html,js,ts,jsx,tsx,vue,svelte,astro}'],
+  //   },
+  //   autoprefixer: {},
+  // },
 }

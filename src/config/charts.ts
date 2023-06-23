@@ -1,6 +1,6 @@
 import * as echarts from 'echarts'
 
-export const lineChartsOptions = () => {
+export const lineChartsOptions = (): any => {
   return {
     color: ['#80FFA5', '#00DDFF', '#37A2FF', '#FF0087', '#FFBF00'],
     title: {

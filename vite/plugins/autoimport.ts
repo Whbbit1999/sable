@@ -9,7 +9,7 @@ import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
 
 const customIconPath = resolve(process.cwd(), 'src/assets/svg')
 
-export default function autoImport() {
+export default function autoImport(): any {
   return [
     Components({
       // auto import components 自动加载组件
