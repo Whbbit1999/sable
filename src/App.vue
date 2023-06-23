@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { zhCN, dateZhCN, darkTheme } from 'naive-ui'
-import { themeStore } from './store/themeStore'
-import { lightThemeOverrides, darkThemeOverrides } from '@/config/theme'
+import { darkThemeOverrides, lightThemeOverrides } from '@/config/theme'
+import { darkTheme, dateZhCN, zhCN } from 'naive-ui'
 import config from './config/config'
+import { themeStore } from './store/themeStore'
 const theme = themeStore()
 </script>
 
@@ -24,6 +24,7 @@ const theme = themeStore()
 html,
 body {
   min-height: 100vh;
+  box-sizing: border-box;
 }
 #app {
   min-height: 100vh;

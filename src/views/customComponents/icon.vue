@@ -4,10 +4,13 @@ import Icon from '@/components/Icon'
 
 <template>
   <div>
-    <n-alert title="使用本地svg图标" type="info"> 将图标导入 /src/assets/svg 进行使用 </n-alert>
+    <n-alert title="使用本地svg图标" type="info">
+      将图标导入 /src/assets/svg 进行使用，名称为 `icon-custom-[svg名称]`</n-alert
+    >
 
     <n-icon class="text-7xl">
       <icon-custom-axios />
+      <icon-custom-ts />
     </n-icon>
     <n-alert title="使用icones查找图标" type="info">
       可以去

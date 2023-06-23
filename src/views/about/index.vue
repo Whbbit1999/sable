@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-import { CashOutline } from '@vicons/ionicons5'
 interface SchemaItem {
   field: string
   label: string

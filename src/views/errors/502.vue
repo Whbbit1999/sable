@@ -9,7 +9,7 @@ import Icon from '@/components/Icon'
         <Icon icon="twemoji:anxious-face-with-sweat" size="125" />
       </template>
       <template #footer>
-        <n-button @click="$router.push({ name: 'disboard.home' })">
+        <n-button @click="$router.push({ name: 'dashboard.home' })">
           <Icon icon="ion:arrow-back" size="16" class="mr-2" />
           返回首页
         </n-button>

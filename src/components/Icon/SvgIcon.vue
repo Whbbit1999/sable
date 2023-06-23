@@ -4,7 +4,7 @@ import { Component, computed } from 'vue'
 const props = withDefaults(
   defineProps<{
     icon?: Component
-    perfix?: string
+    prefix?: string
     color?: string
     spin?: boolean
     size?: number | string
@@ -16,7 +16,7 @@ const props = withDefaults(
   },
 )
 
-const symbolId = computed(() => `#${props.perfix}-${props.icon}`)
+const symbolId = computed(() => `#${props.prefix}-${props.icon}`)
 </script>
 
 <template>

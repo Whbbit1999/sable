@@ -3,12 +3,10 @@ import Breadcrump from '@/components/Custom/Breadcrump.vue'
 import FullScreen from '@/components/Custom/FullScreen.vue'
 import useWait from '@/composables/useWait'
 import config from '@/config/config'
-import { appStore } from '@/store/appStore'
 import { themeStore } from '@/store/themeStore'
 import { userStore } from '@/store/userStore'
 import { renderIcon, storage } from '@/utils'
 import {
-  ChevronBackOutline,
   LogOutOutline as LogoutIcon,
   MoonOutline,
   SunnyOutline,
@@ -73,7 +71,7 @@ const handleChangeTheme = (key, option) => {
 const logout = () => {
   // 清空缓存
   storage.remove('token')
-  router.push({ name: 'login' })
+  router.push({ name: 'auth.login' })
 }
 </script>
 

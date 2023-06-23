@@ -9,7 +9,7 @@ export default {
     showBreadCrump: true, // 显示面包屑导航
   },
   routes: {
-    home: { path: '/', redirect: '/disboard/home' }, // 默认首页
+    home: { path: '/', redirect: '/dashboard/home' }, // 默认首页
   },
   naiveUI: {
     notificationMax: 3,

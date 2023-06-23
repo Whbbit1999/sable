@@ -1,14 +1,14 @@
 <script lang="ts" setup>
 import { TableButton, pageSizes } from '@/config/table'
 import { NButton, NSpace } from 'naive-ui'
-import { computed, ref, h } from 'vue'
+import { computed, h, ref } from 'vue'
 
 const props = withDefaults(
   defineProps<{
     columns: any[]
     height: number
     button?: TableButton[]
-    api: (page?: number) => Promise<ResponsePageResult<Record<string, any>>>
+    api: (page?: number) => Promise<ResponsePageResult<Record<any, any>>>
   }>(),
   {
     height: 250,

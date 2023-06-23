@@ -14,7 +14,7 @@ class Guard {
 
       // 对需要登录的路由进行拦截
       if (this.isLogin(to, token) === false) {
-        return { name: 'login' }
+        return { name: 'auth.login' }
       }
 
       // 对已经登录的用户限制不能访问游客可以访问的路径——登录等页面

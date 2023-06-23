@@ -65,7 +65,7 @@ export const menuStore = defineStore('menuStore', {
     },
     // menu 规定第一层一定是布局菜单
     // 组合menus数据
-    composeMenus(routes = this.getRoutes(), bashPath = '') {
+    composeMenus(routes = this.getRoutes()) {
       return routes.map((item) => this.getMenuItem(item)).sort((a, b) => a?.order - b?.order)
     },
 

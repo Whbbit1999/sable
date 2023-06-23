@@ -1,18 +1,15 @@
 <script lang="ts" setup>
+import config from '@/config/config'
 import { useRoute } from 'vue-router'
 import Icon from '../Icon'
-import config from '@/config/config'
 const route = useRoute()
 </script>
 
 <template>
   <n-breadcrumb>
     <template v-if="route">
-      <n-breadcrumb-item
-        v-for="(r, i) in route.matched"
-        :key="i"
-        :href="i === route.matched.length - 1 ? `#${r.path}` : ''"
-        :clickable="false">
+      <!-- :href="i === route.matched.length - 1 ? `#${r.path}` : ''" -->
+      <n-breadcrumb-item v-for="(r, i) in route.matched" :key="i" :clickable="false">
         <div class="flex items-center gap-1">
           <Icon :icon="r.meta?.menu?.icon ?? config.menu.defaultRouteIcon" size="14" />
           {{ r.meta.menu.title }}
