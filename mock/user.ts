@@ -50,7 +50,7 @@ export default [
 ] as MockMethod[]
 
 function users() {
-  const list = Array.from({ length: 50 }).map((_, index) => {
+  const list = Array.from({ length: 10 }).map((_, index) => {
     const tags = Array.from({ length: 3 }).map(() => mock.Random.cword())
     return {
       id: index,

@@ -1,5 +1,4 @@
 import axios, { AxiosInstance, AxiosRequestConfig } from 'axios'
-import { RequestOptions } from 'https'
 
 class Axios {
   private instance: AxiosInstance
@@ -21,16 +20,16 @@ class Axios {
     }) as Promise<D>
   }
 
-  public get<T>(config: AxiosRequestConfig, options?: RequestOptions) {
+  public get<T>(config: AxiosRequestConfig) {
     return this.request<T>({ ...config, method: 'GET' })
   }
-  public post<T>(config: AxiosRequestConfig, options?: RequestOptions) {
+  public post<T>(config: AxiosRequestConfig) {
     return this.request<T>({ ...config, method: 'POST' })
   }
-  public put<T>(config: AxiosRequestConfig, options?: RequestOptions) {
+  public put<T>(config: AxiosRequestConfig) {
     return this.request<T>({ ...config, method: 'PUT' })
   }
-  public delete<T>(config: AxiosRequestConfig, options?: RequestOptions) {
+  public delete<T>(config: AxiosRequestConfig) {
     return this.request<T>({ ...config, method: 'DELETE' })
   }
 

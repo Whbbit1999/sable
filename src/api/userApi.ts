@@ -25,7 +25,7 @@ export async function login(data: ILoginForm) {
 }
 
 export async function userList(page = 1) {
-  return http.get<ResponsePageResult<User>>({
+  return http.get<User>({
     url: `users?page=${page}`,
   })
 }

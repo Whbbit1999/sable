@@ -8,10 +8,14 @@ const props = withDefaults(
     columns: any[]
     height: number
     button?: TableButton[]
-    api: (page?: number) => Promise<ResponsePageResult<Record<any, any>>>
+    size?: 'small' | 'medium' | 'large'
+    striped?: boolean
+    api: (page?: number) => Promise<ResponseResult<Record<any, any>>>
   }>(),
   {
     height: 250,
+    size: 'medium',
+    striped: true,
   },
 )
 const columns = computed(() => {
@@ -57,9 +61,14 @@ const loading = ref(false)
 const response = ref(await props.api())
 
 async function load(page: number) {
-  loading.value = true
-  response.value = await props.api(page)
-  loading.value = false
+  try {
+    loading.value = true
+    response.value = await props.api(page)
+  } catch (error) {
+    throw new Error('加载数据错误' + error)
+  } finally {
+    loading.value = false
+  }
 }
 const pagination = ref({
   pageSize: response.value.meta.page_size,
@@ -72,13 +81,13 @@ const pagination = ref({
 </script>
 
 <template>
-  <main>
+  <main class="bg-white pb-2">
     <n-data-table
       :loading="loading"
       :columns="columns"
       :data="response.data"
-      virtual-scroll
-      striped
+      :striped="striped"
+      :size="size"
       :max-height="props.height"
       :pagination="pagination"
       :on-update:page="load">
