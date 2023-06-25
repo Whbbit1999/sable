@@ -1,31 +1,20 @@
 import http from '../plugins/axios'
-interface User {
-  name: string
-}
 
 export async function getUserInfoApi() {
-  return http.request<User>({
+  return http.request<IUserModel>({
     url: `getUserInfo`,
   })
 }
 
-interface LoginInterface {
-  token: string
-}
-export interface ILoginForm {
-  username: string
-  password: string
-}
-
 export async function login(data: ILoginForm) {
-  return http.post<LoginInterface>({
+  return http.post<ILoginModel>({
     url: `login`,
     data,
   })
 }
 
 export async function userList(page = 1) {
-  return http.get<User>({
+  return http.get<IUserModel[]>({
     url: `users?page=${page}`,
   })
 }
