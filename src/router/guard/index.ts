@@ -1,3 +1,4 @@
+import { RouteNameEnum } from '@/enum/routeEnum'
 import { storage } from '@/utils'
 import { RouteLocationNormalized, Router } from 'vue-router'
 
@@ -14,7 +15,7 @@ class Guard {
 
       // 对需要登录的路由进行拦截
       if (this.isLogin(to, token) === false) {
-        return { name: 'auth.login' }
+        return { name: RouteNameEnum.LOGIN }
       }
 
       // 对已经登录的用户限制不能访问游客可以访问的路径——登录等页面

@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import type { ILoginForm } from '@/api/userApi'
 import { login } from '@/api/userApi'
+import { RouteNameEnum } from '@/enum/routeEnum'
 import { storage } from '@/utils'
 import { ref, unref } from 'vue'
 import { useRouter } from 'vue-router'
@@ -20,7 +20,7 @@ const onSubmit = async () => {
       token: res.data.token,
       expire: 60 * 30,
     })
-    router.push({ name: 'dashboard.home' })
+    router.push({ name: RouteNameEnum.HOME })
   } catch (error) {
     throw new Error(error)
   } finally {

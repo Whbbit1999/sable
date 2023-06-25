@@ -1,19 +1,10 @@
+// T: type | type[]
+// meta: {} | null
 interface ResponseResult<T> {
   code: number
   message: string
   type: 'success' | 'error'
-  data: T | T[]
-  meta: {
-    current_page: number // 当前页
-    page_size: number //
-    total: number // 总页数
-  }
-}
-
-interface ResponsePageResult<T> {
-  code: number
-  message: string
-  data: T[]
+  data: T
   meta: {
     current_page: number // 当前页
     page_size: number //
@@ -24,6 +15,15 @@ interface ResponsePageResult<T> {
 /**
  * 所有的api model 都在这里定义后全局可以不用引入直接使用
  */
+
+interface ILoginForm {
+  username: string
+  password: string
+}
+interface ILoginModel {
+  token: string
+}
+
 interface IUserModel {
   name: string
   password: string
@@ -32,6 +32,6 @@ interface IUserModel {
   permissions: string[]
 }
 
-interface IArticle {
+interface IArticleModel {
   title: string
 }

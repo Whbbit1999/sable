@@ -3,6 +3,7 @@ import Breadcrump from '@/components/Custom/Breadcrump.vue'
 import FullScreen from '@/components/Custom/FullScreen.vue'
 import useWait from '@/composables/useWait'
 import config from '@/config/config'
+import { RouteNameEnum } from '@/enum/routeEnum'
 import { themeStore } from '@/store/themeStore'
 import { userStore } from '@/store/userStore'
 import { renderIcon, storage } from '@/utils'
@@ -28,11 +29,11 @@ const options = ref([
     key: 'userspace',
     icon: renderIcon(UserIcon),
   },
-  {
-    label: `外观：${theme.getTheme ? '暗色主题' : '亮色主题'}`,
-    key: 'theme',
-    icon: renderIcon(theme.getTheme ? SunnyOutline : MoonOutline),
-  },
+  // {
+  //   label: `外观：${theme.getTheme ? '暗色主题' : '亮色主题'}`,
+  //   key: 'theme',
+  //   icon: renderIcon(theme.getTheme ? SunnyOutline : MoonOutline),
+  // },
   {
     label: '退出登录',
     key: 'logout',
@@ -71,7 +72,7 @@ const handleChangeTheme = (key, option) => {
 const logout = () => {
   // 清空缓存
   storage.remove('token')
-  router.push({ name: 'auth.login' })
+  router.push({ name: RouteNameEnum.LOGIN })
 }
 </script>
 
