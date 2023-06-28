@@ -1,5 +1,14 @@
-import { App } from 'vue'
 import { createPinia } from 'pinia'
+import { createPersistedState } from 'pinia-plugin-persistedstate'
+import { App } from 'vue'
+
 export default function setupPinia(app: App) {
-  app.use(createPinia())
+  const pinia = createPinia()
+  pinia.use(
+    createPersistedState({
+      auto: true,
+      storage: sessionStorage,
+    }),
+  )
+  app.use(pinia)
 }
