@@ -1,24 +1,24 @@
 <script lang="ts" setup>
+import { useWindowSize } from '@vueuse/core'
 import * as echarts from 'echarts'
-import { onMounted, ref, toRefs, watch } from 'vue'
+import { onMounted, onUnmounted, ref, shallowRef, toRefs, watch } from 'vue'
 const props = withDefaults(
   defineProps<{
     options: Record<string, any>
+    theme?: 'dark' | null
   }>(),
   {
+    theme: null,
     options: null,
   },
 )
 
-const container = ref(null)
-const chart = ref(null)
+const container = shallowRef(null)
+const chart = shallowRef(null)
 onMounted(() => {
-  chart.value = echarts.init(container.value, '', {
+  chart.value = echarts.init(container.value, props.theme, {
     locale: 'ZH',
-    renderer: 'canvas',
-    useDirtyRect: true,
-    width: 'auto',
-    height: 'auto',
+    renderer: 'svg',
   })
   chart.value.setOption(props.options)
 })
@@ -31,15 +31,25 @@ watch(
   },
   { deep: true },
 )
+
+const { width, height } = useWindowSize()
+const timer = ref(null)
+watch([width, height], () => {
+  if (!timer.value) {
+    timer.value = setTimeout(() => {
+      chart.value.resize()
+      timer.value = null
+    }, 500)
+  }
+})
+
+onUnmounted(() => {
+  timer.value = null
+})
 </script>
 
 <template>
-  <div class="e-container" ref="container"></div>
+  <div class="w-full h-full" ref="container"></div>
 </template>
 
-<style scoped lang="scss">
-.e-container {
-  width: 100%;
-  height: 100%;
-}
-</style>
+<style scoped lang="scss"></style>
