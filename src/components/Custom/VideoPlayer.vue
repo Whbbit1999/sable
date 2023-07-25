@@ -1,6 +1,5 @@
 <script lang="ts" setup>
 import Artplayer from 'artplayer'
-import { onMounted, ref } from 'vue'
 
 const props = defineProps<{
   url: string

@@ -1,6 +1,4 @@
 <script lang="ts" setup>
-import { Component, computed } from 'vue'
-
 const props = withDefaults(
   defineProps<{
     icon?: Component

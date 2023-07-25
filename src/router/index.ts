@@ -1,6 +1,6 @@
-import { userStore } from '@/store/userStore'
-import { App } from 'vue'
+import type { App } from 'vue'
 import { createRouter, createWebHistory } from 'vue-router'
+
 import autoload from './autoload'
 import globalRoutes from './globalRoutes'
 import guard from './guard/index'

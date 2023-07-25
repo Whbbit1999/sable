@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import useUpload from '@/composables/useUpload'
-import { ref } from 'vue'
 import Icon from '../Icon'
+
 const { uploadImage } = useUpload()
 
 const props = withDefaults(

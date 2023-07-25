@@ -1,11 +1,5 @@
 <script lang="ts" setup>
-import Breadcrump from '@/components/Custom/Breadcrump.vue'
-import FullScreen from '@/components/Custom/FullScreen.vue'
-import useWait from '@/composables/useWait'
 import config from '@/config/config'
-import { RouteNameEnum } from '@/enum/routeEnum'
-import { themeStore } from '@/store/themeStore'
-import { userStore } from '@/store/userStore'
 import { renderIcon, storage } from '@/utils'
 import {
   LogOutOutline as LogoutIcon,
@@ -15,8 +9,8 @@ import {
 } from '@vicons/ionicons5'
 import dayjs from 'dayjs'
 import { useNotification } from 'naive-ui'
-import { ref } from 'vue'
-import { useRouter } from 'vue-router'
+import Notify from './Notify.vue'
+
 const router = useRouter()
 const theme = themeStore()
 
@@ -82,8 +76,13 @@ const logout = () => {
       <Breadcrump v-if="config.layout.showBreadCrump" />
     </div>
 
-    <div class="flex items-center">
+    <div class="flex items-center gap-2">
       <FullScreen />
+
+      <Notify />
+
+      <ToggleTheme />
+
       <n-dropdown :options="options" :on-select="onSelect">
         <div class="flex items-center px-3">
           <!-- 头像 -->

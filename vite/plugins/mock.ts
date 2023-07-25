@@ -4,6 +4,6 @@ export default function setupMockPlugin(isBuild: boolean) {
   return viteMockServe({
     // default
     mockPath: 'mock',
-    localEnabled: !isBuild,
+    enable: !isBuild,
   })
 }

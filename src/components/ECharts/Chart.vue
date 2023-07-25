@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { useWindowSize } from '@vueuse/core'
 import * as echarts from 'echarts'
-import { onMounted, onUnmounted, ref, shallowRef, toRefs, watch } from 'vue'
+
 const props = withDefaults(
   defineProps<{
     options: Record<string, any>

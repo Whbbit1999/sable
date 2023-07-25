@@ -1,6 +1,5 @@
 <script lang="ts" setup>
 import UploadSingleImage from '@/components/Custom/UploadSingleImage.vue'
-import { ref } from 'vue'
 const image = ref('')
 </script>
 

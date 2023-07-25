@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import config from '@/config/config'
-import { useRoute } from 'vue-router'
 import Icon from '../Icon'
+
 const route = useRoute()
 </script>
 

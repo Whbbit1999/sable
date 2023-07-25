@@ -1,8 +1,7 @@
 import Icon from '@/components/Icon'
-
 import { NIcon } from 'naive-ui'
+
 import type { Component } from 'vue'
-import { h } from 'vue'
 
 /**
  * 渲染icon - 从 naive-ui 组件库导出

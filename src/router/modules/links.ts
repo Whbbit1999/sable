@@ -1,5 +1,5 @@
 import Blank from '@/layouts/blank.vue'
-import { RouteRecordRaw } from 'vue-router'
+import type { RouteRecordRaw } from 'vue-router'
 
 export default {
   path: '',

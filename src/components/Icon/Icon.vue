@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { isString } from '@/utils/is'
 import Iconify from '@purge-icons/generated'
-import { computed, CSSProperties, nextTick, onMounted, ref, unref, watch } from 'vue'
+import type { CSSProperties } from 'vue'
 import SvgIcon from './SvgIcon.vue'
 
 const SVG_END_WITH_FLAG = '|svg'

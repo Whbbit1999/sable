@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-import { ref, watch } from 'vue'
 import logoSrc from '@/assets/images/logo.svg'
 const props = defineProps<{
   collapsed: boolean

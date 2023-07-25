@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { userList } from '@/api/userApi'
-import BasicTable from '@/components/Custom/BasicTable.vue'
 import { UserTableButton, UserTableField } from '@/config/table'
+
 const handleActions = (...args) => {
   console.log(args)
 }

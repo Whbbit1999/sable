@@ -1,8 +1,7 @@
 <script lang="ts" setup>
-import { FormFieldType } from '@/config/form'
 import Markdown from '@/components/markdown/editor.vue'
 import WangEditor from '@/components/wangeditor/index.vue'
-import { ref } from 'vue'
+import { FormFieldType } from '@/config/form'
 
 const props = defineProps<{
   model: Record<string, any>
@@ -10,6 +9,7 @@ const props = defineProps<{
 }>()
 
 const model = ref(props.model)
+
 const emit = defineEmits<{
   (e: 'submit', model: any): void
 }>()

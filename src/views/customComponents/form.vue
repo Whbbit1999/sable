@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import FormFieldList from '@/components/Custom/FormFieldList.vue'
 import { ArticleFormField, SystemFormField } from '@/config/form'
+
 const site = {
   name: '233',
   site: '233',

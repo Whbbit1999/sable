@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-import { userStore } from '@/store/userStore'
 import dayjs from 'dayjs'
 
 const user = userStore()

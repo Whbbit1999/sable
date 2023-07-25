@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { AirplaneOutline } from '@vicons/ionicons5'
-import { ref } from 'vue'
 import Draggable from 'vuedraggable'
+
 const myArray = ref([
   { id: 1, name: 1 },
   { id: 2, name: 2 },

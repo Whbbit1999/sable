@@ -1,6 +1,5 @@
-import { RouteNameEnum } from '@/enum/routeEnum'
 import { storage } from '@/utils'
-import { RouteLocationNormalized, Router } from 'vue-router'
+import type { RouteLocationNormalized, Router } from 'vue-router'
 
 // 路由守卫
 class Guard {

@@ -1,7 +1,6 @@
 <script lang="ts" setup>
 import { TableButton, pageSizes } from '@/config/table'
 import { NButton, NSpace } from 'naive-ui'
-import { computed, h, ref } from 'vue'
 
 const props = withDefaults(
   defineProps<{

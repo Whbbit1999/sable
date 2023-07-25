@@ -1,9 +1,8 @@
 import config from '@/config/config'
-import { CacheEnum } from '@/enum/cacheEnums'
 import { storage } from '@/utils'
 import { MenuOption } from 'naive-ui'
 import { defineStore } from 'pinia'
-import { RouteLocationNormalized } from 'vue-router'
+import type { RouteLocationNormalized } from 'vue-router'
 
 export const useHistoryMenuStore = defineStore('historyMenuStore', {
   state: () => {

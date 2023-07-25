@@ -1,25 +1,20 @@
 <script lang="ts" setup>
-import { ContractOutline, ExpandOutline } from '@vicons/ionicons5'
-import { ref } from 'vue'
-
-const isFullScreen = ref(false)
-function toggleFullScreen() {
-  isFullScreen.value ? document.exitFullscreen() : document.documentElement.requestFullscreen()
-  isFullScreen.value = !isFullScreen.value
-}
-
-document.addEventListener('fullscreenchange', () => {
-  isFullScreen.value = Boolean(document.fullscreenElement)
-})
+import { useFullscreen } from '@vueuse/core'
+const { toggle, isFullscreen } = useFullscreen()
 </script>
 
 <template>
-  <n-icon @click="toggleFullScreen" size="20" class="duration-300 cursor-pointer hover:scale-110">
-    <Transition mode="default">
-      <ExpandOutline v-if="!isFullScreen" />
-      <ContractOutline v-else />
-    </Transition>
-  </n-icon>
+  <n-tooltip trigger="hover">
+    <template #trigger>
+      <Transition>
+        <div @click="toggle" icon-btn>
+          <div i-carbon-maximize v-if="!isFullscreen" />
+          <div i-carbon-minimize v-else />
+        </div>
+      </Transition>
+    </template>
+    {{ isFullscreen ? '退出全屏' : '全屏' }}
+  </n-tooltip>
 </template>
 
 <style scoped lang="scss"></style>

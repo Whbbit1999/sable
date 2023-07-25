@@ -1,9 +1,8 @@
 <script lang="ts" setup>
+import { uploadImage } from '@/api/uploadApi'
 import { MdEditor } from 'md-editor-v3'
 import 'md-editor-v3/lib/style.css' // docs https://imzbf.github.io/md-editor-v3/docs#%F0%9F%A7%B1%20toolbarsExclude
 
-import { uploadImage } from '@/api/uploadApi'
-import { ref } from 'vue'
 const props = withDefaults(
   defineProps<{
     modelValue: string

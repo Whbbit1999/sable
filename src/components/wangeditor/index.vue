@@ -1,9 +1,7 @@
 <script lang="ts" setup>
-import '@wangeditor/editor/dist/css/style.css' // 引入 css
-
 import { uploadImage } from '@/api/uploadApi'
 import { Editor, Toolbar } from '@wangeditor/editor-for-vue'
-import { onBeforeUnmount, ref, shallowRef } from 'vue'
+import '@wangeditor/editor/dist/css/style.css' // 引入 css
 
 const props = withDefaults(
   defineProps<{

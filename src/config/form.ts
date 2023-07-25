@@ -1,4 +1,4 @@
-import { SelectOption, SelectGroupOption } from 'naive-ui'
+import { SelectGroupOption, SelectOption } from 'naive-ui'
 
 export type FormFieldType = {
   title: string

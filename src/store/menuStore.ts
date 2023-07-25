@@ -2,9 +2,11 @@ import config from '@/config/config'
 import { routes as allRoutes } from '@/router/autoload'
 import { isExternal, isShowMenu } from '@/utils'
 import { renderCustomIcon } from '@/utils/renderIcon'
-import type { MenuOption } from 'naive-ui'
 import { defineStore } from 'pinia'
-import { RouteRecordNormalized } from 'vue-router'
+
+import type { MenuOption } from 'naive-ui'
+import type { RouteRecordNormalized } from 'vue-router'
+
 export const menuStore = defineStore('menuStore', {
   state: () => {
     return {

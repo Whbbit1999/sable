@@ -1,5 +1,5 @@
 import Layout from '@/layouts/default/index.vue'
-import { RouteRecordRaw } from 'vue-router'
+import type { RouteRecordRaw } from 'vue-router'
 
 export default {
   path: '/user',

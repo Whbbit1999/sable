@@ -1,7 +1,6 @@
 // 自动注册路由
-import { userStore } from '@/store/userStore'
 import { env } from '@/utils'
-import { Router, RouteRecordRaw } from 'vue-router'
+import type { Router, RouteRecordRaw } from 'vue-router'
 import autoloadModuleRoutes from './modules'
 import getRoutes from './view'
 

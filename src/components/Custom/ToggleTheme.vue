@@ -1,14 +1,21 @@
 <script lang="ts" setup>
-import { themeStore } from '@/store/themeStore'
-import { MoonOutline, SunnyOutline } from '@vicons/ionicons5'
-const theme = themeStore()
+import { useDark, useToggle } from '@vueuse/core'
+
+const isDark = useDark()
+const toggleDark = useToggle(isDark)
+const { toggleTheme } = themeStore()
+
+function toggle() {
+  toggleDark()
+  toggleTheme()
+}
 </script>
 
 <template>
-  <n-icon size="20" @click="theme.toggleTheme" class="duration-300">
-    <MoonOutline v-if="!theme.getTheme" />
-    <SunnyOutline v-else />
-  </n-icon>
+  <div icon-btn @click="toggle">
+    <i i-carbon-moon v-show="!isDark" />
+    <i i-carbon-sun v-show="isDark" />
+  </div>
 </template>
 
 <style scoped lang="scss"></style>

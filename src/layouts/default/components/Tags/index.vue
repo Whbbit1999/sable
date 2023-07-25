@@ -1,8 +1,6 @@
 <script lang="ts" setup>
-import { useHistoryMenuStore } from '@/store/historyMenuStore'
 import { isExternal } from '@/utils'
-import { onMounted, ref } from 'vue'
-import { RouteLocationNormalizedLoaded, useRoute, useRouter } from 'vue-router'
+import type { RouteLocationNormalizedLoaded } from 'vue-router'
 
 const historyMenu = ref()
 const router = useRouter()

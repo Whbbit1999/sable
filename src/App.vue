@@ -2,7 +2,7 @@
 import { darkThemeOverrides, lightThemeOverrides } from '@/config/theme'
 import { darkTheme, dateZhCN, zhCN } from 'naive-ui'
 import config from './config/config'
-import { themeStore } from './store/themeStore'
+
 const theme = themeStore()
 </script>
 

@@ -1,14 +1,11 @@
 <script lang="ts" setup>
-import { useHistoryMenuStore } from '@/store/historyMenuStore'
-import { menuStore } from '@/store/menuStore'
 import { isExternal } from '@/utils'
 import type { MenuOption } from 'naive-ui'
-import { ref, unref, watch } from 'vue'
-import { useRoute, useRouter } from 'vue-router'
 
 type IMenuOption = MenuOption & {
   path: string | null
 }
+
 const route = useRoute()
 const router = useRouter()
 const selectedKey = ref(route.name as string)

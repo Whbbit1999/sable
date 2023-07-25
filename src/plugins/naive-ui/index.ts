@@ -1,5 +1,5 @@
-import { App } from 'vue'
 import { GlobalThemeOverrides } from 'naive-ui'
+import type { App } from 'vue'
 
 export function setupNaiveUI(app: App) {
   // other config

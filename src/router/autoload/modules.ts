@@ -1,4 +1,4 @@
-import { RouteRecordRaw } from 'vue-router'
+import type { RouteRecordRaw } from 'vue-router'
 
 // 根据modules文件夹自动注册
 export default function autoloadModuleRoutes(): RouteRecordRaw[] {

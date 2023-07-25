@@ -1,7 +1,5 @@
 <script lang="ts" setup>
-import { useHistoryMenuStore } from '@/store/historyMenuStore'
 import { renderCustomIcon } from '@/utils/renderIcon'
-import { computed } from 'vue'
 
 const props = withDefaults(
   defineProps<{

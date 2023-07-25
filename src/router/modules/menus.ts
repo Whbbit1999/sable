@@ -1,5 +1,6 @@
 import MenuView from '@/views/customComponents/menu.vue'
-import { RouteRecordRaw } from 'vue-router'
+import type { RouteRecordRaw } from 'vue-router'
+
 export default {
   path: '/menu',
   component: () => import('@/layouts/default/index.vue'),

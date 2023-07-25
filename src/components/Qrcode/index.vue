@@ -1,6 +1,5 @@
 <script lang="ts" setup>
 import { QRCodeRenderersOptions, toCanvas, toDataURL } from 'qrcode'
-import { onMounted, ref } from 'vue'
 
 export interface IQrcodeLogo {
   src: string
