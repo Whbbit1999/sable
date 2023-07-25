@@ -1,19 +1,19 @@
 <script lang="ts" setup>
 import { uploadImage } from '@/api/uploadApi'
+import { useDark } from '@vueuse/core'
 import { MdEditor } from 'md-editor-v3'
 import 'md-editor-v3/lib/style.css' // docs https://imzbf.github.io/md-editor-v3/docs#%F0%9F%A7%B1%20toolbarsExclude
 
+const isDark = useDark()
 const props = withDefaults(
   defineProps<{
     modelValue: string
-    theme?: 'light' | 'dark'
     previewTheme?: 'default' | 'github' | 'vuepress' | 'mk-cute' | 'smart-blue' | 'cyanosis'
     codeTheme?: 'atom' | 'a11y' | 'github' | 'gradient' | 'kimbie' | 'paraiso' | 'qtcreator' | 'stackoverflow'
     previewOnly?: boolean
     placeholder?: string
   }>(),
   {
-    theme: 'light',
     codeTheme: 'atom',
     previewTheme: 'github',
     previewOnly: false,
@@ -54,7 +54,7 @@ const handleUpdateImage = async (files: Array<File>, callback: (urls: string[]) 
     :placeholder="props.placeholder"
     :on-change="handleChangeContent"
     :on-upload-img="handleUpdateImage"
-    :theme="props.theme"
+    :theme="isDark ? 'dark' : 'light'"
     :code-theme="props.codeTheme"
     :preview-theme="props.previewTheme"
     :preview-only="props.previewOnly"

@@ -1,10 +1,9 @@
 <script lang="ts" setup>
-import { ChevronBackOutline } from '@vicons/ionicons5'
 import Logo from './Logo/index.vue'
 import Menu from './Menu/index.vue'
 
-const collapsed = ref<boolean>(appStore().collapsed)
 const { changeCollapsed } = appStore()
+const collapsed = ref<boolean>(appStore().collapsed)
 
 watch(
   () => appStore().collapsed,
@@ -16,7 +15,7 @@ watch(
 
 <template>
   <aside
-    class="relative m-2 mr-0 duration-300 bg-white rounded-md flex flex-col"
+    class="relative m-2 mr-0 duration-300 bg-white dark:bg-dark rounded-md flex flex-col"
     :class="[collapsed ? 'w-[48px]' : 'w-[200px]']">
     <Logo class="px-2" :collapsed="collapsed" />
 
@@ -25,13 +24,10 @@ watch(
         <Menu :collapsed="collapsed" />
       </n-scrollbar>
     </div>
-    <div class="flex w-full p-2 border-t" :class="[collapsed ? 'justify-center' : 'justify-end']">
-      <div
-        class="flex items-center justify-center p-1 duration-300 border rounded-md cursor-pointer"
-        :class="[collapsed ? 'rotate-180' : '']"
-        @click="changeCollapsed">
-        <n-icon :size="16"> <ChevronBackOutline /> </n-icon>
-      </div>
+    <div class="flex w-full p-2 border-t border-t-gray/20" :class="[collapsed ? 'justify-center' : 'justify-end']">
+      <button icon-btn :class="[collapsed ? 'rotate-180' : '']" @click="changeCollapsed">
+        <i i-carbon-chevron-right></i>
+      </button>
     </div>
   </aside>
 </template>

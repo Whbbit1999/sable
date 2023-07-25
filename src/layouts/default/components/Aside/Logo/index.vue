@@ -16,7 +16,7 @@ watch(
 
 <template>
   <section
-    class="flex items-center justify-start border-b border-gray-100"
+    class="flex items-center justify-start border-b border-gray/20 text-black dark:text-white"
     :class="[collapsed ? 'justify-center p-2' : '']">
     <img :src="logoSrc" alt="logo" class="w-8 h-8" draggable="false" />
     <div v-show="!collapsed" class="flex items-center justify-center p-2 text-2xl font-light">SableAdmin</div>

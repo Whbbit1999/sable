@@ -30,7 +30,9 @@ const myArray = ref([
     拖拽示例：
     <Draggable v-model="myArray" item-key="id" class="grid grid-cols-3 gap-3">
       <template #item="{ element }">
-        <div class="bg-white flex items-center justify-center p-3 border cursor-pointer">{{ element.name }}</div>
+        <div class="bg-white dark:bg-black flex items-center justify-center p-3 border cursor-pointer">
+          {{ element.name }}
+        </div>
       </template>
     </Draggable>
   </div>

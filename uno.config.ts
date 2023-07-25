@@ -11,6 +11,15 @@ export default defineConfig({
     ],
   ],
 
+  theme: {
+    colors: {
+      containerBgColor: '#fbfbfb',
+      containerTextColor: '#393a34',
+      darkContainerBgColor: '#1e1e1e',
+      darkContainerTextColor: '#d4cfbf',
+    },
+  },
+
   presets: [
     presetUno(),
     presetRemToPx(),
