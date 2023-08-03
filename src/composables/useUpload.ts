@@ -1,6 +1,6 @@
 import http from '@/plugins/axios'
 
-export default () => {
+export default function useUpload() {
   /**
    * 上传图片
    * @param data 上传文件

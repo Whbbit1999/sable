@@ -1,4 +1,4 @@
-export default () => {
+export default function useWait() {
   function createWaiting(notification) {
     notification.warning({
       content: '修改主题正在重做，请谨慎使用',

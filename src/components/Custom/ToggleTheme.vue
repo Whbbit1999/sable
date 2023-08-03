@@ -3,11 +3,9 @@ import { useDark, useToggle } from '@vueuse/core'
 
 const isDark = useDark()
 const toggleDark = useToggle(isDark)
-const { toggleTheme } = themeStore()
 
 function toggle() {
   toggleDark()
-  toggleTheme()
 }
 </script>
 

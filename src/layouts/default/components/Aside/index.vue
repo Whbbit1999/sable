@@ -24,7 +24,7 @@ watch(
         <Menu :collapsed="collapsed" />
       </n-scrollbar>
     </div>
-    <div class="flex w-full p-2 border-t border-t-gray/20" :class="[collapsed ? 'justify-center' : 'justify-end']">
+    <div flex w-full p-2 border="t t-gray/20" :class="[collapsed ? 'justify-center' : 'justify-end']">
       <button icon-btn :class="[collapsed ? 'rotate-180' : '']" @click="changeCollapsed">
         <i i-carbon-chevron-right></i>
       </button>

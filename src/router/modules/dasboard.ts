@@ -17,5 +17,11 @@ export default {
       component: () => import('@/views/dashboard/home.vue'),
       meta: { auth: true, menu: { title: '首页' } },
     },
+    {
+      path: 'workplace',
+      name: 'dashboard.workplace',
+      component: () => import('@/views/dashboard/workplace.vue'),
+      meta: { auth: true, menu: { title: '工作台' } },
+    },
   ],
 } as RouteRecordRaw

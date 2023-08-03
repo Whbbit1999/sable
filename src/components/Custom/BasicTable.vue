@@ -80,7 +80,7 @@ const pagination = ref({
 </script>
 
 <template>
-  <main class="pb-2">
+  <main pb-2>
     <n-data-table
       :loading="loading"
       :columns="columns"

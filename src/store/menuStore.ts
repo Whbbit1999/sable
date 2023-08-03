@@ -22,11 +22,12 @@ export const menuStore = defineStore('menuStore', {
 
   actions: {
     getMenuItem(route: RouteRecordNormalized, basePath = '') {
+      const showIcon = route.meta.menu.showIcon ?? true
       let menuItem = {
         label: route.meta?.menu?.title || route.name,
         key: route.name,
         path: resolvePath(basePath, route.path),
-        icon: renderCustomIcon(route?.meta?.menu?.icon ?? config.menu.defaultRouteIcon),
+        icon: showIcon ? renderCustomIcon(route?.meta?.menu?.icon ?? config.menu.defaultRouteIcon) : null,
         order: route?.meta?.menu?.order || 0,
         children: null,
       }
@@ -39,7 +40,6 @@ export const menuStore = defineStore('menuStore', {
 
       if (visibleChildren.length === 1) {
         const singleRoute = visibleChildren[0]
-
         menuItem = {
           ...menuItem,
           label: singleRoute.meta?.menu.title || singleRoute.name,

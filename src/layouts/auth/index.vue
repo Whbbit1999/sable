@@ -7,16 +7,11 @@ useDark()
 
 <template>
   <main>
-    <n-grid
-      cols="12"
-      item-responsive
-      responsive="screen"
-      x-gap="10"
-      class="h-screen bg-gray-100 dark:bg-darkContainerBgColor">
+    <n-grid cols="12" item-responsive responsive="screen" x-gap="10" h-screen bg="gray-100 dark:darkContainerBgColor">
       <n-grid-item span="0 m:4 l:8">
-        <div class="flex flex-col items-center justify-center flex-1 w-full h-screen">
+        <div flex flex-col items-center justify-center flex-1 w-full h-screen>
           <img :src="loginBgUrl" class="object-cover h-full" :draggable="false" />
-          <div class="absolute bottom-0 p-2 bg-white dark:bg-dark dark:text-white rounded-sm opacity-70">
+          <div absolute bottom-0 p-2 bg-white dark:bg-dark dark:text-white rounded-sm opacity-70>
             Photo by
             <n-button
               text
@@ -41,7 +36,12 @@ useDark()
 
       <n-grid-item span="xs:12 s:12 m:8 l:4">
         <div
-          class="flex items-center justify-center flex-1 w-full h-full bg-white text-dark rounded-lg dark:bg-dark dark:text-white">
+          flex="~ items-center justify-center 1"
+          bg="white dark:dark"
+          w-full
+          h-full
+          text="dark dark:white"
+          rounded-lg>
           <page class="w-4/5">
             <router-view />
           </page>

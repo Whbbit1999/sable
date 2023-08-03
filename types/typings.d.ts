@@ -13,7 +13,10 @@ declare module 'vue-router' {
     menu?: {
       showParentMenu: boolean // 是否显示一级菜单， default => true
       title: string // 页面标题
+
       icon: string // icon
+      showIcon?: boolean // 是否在菜单中显示图标
+
       show?: boolean // 是否在菜单中显示 为false或不设置不在菜单中显示 default => true
       key?: string // 菜单唯一标识
       order?: number // 菜单排序

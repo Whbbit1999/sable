@@ -15,22 +15,22 @@ export default {
   // 获取缓存数据
   get(key: string): IData | null {
     const item = localStorage.getItem(key)
-    if (item) {
-      const data = JSON.parse(item)
-      if (data?.expire) {
-        if (data.expire < new Date().getTime()) {
-          localStorage.removeItem(key)
-          return null
-        } else {
-          return data as IData
-        }
-      } else {
-        return data as any
-      }
-    } else {
+
+    if (!item) return null
+
+    const data = JSON.parse(item)
+    if (!data?.expire) {
+      return data as any
+    }
+
+    if (data.expire < new Date().getTime()) {
+      localStorage.removeItem(key)
       return null
+    } else {
+      return data as IData
     }
   },
+
   remove(key: string) {
     localStorage.removeItem(key)
   },

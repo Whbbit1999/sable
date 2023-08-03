@@ -1,18 +1,12 @@
 <script lang="ts" setup>
+import ReloadPage from '@/components/Custom/ReloadPage.vue'
+import Notify from '@/components/Notify/index.vue'
 import config from '@/config/config'
 import { renderIcon, storage } from '@/utils'
-import {
-  LogOutOutline as LogoutIcon,
-  MoonOutline,
-  SunnyOutline,
-  PersonCircleOutline as UserIcon,
-} from '@vicons/ionicons5'
+import { LogOutOutline as LogoutIcon, PersonCircleOutline as UserIcon } from '@vicons/ionicons5'
 import dayjs from 'dayjs'
-import { useNotification } from 'naive-ui'
-import Notify from './Notify.vue'
 
 const router = useRouter()
-const theme = themeStore()
 
 const user = userStore()
 const userInfo = await user.getUserInfo()
@@ -23,11 +17,7 @@ const options = ref([
     key: 'userspace',
     icon: renderIcon(UserIcon),
   },
-  // {
-  //   label: `外观：${theme.getTheme ? '暗色主题' : '亮色主题'}`,
-  //   key: 'theme',
-  //   icon: renderIcon(theme.getTheme ? SunnyOutline : MoonOutline),
-  // },
+
   {
     label: '退出登录',
     key: 'logout',
@@ -35,11 +25,8 @@ const options = ref([
   },
 ])
 
-const onSelect = (key, option) => {
+const onSelect = (key: string) => {
   switch (key) {
-    case 'theme':
-      handleChangeTheme(key, option)
-      break
     case 'userspace':
       router.push({ name: 'user.base' })
       break
@@ -48,21 +35,7 @@ const onSelect = (key, option) => {
       break
   }
 }
-const notification = useNotification()
 
-const handleChangeTheme = (key, option) => {
-  useWait().createWaiting(notification)
-
-  theme.toggleTheme()
-
-  const index = options.value.indexOf(option)
-
-  options.value[index] = {
-    label: `外观：${theme.getTheme ? '暗色主题' : '亮色主题'}`,
-    key: 'theme',
-    icon: renderIcon(theme.getTheme ? SunnyOutline : MoonOutline),
-  }
-}
 const logout = () => {
   // 清空缓存
   storage.remove('token')
@@ -72,7 +45,8 @@ const logout = () => {
 
 <template>
   <header class="flex items-center justify-between p-2 m-2 rounded-md">
-    <div>
+    <div flex items-center gap-4>
+      <ReloadPage />
       <Breadcrump v-if="config.layout.showBreadCrump" />
     </div>
 
@@ -86,7 +60,7 @@ const logout = () => {
       <n-dropdown :options="options" :on-select="onSelect">
         <div class="flex items-center px-3">
           <!-- 头像 -->
-          <n-avatar class="mr-2" size="small" round :src="userInfo.avatar" />
+          <n-avatar class="mr-2" size="medium" :src="userInfo.avatar" />
           <!-- 用户名/注册时间 -->
           <div class="flex flex-col ml-2">
             <span class="text-sm">{{ userInfo.name }}</span>

@@ -1,17 +1,13 @@
 <script setup lang="ts">
-import { darkThemeOverrides, lightThemeOverrides } from '@/config/theme'
+import { useDark } from '@vueuse/core'
 import { darkTheme, dateZhCN, zhCN } from 'naive-ui'
 import config from './config/config'
 
-const theme = themeStore()
+const isDark = useDark()
 </script>
 
 <template>
-  <n-config-provider
-    :locale="zhCN"
-    :date-locale="dateZhCN"
-    :theme="theme.getTheme === 'dark' ? darkTheme : undefined"
-    :theme-overrides="theme === null ? lightThemeOverrides : darkThemeOverrides">
+  <n-config-provider :locale="zhCN" :date-locale="dateZhCN" :theme="isDark ? darkTheme : undefined">
     <n-notification-provider :max="config.naiveUI.notificationMax">
       <Suspense>
         <router-view></router-view>
