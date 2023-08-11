@@ -1,5 +1,6 @@
 import mockjs from 'mockjs'
-import { MockMethod } from 'vite-plugin-mock'
+import type { MockMethod } from 'vite-plugin-mock'
+
 export default [
   {
     url: '/api/upload/image',

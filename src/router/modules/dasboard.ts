@@ -1,5 +1,6 @@
-import Layout from '@/layouts/default/index.vue'
 import type { RouteRecordRaw } from 'vue-router'
+import Layout from '@/layouts/default/index.vue'
+
 export default {
   path: '/dashboard',
   component: Layout,

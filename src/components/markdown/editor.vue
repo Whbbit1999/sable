@@ -1,10 +1,9 @@
 <script lang="ts" setup>
-import { uploadImage } from '@/api/uploadApi'
 import { useDark } from '@vueuse/core'
 import { MdEditor } from 'md-editor-v3'
-import 'md-editor-v3/lib/style.css' // docs https://imzbf.github.io/md-editor-v3/docs#%F0%9F%A7%B1%20toolbarsExclude
+import { uploadImage } from '@/api/uploadApi'
+import 'md-editor-v3/lib/style.css'
 
-const isDark = useDark()
 const props = withDefaults(
   defineProps<{
     modelValue: string
@@ -20,14 +19,16 @@ const props = withDefaults(
     placeholder: '请输入markdown格式内容',
   },
 )
-const content = ref(props.modelValue)
 const emits = defineEmits(['update:modelValue'])
+// docs https://imzbf.github.io/md-editor-v3/docs#%F0%9F%A7%B1%20toolbarsExclude
 
-const handleChangeContent = (v: string) => {
+const isDark = useDark()
+const content = ref(props.modelValue)
+function handleChangeContent(v: string) {
   content.value = v
   emits('update:modelValue', v)
 }
-const handleUpdateImage = async (files: Array<File>, callback: (urls: string[]) => void) => {
+async function handleUpdateImage(files: Array<File>, callback: (urls: string[]) => void) {
   const res = (await Promise.all(
     files.map((file) => {
       return new Promise((resolve, reject) => {
@@ -37,7 +38,8 @@ const handleUpdateImage = async (files: Array<File>, callback: (urls: string[]) 
           uploadImage(form).then(({ data }) => {
             resolve(data.url)
           })
-        } catch (error) {
+        }
+        catch (error) {
           reject(error)
         }
       })
@@ -58,7 +60,8 @@ const handleUpdateImage = async (files: Array<File>, callback: (urls: string[]) 
     :code-theme="props.codeTheme"
     :preview-theme="props.previewTheme"
     :preview-only="props.previewOnly"
-    :toolbarsExclude="['github']" />
+    :toolbars-exclude="['github']"
+  />
 </template>
 
 <style scoped lang="scss"></style>

@@ -10,7 +10,7 @@ const isDark = useDark()
   <n-config-provider :locale="zhCN" :date-locale="dateZhCN" :theme="isDark ? darkTheme : undefined">
     <n-notification-provider :max="config.naiveUI.notificationMax">
       <Suspense>
-        <router-view></router-view>
+        <router-view />
       </Suspense>
     </n-notification-provider>
   </n-config-provider>

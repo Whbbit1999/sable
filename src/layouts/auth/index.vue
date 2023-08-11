@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import loginBgUrl from '@/assets/images/login-bg.jpg'
 import { useDark } from '@vueuse/core'
+import loginBgUrl from '@/assets/images/login-bg.jpg'
 
 useDark()
 </script>
@@ -10,7 +10,7 @@ useDark()
     <n-grid cols="12" item-responsive responsive="screen" x-gap="10" h-screen bg="gray-100 dark:darkContainerBgColor">
       <n-grid-item span="0 m:4 l:8">
         <div flex flex-col items-center justify-center flex-1 w-full h-screen>
-          <img :src="loginBgUrl" class="object-cover h-full" :draggable="false" />
+          <img :src="loginBgUrl" class="object-cover h-full" :draggable="false">
           <div absolute bottom-0 p-2 bg-white dark:bg-dark dark:text-white rounded-sm opacity-70>
             Photo by
             <n-button
@@ -18,7 +18,8 @@ useDark()
               type="primary"
               tag="a"
               href="https://unsplash.com/@oskark?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"
-              target="_blank">
+              target="_blank"
+            >
               Oskar Kadaksoo
             </n-button>
             on
@@ -27,7 +28,8 @@ useDark()
               type="primary"
               tag="a"
               href="https://unsplash.com/photos/LavQxjkLIq0?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"
-              target="_blank">
+              target="_blank"
+            >
               Unsplash
             </n-button>
           </div>
@@ -41,7 +43,8 @@ useDark()
           w-full
           h-full
           text="dark dark:white"
-          rounded-lg>
+          rounded-lg
+        >
           <page class="w-4/5">
             <router-view />
           </page>

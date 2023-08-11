@@ -8,19 +8,20 @@ const loginFormData = ref<ILoginForm>({
   password: '123456',
 })
 const router = useRouter()
-const onSubmit = async () => {
+async function onSubmit() {
   try {
     loading.value = true
     const res = await login(unref(loginFormData))
-    console.log(res.data.token)
     storage.set('token', {
       token: res.data.token,
       expire: 60 * 30,
     })
     router.push({ name: RouteNameEnum.HOME })
-  } catch (error) {
+  }
+  catch (error) {
     throw new Error(error)
-  } finally {
+  }
+  finally {
     loading.value = false
   }
 }
@@ -29,23 +30,29 @@ const onSubmit = async () => {
 <template>
   <div>
     <main class="flex flex-col gap-2">
-      <n-h2 class="text-center">找回密码</n-h2>
+      <n-h2 class="text-center">
+        找回密码
+      </n-h2>
       <div class="flex flex-col">
         <span class="mb-1">邮箱</span>
-        <n-input v-model:value="loginFormData.username"></n-input>
+        <n-input v-model:value="loginFormData.username" />
       </div>
       <div class="flex flex-col">
         <span class="mb-1">验证码</span>
-        <n-input v-model:value="loginFormData.password" type="password" show-password-on="mousedown"></n-input>
+        <n-input v-model:value="loginFormData.password" type="password" show-password-on="mousedown" />
       </div>
     </main>
 
     <div class="flex flex-col justify-center gap-3 mt-4">
-      <n-button type="primary" @click="onSubmit" :loading="loading">找回密码</n-button>
+      <n-button type="primary" :loading="loading" @click="onSubmit">
+        找回密码
+      </n-button>
     </div>
     <div class="flex justify-end mt-2">
       <n-space>
-        <n-button type="primary" text @click="$router.push({ name: 'auth.login' })">返回登录</n-button>
+        <n-button type="primary" text @click="$router.push({ name: 'auth.login' })">
+          返回登录
+        </n-button>
       </n-space>
     </div>
   </div>

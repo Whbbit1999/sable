@@ -1,17 +1,11 @@
 <script lang="ts" setup>
-import { isExternal } from '@/utils'
 import type { MenuOption } from 'naive-ui'
+import { isExternal } from '@/utils'
 
 type IMenuOption = MenuOption & {
   path: string | null
 }
 
-const route = useRoute()
-const router = useRouter()
-const selectedKey = ref(route.name as string)
-const menu = menuStore()
-const menuOptions: IMenuOption[] = menu.getMenus
-const defaultExpandedKeys = ref()
 const props = withDefaults(
   defineProps<{
     collapsed: boolean
@@ -20,6 +14,12 @@ const props = withDefaults(
     collapsed: false,
   },
 )
+const route = useRoute()
+const router = useRouter()
+const selectedKey = ref(route.name as string)
+const menu = menuStore()
+const menuOptions: IMenuOption[] = menu.getMenus
+const defaultExpandedKeys = ref()
 const collapsed = ref<boolean>(props.collapsed)
 
 watch(
@@ -32,11 +32,10 @@ watch(
 // -------------------- 点击menu，选中项的处理 START --------------------
 const historyMenuStore = useHistoryMenuStore()
 function handleMenuSelect(key: string, item: IMenuOption) {
-  console.log(key, item)
   if (isExternal(item?.path)) {
     window.open(item.path)
-  } else {
-    console.log(route)
+  }
+  else {
     selectedKey.value = key
     router.push({ name: key })
     // 增加历史菜单
@@ -47,7 +46,8 @@ function handleMenuSelect(key: string, item: IMenuOption) {
 
 // -------------------- 路由发生变化，选中项的处理 START --------------------
 router.beforeEach((to) => {
-  if (isExternal(to.path)) return
+  if (isExternal(to.path))
+    return
 
   selectedKey.value = to.name as string
 })
@@ -62,7 +62,8 @@ router.beforeEach((to) => {
     accordion
     :indent="18"
     :value="selectedKey"
-    :on-update:value="handleMenuSelect" />
+    :on-update:value="handleMenuSelect"
+  />
 </template>
 
 <style scoped lang="scss">

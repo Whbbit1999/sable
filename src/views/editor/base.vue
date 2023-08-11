@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import Editor from '@/components/wangeditor/index.vue'
+
 const content = ref()
 </script>
 

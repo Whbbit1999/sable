@@ -1,4 +1,3 @@
-// uno.config.ts
 import presetIcons from '@unocss/preset-icons'
 import presetRemToPx from '@unocss/preset-rem-to-px'
 import { defineConfig, presetAttributify, presetUno, transformerVariantGroup } from 'unocss'
@@ -28,12 +27,12 @@ export default defineConfig({
     // 动态引入图标
     presetIcons({
       extraProperties: {
-        display: 'inline-block',
+        'display': 'inline-block',
         'vertical-align': 'middle',
       },
       // 动态引入icon
       collections: {
-        carbon: () => import('@iconify-json/carbon/icons.json').then((i) => i.default),
+        carbon: () => import('@iconify-json/carbon/icons.json').then(i => i.default),
       },
       scale: 1.2,
       warn: true,

@@ -27,11 +27,15 @@ Object.entries(devDependencies).forEach(([key, value]: [string, string]) => {
       <n-card title="项目信息">
         <n-descriptions label-placement="left" bordered :column="2">
           <n-descriptions-item label="版本">
-            <n-tag type="info">{{ version }}</n-tag>
+            <n-tag type="info">
+              {{ version }}
+            </n-tag>
           </n-descriptions-item>
 
           <n-descriptions-item label="最后编译时间">
-            <n-tag type="info">{{ lastBuildTime }}</n-tag>
+            <n-tag type="info">
+              {{ lastBuildTime }}
+            </n-tag>
           </n-descriptions-item>
 
           <n-descriptions-item label="文档地址">
@@ -41,7 +45,9 @@ Object.entries(devDependencies).forEach(([key, value]: [string, string]) => {
           </n-descriptions-item>
 
           <n-descriptions-item label="预览地址">
-            <n-button text tag="a" href="" target="_blank" type="info"> 预览地址 </n-button>
+            <n-button text tag="a" href="" target="_blank" type="info">
+              预览地址
+            </n-button>
           </n-descriptions-item>
 
           <n-descriptions-item label="仓库地址">

@@ -2,8 +2,9 @@
 import { userList } from '@/api/userApi'
 import { UserTableButton, UserTableField } from '@/config/table'
 
-const handleActions = (...args) => {
-  console.log(args)
+function handleActions() {
+  // console.log(args)
+  // TODO 点击操作后
 }
 </script>
 
@@ -14,7 +15,8 @@ const handleActions = (...args) => {
       :api="userList"
       :height="800"
       :button="UserTableButton"
-      @action="handleActions" />
+      @action="handleActions"
+    />
   </div>
 </template>
 

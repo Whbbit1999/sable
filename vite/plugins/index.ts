@@ -5,6 +5,13 @@ import vueDevtools from 'vite-plugin-vue-devtools'
 import autoImport from './autoImport'
 import setupMockPlugin from './mock'
 
-export default function setupPlugins(isBuild: boolean, env: ViteEnv) {
-  return [vue(), Unocss(), autoImport(), setupMockPlugin(isBuild), visualizer() as any, vueDevtools()]
+export default function setupPlugins(isBuild: boolean) {
+  return [
+    vue(),
+    Unocss(),
+    autoImport(),
+    setupMockPlugin(isBuild),
+    visualizer() as any,
+    vueDevtools(),
+  ]
 }

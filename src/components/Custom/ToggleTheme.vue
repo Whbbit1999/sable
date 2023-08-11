@@ -11,8 +11,8 @@ function toggle() {
 
 <template>
   <div icon-btn @click="toggle">
-    <i i-carbon-moon v-show="!isDark" />
-    <i i-carbon-sun v-show="isDark" />
+    <i v-show="!isDark" i-carbon-moon />
+    <i v-show="isDark" i-carbon-sun />
   </div>
 </template>
 

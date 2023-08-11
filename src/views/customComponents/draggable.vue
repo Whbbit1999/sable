@@ -21,9 +21,7 @@ const myArray = ref([
         </n-icon>
       </template>
       <n-button quaternary type="primary">
-        <a href="https://github.com/SortableJS/vue.draggable.next" target="_blank" rel="noopener noreferrer"
-          >vue.draggable.next</a
-        >
+        <a href="https://github.com/SortableJS/vue.draggable.next" target="_blank" rel="noopener noreferrer">vue.draggable.next</a>
       </n-button>
     </n-alert>
 

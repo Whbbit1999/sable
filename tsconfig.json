@@ -13,7 +13,18 @@
     "lib": ["esnext", "dom"],
     "skipLibCheck": true
   },
-  "include": [],
+  "include": [
+    "vite.config.ts",
+    "src/**/*.ts",
+    "src/**/*.d.ts",
+    "src/**/*.tsx",
+    "src/**/*.vue",
+    "vite/**/*.ts",
+    "mock/**/*.ts",
+    "types/**/*.d.ts",
+    "types/**/*.ts",
+    "**/package.json"
+  ],
   "references": [
     {
       "path": "./tsconfig.node.json"

@@ -1,6 +1,7 @@
 <script lang="ts" setup>
-import { uploadImage } from '@/api/uploadApi'
 import { Editor, Toolbar } from '@wangeditor/editor-for-vue'
+import { uploadImage } from '@/api/uploadApi'
+
 import '@wangeditor/editor/dist/css/style.css' // 引入 css
 
 const props = withDefaults(
@@ -13,6 +14,7 @@ const props = withDefaults(
     placeholder: '请输入内容...',
   },
 )
+const emits = defineEmits(['update:modelValue'])
 // 编辑器实例，必须用 shallowRef
 const editorRef = shallowRef()
 const content = ref(props.modelValue)
@@ -34,30 +36,32 @@ const editorConfig = {
 // 组件销毁时，也及时销毁编辑器
 onBeforeUnmount(() => {
   const editor = editorRef.value
-  if (editor == null) return
+  if (editor == null)
+    return
   editor.destroy()
 })
 
-const handleCreated = (editor) => {
+function handleCreated(editor) {
   editorRef.value = editor // 记录 editor 实例，重要！
 }
 
-const emits = defineEmits(['update:modelValue'])
-const handleChange = (editor) => {
+function handleChange(editor) {
   const content = editor.getHtml()
   emits('update:modelValue', content)
 }
 const mode = ref('default')
 </script>
+
 <template>
   <div style="border: 1px solid #ccc">
-    <Toolbar style="border-bottom: 1px solid #ccc" :editor="editorRef" :defaultConfig="toolbarConfig" :mode="mode" />
+    <Toolbar style="border-bottom: 1px solid #ccc" :editor="editorRef" :default-config="toolbarConfig" :mode="mode" />
     <Editor
-      style="height: 500px; overflow-y: hidden"
       v-model="content"
-      :defaultConfig="editorConfig"
+      style="height: 500px; overflow-y: hidden"
+      :default-config="editorConfig"
       :mode="mode"
-      @onCreated="handleCreated"
-      @onChange="handleChange" />
+      :on-created="handleCreated"
+      :on-change="handleChange"
+    />
   </div>
 </template>

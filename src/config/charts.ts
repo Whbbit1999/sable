@@ -1,6 +1,6 @@
 import * as echarts from 'echarts'
 
-export const lineChartsOptions = (): echarts.EChartsOption => {
+export function lineChartsOptions(): echarts.EChartsOption {
   return {
     color: ['#80FFA5', '#00DDFF', '#37A2FF', '#FF0087', '#FFBF00'],
     title: {
@@ -186,7 +186,7 @@ export const lineChartsOptions = (): echarts.EChartsOption => {
   }
 }
 
-export const pipeChartsOptions = (): echarts.EChartsOption => {
+export function pipeChartsOptions(): echarts.EChartsOption {
   return {
     backgroundColor: '#2c343c',
     title: {
@@ -222,7 +222,7 @@ export const pipeChartsOptions = (): echarts.EChartsOption => {
           { value: 274, name: 'Union Ads' },
           { value: 235, name: 'Video Ads' },
           { value: 400, name: 'Search Engine' },
-        ].sort(function (a, b) {
+        ].sort((a, b) => {
           return a.value - b.value
         }),
         roseType: 'radius',
@@ -245,7 +245,7 @@ export const pipeChartsOptions = (): echarts.EChartsOption => {
 
         animationType: 'scale',
         animationEasing: 'elasticOut',
-        animationDelay: function (idx) {
+        animationDelay() {
           return Math.random() * 200
         },
       },
@@ -253,7 +253,7 @@ export const pipeChartsOptions = (): echarts.EChartsOption => {
   }
 }
 
-export const pipeChartsOptions2 = () => {
+export function pipeChartsOptions2() {
   return {
     tooltip: {
       trigger: 'item',
@@ -299,7 +299,7 @@ export const pipeChartsOptions2 = () => {
   }
 }
 
-export const radarsChartOptons = (): echarts.EChartsOption => {
+export function radarsChartOptons(): echarts.EChartsOption {
   return {
     legend: {
       data: ['Allocated Budget', 'Actual Spending'],

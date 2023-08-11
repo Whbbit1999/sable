@@ -1,4 +1,4 @@
-import { test, expect } from 'vitest'
+import { expect, test } from 'vitest'
 import { is, isShowMenu, isString, isUrl } from '../is'
 
 test('utils.is-isUrl', async () => {
@@ -35,7 +35,6 @@ test('utils.is-is', () => {
   expect(is([1, 2, 3], 'Array')).toBeTruthy()
   expect(
     is(() => {
-      console.log('function')
     }, 'Function'),
   ).toBeTruthy()
 })

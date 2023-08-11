@@ -1,7 +1,7 @@
 <script lang="ts" setup>
-import { getMessages, getNotifies } from '@/api/notifyApi'
 import { onClickOutside, useToggle } from '@vueuse/core'
 import ListItem from './ListItem.vue'
+import { getMessages, getNotifies } from '@/api/notifyApi'
 
 const count = ref(0)
 
@@ -13,12 +13,10 @@ onClickOutside(pane, () => (isOpen.value = false))
 
 const { data: notifies } = await getNotifies()
 const { data: messages } = await getMessages()
-
-console.log(notifies, messages)
 </script>
 
 <template>
-  <div relative ref="pane">
+  <div ref="pane" relative>
     <n-badge processing :show="count > 0" :max="15" :value="count">
       <button icon-btn @click.stop="toggleOpen()">
         <i i-carbon-notification />
@@ -26,6 +24,7 @@ console.log(notifies, messages)
     </n-badge>
 
     <div
+      v-if="isOpen"
       absolute
       bg="white dark:dark"
       text="dark dark:white"
@@ -39,7 +38,7 @@ console.log(notifies, messages)
       border="1 gray/20"
       class="-translate-x-50%"
       mt-2
-      v-if="isOpen">
+    >
       <n-tabs type="line" size="small" justify-content="space-evenly">
         <n-tab-pane name="notifies" tab="系统通知">
           <div class="list">
@@ -47,16 +46,16 @@ console.log(notifies, messages)
           </div>
           <n-button type="primary" ghost outline block mt-4>
             查看更多
-            <i i-carbon-arrow-right ml-2></i>
+            <i i-carbon-arrow-right ml-2 />
           </n-button>
         </n-tab-pane>
         <n-tab-pane name="messages" tab="站内消息">
           <div class="list">
             <ListItem v-for="i in messages" :key="i" :text="i" />
           </div>
-          <n-button type="primary" ghost outline block mt-4
-            >查看更多
-            <i i-carbon-arrow-right ml-2></i>
+          <n-button type="primary" ghost outline block mt-4>
+            查看更多
+            <i i-carbon-arrow-right ml-2 />
           </n-button>
         </n-tab-pane>
       </n-tabs>

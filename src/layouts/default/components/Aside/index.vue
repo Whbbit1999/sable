@@ -16,7 +16,8 @@ watch(
 <template>
   <aside
     class="relative m-2 mr-0 duration-300 bg-white dark:bg-dark rounded-md flex flex-col"
-    :class="[collapsed ? 'w-[48px]' : 'w-[200px]']">
+    :class="[collapsed ? 'w-[48px]' : 'w-[200px]']"
+  >
     <Logo class="px-2" :collapsed="collapsed" />
 
     <div class="flex-1 overflow-auto">
@@ -26,7 +27,7 @@ watch(
     </div>
     <div flex w-full p-2 border="t t-gray/20" :class="[collapsed ? 'justify-center' : 'justify-end']">
       <button icon-btn :class="[collapsed ? 'rotate-180' : '']" @click="changeCollapsed">
-        <i i-carbon-chevron-right></i>
+        <i i-carbon-chevron-right />
       </button>
     </div>
   </aside>

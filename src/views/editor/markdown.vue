@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import Editor from '@/components/markdown/editor.vue'
+
 const content = ref('# title')
 </script>
 
@@ -9,4 +10,5 @@ const content = ref('# title')
     {{ content }}
   </div>
 </template>
+
 <style scoped lang="scss"></style>

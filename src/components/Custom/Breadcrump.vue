@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import config from '@/config/config'
 import Icon from '../Icon'
+import config from '@/config/config'
 
 const route = useRoute()
 </script>

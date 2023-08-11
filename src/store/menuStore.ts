@@ -1,11 +1,10 @@
+import { defineStore } from 'pinia'
+import type { MenuOption } from 'naive-ui'
+import type { RouteRecordNormalized } from 'vue-router'
 import config from '@/config/config'
 import { routes as allRoutes } from '@/router/autoload'
 import { isExternal, isShowMenu } from '@/utils'
 import { renderCustomIcon } from '@/utils/renderIcon'
-import { defineStore } from 'pinia'
-
-import type { MenuOption } from 'naive-ui'
-import type { RouteRecordNormalized } from 'vue-router'
 
 export const menuStore = defineStore('menuStore', {
   state: () => {
@@ -33,10 +32,11 @@ export const menuStore = defineStore('menuStore', {
       }
 
       const visibleChildren = route.children
-        ? route?.children?.filter((item) => item.name && (item?.meta?.menu?.show ?? true))
+        ? route?.children?.filter(item => item.name && (item?.meta?.menu?.show ?? true))
         : []
 
-      if (!visibleChildren.length) return menuItem
+      if (!visibleChildren.length)
+        return menuItem
 
       if (visibleChildren.length === 1) {
         const singleRoute = visibleChildren[0]
@@ -48,18 +48,20 @@ export const menuStore = defineStore('menuStore', {
           icon: renderCustomIcon(singleRoute.meta?.menu?.icon ?? config.menu.defaultRouteIcon),
         }
         const visibleItems = singleRoute.children
-          ? singleRoute.children.filter((item) => item.name && (item?.meta?.menu?.show ?? true))
+          ? singleRoute.children.filter(item => item.name && (item?.meta?.menu?.show ?? true))
           : []
         if (visibleItems.length === 1) {
           menuItem = this.getMenuItem(visibleItems[0], menuItem.path)
-        } else if (visibleItems.length > 1) {
+        }
+        else if (visibleItems.length > 1) {
           menuItem.children = visibleItems
-            .map((item) => this.getMenuItem(item, menuItem.path))
+            .map(item => this.getMenuItem(item, menuItem.path))
             .sort((a, b) => a?.order - b?.order)
         }
-      } else {
+      }
+      else {
         menuItem.children = visibleChildren
-          .map((item) => this.getMenuItem(item, menuItem.path))
+          .map(item => this.getMenuItem(item, menuItem.path))
           .sort((a, b) => a?.order - b?.order)
       }
 
@@ -68,14 +70,14 @@ export const menuStore = defineStore('menuStore', {
     // menu 规定第一层一定是布局菜单
     // 组合menus数据
     composeMenus(routes = this.getRoutes()) {
-      return routes.map((item) => this.getMenuItem(item)).sort((a, b) => a?.order - b?.order)
+      return routes.map(item => this.getMenuItem(item)).sort((a, b) => a?.order - b?.order)
     },
 
     getRoutes() {
       return allRoutes
-        .filter((route) => route.children.length && isShowMenu(route))
+        .filter(route => route.children.length && isShowMenu(route))
         .map((route) => {
-          route.children = route.children.filter((route) => isShowMenu(route))
+          route.children = route.children.filter(route => isShowMenu(route))
           return route
         })
         .sort((a, b) => a.meta?.menu?.order - b.meta?.menu?.order)
@@ -84,9 +86,10 @@ export const menuStore = defineStore('menuStore', {
 })
 
 function resolvePath(basePath, path) {
-  if (isExternal(path)) return path
+  if (isExternal(path))
+    return path
   return `/${[basePath, path]
-    .filter((path) => path && path !== '/')
-    .map((path) => path.replace(/(^\/)|(\/$)/g, ''))
+    .filter(path => path && path !== '/')
+    .map(path => path.replace(/(^\/)|(\/$)/g, ''))
     .join('/')}`
 }

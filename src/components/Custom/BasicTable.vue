@@ -1,6 +1,7 @@
 <script lang="ts" setup>
-import { TableButton, pageSizes } from '@/config/table'
 import { NButton, NSpace } from 'naive-ui'
+import type { TableButton } from '@/config/table'
+import { pageSizes } from '@/config/table'
 
 const props = withDefaults(
   defineProps<{
@@ -17,32 +18,33 @@ const props = withDefaults(
     striped: true,
   },
 )
+const emit = defineEmits<{
+  (e: 'action', mode: Record<string, any>, command: string): void
+}>()
+
 const columns = computed(() => {
   return props.columns
 })
 
 if (props.button) {
-  const hasAction = columns.value.some((item) => item.key === 'actions')
+  const hasAction = columns.value.some(item => item.key === 'actions')
   if (!hasAction) {
     columns.value.push({
       key: 'actions',
       title: '操作',
       type: 'actions',
-      render: (row) =>
+      render: row =>
         h(
           NSpace,
           {},
           {
             default: () =>
-              props.button.map((action) =>
+              props.button.map(action =>
                 h(
                   NButton,
                   {
                     type: action.type || 'default',
-                    onClick() {
-                      console.log(action.command)
-                      emit('action', row, action.command)
-                    },
+                    onClick() { emit('action', row, action.command) },
                   },
                   { default: () => action.title },
                 ),
@@ -53,9 +55,6 @@ if (props.button) {
   }
 }
 
-const emit = defineEmits<{
-  (e: 'action', mode: Record<string, any>, command: string): void
-}>()
 const loading = ref(false)
 const response = ref(await props.api())
 
@@ -63,9 +62,11 @@ async function load(page: number) {
   try {
     loading.value = true
     response.value = await props.api(page)
-  } catch (error) {
-    throw new Error('加载数据错误' + error)
-  } finally {
+  }
+  catch (error) {
+    throw new Error(`加载数据错误${error}`)
+  }
+  finally {
     loading.value = false
   }
 }
@@ -89,9 +90,10 @@ const pagination = ref({
       :size="size"
       :max-height="props.height"
       :pagination="pagination"
-      :on-update:page="load">
+      :on-update:page="load"
+    >
       <template #empty>
-        <n-empty description="暂无数据"></n-empty>
+        <n-empty description="暂无数据" />
       </template>
     </n-data-table>
   </main>

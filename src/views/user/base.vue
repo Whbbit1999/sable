@@ -10,9 +10,11 @@ const userInfo = await user.getUserInfo()
     <div class="flex gap-2">
       <n-card>
         <template #cover>
-          <img :src="userInfo.avatar" />
+          <img :src="userInfo.avatar">
         </template>
-        <h2 class="text-3xl">{{ userInfo.name }}</h2>
+        <h2 class="text-3xl">
+          {{ userInfo.name }}
+        </h2>
         <p>
           Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dicta, illum est atque eligendi quibusdam expedita
           quod maxime modi nam, numquam magnam vel, natus facere dolorum. Deserunt incidunt vero corrupti labore?

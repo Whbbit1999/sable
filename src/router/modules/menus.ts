@@ -1,5 +1,5 @@
-import MenuView from '@/views/customComponents/menu.vue'
 import type { RouteRecordRaw } from 'vue-router'
+import MenuView from '@/views/customComponents/menu.vue'
 
 export default {
   path: '/menu',

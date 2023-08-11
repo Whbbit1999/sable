@@ -1,5 +1,6 @@
 import dayjs from 'dayjs'
-import { ImageProps, NImage, NTag, TagProps } from 'naive-ui'
+import type { ImageProps, TagProps } from 'naive-ui'
+import { NImage, NTag } from 'naive-ui'
 
 export function renderImage(src, props: ImageProps = { width: 50, lazy: true }) {
   return h(NImage, { src, ...props })

@@ -6,9 +6,9 @@ interface IData {
 export default {
   // 存储缓存数据
   set(key: string, data: IData): void {
-    if (data?.expire) {
+    if (data?.expire)
       data.expire = new Date().getTime() + data.expire * 1000
-    }
+
     localStorage.setItem(key, JSON.stringify(data))
   },
 
@@ -16,17 +16,18 @@ export default {
   get(key: string): IData | null {
     const item = localStorage.getItem(key)
 
-    if (!item) return null
+    if (!item)
+      return null
 
     const data = JSON.parse(item)
-    if (!data?.expire) {
-      return data as any
-    }
+    if (!data?.expire)
+      return data
 
     if (data.expire < new Date().getTime()) {
       localStorage.removeItem(key)
       return null
-    } else {
+    }
+    else {
       return data as IData
     }
   },

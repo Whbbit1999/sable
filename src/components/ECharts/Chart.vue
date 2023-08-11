@@ -49,7 +49,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div w-full h-full ref="container"></div>
+  <div ref="container" w-full h-full />
 </template>
 
 <style scoped lang="scss"></style>

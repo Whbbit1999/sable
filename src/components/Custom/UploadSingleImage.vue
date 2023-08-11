@@ -1,8 +1,6 @@
 <script lang="ts" setup>
-import useUpload from '@/composables/useUpload'
 import Icon from '../Icon'
-
-const { uploadImage } = useUpload()
+import useUpload from '@/composables/useUpload'
 
 const props = withDefaults(
   defineProps<{
@@ -11,14 +9,17 @@ const props = withDefaults(
   }>(),
   { url: 'upload/image' },
 )
-const imageUrl = ref(props.modelValue)
 
 const emit = defineEmits<{
   (e: 'update:modelValue', url: string): void
   (e: 'finish'): void
 }>()
 
-const request = async (options: any) => {
+const { uploadImage } = useUpload()
+
+const imageUrl = ref(props.modelValue)
+
+async function request(options: any) {
   const form = new FormData()
   form.append('file', options.file)
 
@@ -33,7 +34,9 @@ const request = async (options: any) => {
 
 <template>
   <n-upload list-type="image-card" :max="1" :on-change="request">
-    <Icon icon="ion:add" :size="32">点击上传</Icon>
+    <Icon icon="ion:add" :size="32">
+      点击上传
+    </Icon>
   </n-upload>
 </template>
 

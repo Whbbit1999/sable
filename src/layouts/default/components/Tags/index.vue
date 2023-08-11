@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { isExternal } from '@/utils'
 import type { RouteLocationNormalizedLoaded } from 'vue-router'
+import { isExternal } from '@/utils'
 
 const historyMenu = ref()
 const router = useRouter()
@@ -15,20 +15,19 @@ router.beforeResolve((to) => {
 })
 
 function addHistoryMenu(route: RouteLocationNormalizedLoaded) {
-  if (isExternal(route.path)) return
+  if (isExternal(route.path))
+    return
 
   historyMenuStore.addHistoryMenu(route)
   historyMenu.value = historyMenuStore.getHistoryMenu()
 }
 
-const handleRemoveTag = async (tag) => {
+async function handleRemoveTag(tag) {
   const { isCurrent, currentIndex } = historyMenuStore.removeHistoryMenu(tag.key)
-  console.log({ isCurrent, currentIndex })
 
   // 移除当前元素，页面跳转至上一个标签
-  if (isCurrent) {
+  if (isCurrent)
     router.push({ name: historyMenu.value[currentIndex - 1].key })
-  }
 
   historyMenu.value = historyMenuStore.getHistoryMenu()
 }
@@ -46,7 +45,8 @@ const handleRemoveTag = async (tag) => {
       closable
       trigger-click-on-close
       @click="$router.push({ name: tag.key as string })"
-      @close.stop="handleRemoveTag(tag)">
+      @close.stop="handleRemoveTag(tag)"
+    >
       {{ tag.label }}
     </n-tag>
   </nav>

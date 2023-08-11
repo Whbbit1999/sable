@@ -1,5 +1,5 @@
-import BlankLayout from '@/layouts/blank.vue'
 import type { RouteRecordRaw } from 'vue-router'
+import BlankLayout from '@/layouts/blank.vue'
 
 export default {
   path: '/error',

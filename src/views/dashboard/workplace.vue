@@ -32,21 +32,31 @@ const links = ref([
 <template>
   <div>
     <n-card>
-      <template #header>工作台</template>
+      <template #header>
+        工作台
+      </template>
       <div flex justify-between>
         <div flex items-center gap-3>
           <n-avatar :size="64" :src="userInfo.avatar" />
 
           <div h-full flex flex-col justify-start>
-            <h2 text-xl>您好：{{ userInfo.name }}， 开始您一天的工作吧！</h2>
-            <p text="black/50">每日一言</p>
+            <h2 text-xl>
+              您好：{{ userInfo.name }}， 开始您一天的工作吧！
+            </h2>
+            <p text="black/50 dark:white/50">
+              每日一言
+            </p>
           </div>
         </div>
 
-        <div flex gap-4 w="2/5" justify-around>
+        <div w="2/5" flex justify-around gap-4>
           <div v-for="info in asideInfo" :key="info.title">
-            <h2 text-lg>{{ info.title }}</h2>
-            <p text-center text-2xl>{{ info.count }}</p>
+            <h2 text-lg>
+              {{ info.title }}
+            </h2>
+            <p text-center text-2xl>
+              <n-number-animation :from="0" :to="info.count" />
+            </p>
           </div>
         </div>
       </div>
@@ -55,7 +65,9 @@ const links = ref([
     <n-grid :cols="2" mt-4 :x-gap="12" :y-gap="8">
       <n-grid-item>
         <n-card>
-          <template #header> 项目 </template>
+          <template #header>
+            项目
+          </template>
           <n-grid :x-gap="8" :y-gap="8" :cols="3">
             <n-grid-item v-for="project in projects" :key="project.title">
               <n-card hoverable>
@@ -65,7 +77,9 @@ const links = ref([
                     {{ project.title }}
                   </div>
                 </template>
-                <p text="black/40">{{ project.desc }}</p>
+                <p text="black/40 dark:white/40">
+                  {{ project.desc }}
+                </p>
               </n-card>
             </n-grid-item>
           </n-grid>
@@ -74,15 +88,28 @@ const links = ref([
 
       <n-grid-item>
         <n-card>
-          <template #header> 快捷操作 </template>
+          <template #header>
+            快捷操作
+          </template>
           <n-grid :x-gap="8" :y-gap="8" :cols="3">
             <n-grid-item v-for="link in links" :key="link.title">
-              <RouterLink :to="link.link" border block w-full h-full hover:shadow-md duration-200 p-4>
-                <div text-center>
+              <n-card
+                :to="link.link"
+                border="gray/40 1"
+                hoverable
+                block
+                h-full
+                w-full
+                rounded-sm
+                p-4
+                duration-200
+                hover:shadow-md
+              >
+                <RouterLink :to="link.link" text-center>
                   <Icon :icon="link.icon" size="24" />
                   <h3>{{ link.title }}</h3>
-                </div>
-              </RouterLink>
+                </RouterLink>
+              </n-card>
             </n-grid-item>
           </n-grid>
         </n-card>

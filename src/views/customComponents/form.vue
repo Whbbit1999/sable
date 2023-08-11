@@ -12,8 +12,8 @@ const site = {
   body: '',
 }
 
-const submit = (...args) => {
-  console.log(args)
+function submit() {
+  // TODO submit function
 }
 const article = {
   title: '',
@@ -24,12 +24,16 @@ const article = {
 
 <template>
   <main>
-    <FormFieldList :model="site" :fields="SystemFormField.site" @submit="submit"> </FormFieldList>
+    <FormFieldList :model="site" :fields="SystemFormField.site" @submit="submit" />
     <FormFieldList :model="article" :fields="ArticleFormField" @submit="submit">
       <template #button>
         <n-space>
-          <n-button type="primary" size="medium">发表文章</n-button>
-          <n-button type="info" size="medium">保存草稿</n-button>
+          <n-button type="primary" size="medium">
+            发表文章
+          </n-button>
+          <n-button type="info" size="medium">
+            保存草稿
+          </n-button>
         </n-space>
       </template>
     </FormFieldList>

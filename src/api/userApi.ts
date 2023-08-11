@@ -2,13 +2,13 @@ import http from '../plugins/axios'
 
 export async function getUserInfoApi() {
   return http.request<IUserModel>({
-    url: `getUserInfo`,
+    url: 'getUserInfo',
   })
 }
 
 export async function login(data: ILoginForm) {
   return http.post<ILoginModel>({
-    url: `login`,
+    url: 'login',
     data,
   })
 }

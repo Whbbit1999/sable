@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import { useFullscreen } from '@vueuse/core'
+
 const { toggle, isFullscreen } = useFullscreen()
 </script>
 
@@ -7,9 +8,9 @@ const { toggle, isFullscreen } = useFullscreen()
   <n-tooltip trigger="hover">
     <template #trigger>
       <Transition>
-        <div @click="toggle" icon-btn>
-          <div i-carbon-maximize v-if="!isFullscreen" />
-          <div i-carbon-minimize v-else />
+        <div icon-btn @click="toggle">
+          <div v-if="!isFullscreen" i-carbon-maximize />
+          <div v-else i-carbon-minimize />
         </div>
       </Transition>
     </template>

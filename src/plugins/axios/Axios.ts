@@ -1,4 +1,5 @@
-import axios, { AxiosInstance, AxiosRequestConfig } from 'axios'
+import type { AxiosInstance, AxiosRequestConfig } from 'axios'
+import axios from 'axios'
 
 class Axios {
   private instance: AxiosInstance
@@ -14,21 +15,25 @@ class Axios {
         this.instance.request<D>(config).then((response) => {
           resolve(response.data)
         })
-      } catch (error) {
+      }
+      catch (error) {
         reject(error)
       }
-    }) as Promise<D>
+    })
   }
 
   public get<T>(config: AxiosRequestConfig) {
     return this.request<T>({ ...config, method: 'GET' })
   }
+
   public post<T>(config: AxiosRequestConfig) {
     return this.request<T>({ ...config, method: 'POST' })
   }
+
   public put<T>(config: AxiosRequestConfig) {
     return this.request<T>({ ...config, method: 'PUT' })
   }
+
   public delete<T>(config: AxiosRequestConfig) {
     return this.request<T>({ ...config, method: 'DELETE' })
   }

@@ -1,30 +1,31 @@
 <script lang="ts" setup>
 import Markdown from '@/components/markdown/editor.vue'
 import WangEditor from '@/components/wangeditor/index.vue'
-import { FormFieldType } from '@/config/form'
+import type { FormFieldType } from '@/config/form'
 
 const props = defineProps<{
   model: Record<string, any>
   fields: FormFieldType[]
 }>()
 
-const model = ref(props.model)
-
 const emit = defineEmits<{
   (e: 'submit', model: any): void
 }>()
+
+const model = ref(props.model)
 </script>
 
 <template>
-  <n-form ref="formRef" :model="model" label-width="auto" label-align="right" label-placement="left" size="large">
-    <n-form-item :path="field.name" :label="field.title" v-for="field in fields" :key="field.name">
+  <n-form :model="model" label-width="auto" label-align="right" label-placement="left" size="large">
+    <n-form-item v-for="field in fields" :key="field.name" :path="field.name" :label="field.title">
       <template v-if="field.type === 'input' || !field.type">
         <n-input
           v-model:value="model[field.name]"
           type="text"
           :placeholder="field.placeholder"
           :disabled="field.disabled"
-          clearable></n-input>
+          clearable
+        />
       </template>
       <template v-if="field.type === 'select'">
         <n-select v-model:value="model[field.name]" :options="field.options" />
@@ -45,7 +46,7 @@ const emit = defineEmits<{
         <n-input-number v-model:value="model[field.name]" clearable />
       </template>
       <template v-if="field.type === 'textarea'">
-        <n-input v-model:value="model[field.name]" type="textarea" :placeholder="field.placeholder" clearable></n-input>
+        <n-input v-model:value="model[field.name]" type="textarea" :placeholder="field.placeholder" clearable />
       </template>
       <template v-if="field.type === 'image'">
         <n-image width="100" :src="model[field.name]" />
@@ -58,9 +59,11 @@ const emit = defineEmits<{
       </template>
     </n-form-item>
     <n-form-item>
-      <slot name="button" v-if="$slots.button" />
+      <slot v-if="$slots.button" name="button" />
 
-      <n-button v-else attr-type="button" @click="emit('submit', model)"> 提交 </n-button>
+      <n-button v-else attr-type="button" @click="emit('submit', model)">
+        提交
+      </n-button>
     </n-form-item>
   </n-form>
 </template>

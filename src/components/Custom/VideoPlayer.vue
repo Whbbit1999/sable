@@ -7,7 +7,8 @@ const props = defineProps<{
 }>()
 
 const artplayer = ref()
-onMounted(() => {
+
+function initPlayer() {
   new Artplayer({
     container: artplayer.value,
     url: props.url,
@@ -21,17 +22,19 @@ onMounted(() => {
     fullscreen: true,
     fullscreenWeb: true,
     airplay: true,
-
     setting: true,
     flip: true,
     playbackRate: true,
     aspectRatio: true,
   })
+}
+onMounted(() => {
+  initPlayer()
 })
 </script>
 
 <template>
-  <div ref="artplayer"></div>
+  <div ref="artplayer" />
 </template>
 
 <style scoped lang="scss"></style>

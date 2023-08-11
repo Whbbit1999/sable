@@ -1,5 +1,6 @@
 <script lang="ts" setup>
-import { QRCodeRenderersOptions, toCanvas, toDataURL } from 'qrcode'
+import type { QRCodeRenderersOptions } from 'qrcode'
+import { toCanvas, toDataURL } from 'qrcode'
 
 export interface IQrcodeLogo {
   src: string
@@ -42,12 +43,12 @@ onMounted(() => {
 
 async function createQrcode() {
   try {
-    if (props.tag === 'img') {
+    if (props.tag === 'img')
       await renderImg()
-    } else if (props.tag === 'canvas') {
+    else if (props.tag === 'canvas')
       await renderCanvas()
-    }
-  } catch (error) {
+  }
+  catch (error) {
     // useMessage().error(error)
   }
 }
@@ -69,11 +70,10 @@ async function renderCanvas() {
 
 // 绘制logo图标
 async function drawLogo() {
-  if (!props.logo) {
-    return new Promise((resolve) => resolve(true))
-  }
+  if (!props.logo)
+    return new Promise(resolve => resolve(true))
 
-  const canvasWidth = (qrcode.value as HTMLCanvasElement).width
+  // const canvasWidth = (qrcode.value as HTMLCanvasElement).width
 }
 
 async function renderImg() {

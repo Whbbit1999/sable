@@ -1,10 +1,8 @@
 <script lang="ts" setup>
-import { isString } from '@/utils/is'
 import Iconify from '@purge-icons/generated'
 import type { CSSProperties } from 'vue'
 import SvgIcon from './SvgIcon.vue'
-
-const SVG_END_WITH_FLAG = '|svg'
+import { isString } from '@/utils/is'
 
 const props = withDefaults(
   defineProps<{
@@ -16,25 +14,32 @@ const props = withDefaults(
   }>(),
   { size: 16 },
 )
+
+const SVG_END_WITH_FLAG = '|svg'
+
 const elRef = ref(null)
 const isSvgIcon = computed(() => props.icon?.endsWith(SVG_END_WITH_FLAG))
 const getSvgIcon = computed(() => props.icon.replace(SVG_END_WITH_FLAG, ''))
-const getIconRef = computed(() => `${props.prefix ? props.prefix + ':' : ''}${props.icon}`)
-const update = async () => {
-  if (unref(isSvgIcon)) return
+const getIconRef = computed(() => `${props.prefix ? `${props.prefix}:` : ''}${props.icon}`)
+async function update() {
+  if (unref(isSvgIcon))
+    return
 
   const el = unref(elRef)
-  if (!el) return
+  if (!el)
+    return
 
   await nextTick()
   const icon = unref(getIconRef)
-  if (!icon) return
+  if (!icon)
+    return
 
   const svg = Iconify.renderSVG(icon, {})
   if (svg) {
     el.textContent = ''
     el.appendChild(svg)
-  } else {
+  }
+  else {
     const span = document.createElement('span')
     span.className = 'iconify'
     span.dataset.icon = icon
@@ -45,12 +50,12 @@ const update = async () => {
 const getWrapStyle = computed((): CSSProperties => {
   const { size, color } = props
   let fs = size
-  if (isString(size)) {
-    fs = parseInt(size as string, 10)
-  }
+  if (isString(size))
+    fs = Number.parseInt(size as string, 10)
+
   return {
     fontSize: `${fs}px`,
-    color: color,
+    color,
     display: 'inline-flex',
   }
 })
@@ -61,17 +66,19 @@ onMounted(update)
 
 <template>
   <SvgIcon
+    v-if="isSvgIcon"
     :size="size"
     :name="getSvgIcon"
-    v-if="isSvgIcon"
-    :class="[$attrs.class, 'app-iconify anticon', spin && 'app-iconify-spin']"
-    :spin="spin" />
+    class="app-iconify anticon" :class="[$attrs.class, spin && 'app-iconify-spin']"
+    :spin="spin"
+  />
 
   <span
     v-else
     ref="elRef"
     :style="getWrapStyle"
-    :class="[$attrs.class, 'app-iconify anticon', spin && 'app-iconify-spin']"></span>
+    class="app-iconify anticon" :class="[$attrs.class, spin && 'app-iconify-spin']"
+  />
 </template>
 
 <style lang="scss">

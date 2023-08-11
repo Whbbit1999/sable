@@ -1,5 +1,6 @@
-import config from '@/config/config'
 import type { RouteRecordRaw } from 'vue-router'
+import config from '@/config/config'
+
 // global routes
 const routes = [
   config.routes.home, // 默认首页

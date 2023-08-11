@@ -1,7 +1,7 @@
-import { renderTag, renderImage, renderTime } from '@/utils/render'
-import { ImageProps, TagProps } from 'naive-ui'
+import type { ImageProps, TagProps } from 'naive-ui'
+import { renderImage, renderTag, renderTime } from '@/utils/render'
 
-export type RenderColumnType = {
+export interface RenderColumnType {
   key: string
   title: string
   width: number
@@ -11,7 +11,7 @@ export type RenderColumnType = {
 }
 
 // 需要操作栏时，传递此参数
-export type TableButton = {
+export interface TableButton {
   title: string
   command: string
   type: 'default' | 'tertiary' | 'primary' | 'info' | 'success' | 'warning' | 'error'
@@ -48,21 +48,24 @@ function makeColumn(column: RenderColumnType[]) {
           return renderTime(row[item.key])
         },
       }
-    } else if (item?.type === 'image') {
+    }
+    else if (item?.type === 'image') {
       return {
         ...item,
         render(row: RenderColumnType) {
           return renderImage(row[item.key], row?.imageProps && row.imageProps)
         },
       }
-    } else if (item?.type === 'tags') {
+    }
+    else if (item?.type === 'tags') {
       return {
         ...item,
         render(row: RenderColumnType) {
           return row[item.key].map((tag: string) => renderTag(tag, row?.tagsProps && row.tagsProps))
         },
       }
-    } else {
+    }
+    else {
       return item
     }
   })

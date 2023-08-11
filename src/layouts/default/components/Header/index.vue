@@ -1,10 +1,10 @@
 <script lang="ts" setup>
+import { LogOutOutline as LogoutIcon, PersonCircleOutline as UserIcon } from '@vicons/ionicons5'
+import dayjs from 'dayjs'
 import ReloadPage from '@/components/Custom/ReloadPage.vue'
 import Notify from '@/components/Notify/index.vue'
 import config from '@/config/config'
 import { renderIcon, storage } from '@/utils'
-import { LogOutOutline as LogoutIcon, PersonCircleOutline as UserIcon } from '@vicons/ionicons5'
-import dayjs from 'dayjs'
 
 const router = useRouter()
 
@@ -25,7 +25,7 @@ const options = ref([
   },
 ])
 
-const onSelect = (key: string) => {
+function onSelect(key: string) {
   switch (key) {
     case 'userspace':
       router.push({ name: 'user.base' })
@@ -36,7 +36,7 @@ const onSelect = (key: string) => {
   }
 }
 
-const logout = () => {
+function logout() {
   // 清空缓存
   storage.remove('token')
   router.push({ name: RouteNameEnum.LOGIN })

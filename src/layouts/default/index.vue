@@ -1,10 +1,10 @@
 <script lang="ts" setup>
-import config from '@/config/config'
 import Aside from './components/Aside/index.vue'
 import Footer from './components/Footer/index.vue'
 import Header from './components/Header/index.vue'
 import Main from './components/Main/index.vue'
 import Tags from './components/Tags/index.vue'
+import config from '@/config/config'
 </script>
 
 <template>
@@ -12,7 +12,8 @@ import Tags from './components/Tags/index.vue'
     flex
     h-screen
     bg="containerBgColor dark:darkContainerBgColor"
-    text="containerTextColor dark:darkContainerTextColor">
+    text="containerTextColor dark:darkContainerTextColor"
+  >
     <Aside />
 
     <main flex="~ col 1 " h-full overflow-hidden>

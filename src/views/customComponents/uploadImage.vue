@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import UploadSingleImage from '@/components/Custom/UploadSingleImage.vue'
+
 const image = ref('')
 </script>
 
@@ -7,7 +8,7 @@ const image = ref('')
   <main>
     <UploadSingleImage v-model="image" />
 
-    <img :src="image" alt="" />
+    <img :src="image" alt="">
   </main>
 </template>
 

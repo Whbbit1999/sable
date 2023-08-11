@@ -1,5 +1,6 @@
 import mock from 'mockjs'
-import { MockMethod } from 'vite-plugin-mock'
+import type { MockMethod } from 'vite-plugin-mock'
+
 export default [
   {
     url: '/api/getUserInfo',
@@ -59,7 +60,7 @@ function users() {
       email: mock.Random.email(),
       created_at: mock.Random.datetime(),
       updated_at: mock.Random.datetime(),
-      tags: tags,
+      tags,
     }
   })
   return list

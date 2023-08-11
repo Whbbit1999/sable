@@ -1,21 +1,21 @@
-import { SelectGroupOption, SelectOption } from 'naive-ui'
+import type { SelectGroupOption, SelectOption } from 'naive-ui'
 
-export type FormFieldType = {
+export interface FormFieldType {
   title: string
   name: string
   err_name?: string | undefined
   type?:
-    | 'input'
-    | 'radio'
-    | 'textarea'
-    | 'radio'
-    | 'image'
-    | 'select'
-    | 'switch'
-    | 'inputNumber'
-    | 'markdown'
-    | 'wangEditor'
-    | undefined
+  | 'input'
+  | 'radio'
+  | 'textarea'
+  | 'radio'
+  | 'image'
+  | 'select'
+  | 'switch'
+  | 'inputNumber'
+  | 'markdown'
+  | 'wangEditor'
+  | undefined
   placeholder?: string | undefined
   disabled?: boolean
   options?: Array<SelectOption | SelectGroupOption>

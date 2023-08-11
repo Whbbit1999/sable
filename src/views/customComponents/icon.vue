@@ -17,7 +17,9 @@ import Icon from '@/components/Icon'
     <div>
       <n-alert title="使用icones查找图标" type="info">
         可以去
-        <n-button text tag="a" href="https://icones.js.org/" target="_blank" type="primary"> icones </n-button>
+        <n-button text tag="a" href="https://icones.js.org/" target="_blank" type="primary">
+          icones
+        </n-button>
         查看海量图标并直接复制类名进行使用
       </n-alert>
       <Icon icon="logos:axios" />
@@ -33,7 +35,7 @@ import Icon from '@/components/Icon'
         查看文档
       </n-alert>
       这里使用系统集成的 carbon 图标集进行演示
-      <div i-carbon-4k-filled></div>
+      <div i-carbon-4k-filled />
     </div>
   </div>
 </template>

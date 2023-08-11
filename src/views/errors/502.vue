@@ -17,4 +17,5 @@ import Icon from '@/components/Icon'
     </n-result>
   </div>
 </template>
+
 <style scoped lang="scss"></style>

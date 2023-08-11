@@ -4,7 +4,9 @@ import Qrcode from '@/components/Qrcode/index.vue'
 
 <template>
   <main>
-    <n-alert type="info" class="mb-3" :show-icon="false"> 默认渲染为canvas </n-alert>
+    <n-alert type="info" class="mb-3" :show-icon="false">
+      默认渲染为canvas
+    </n-alert>
 
     <div class="grid lg:grid-cols-2 grid-cols-1 gap-3">
       <n-card title="默认使用">

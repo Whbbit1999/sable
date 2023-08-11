@@ -1,23 +1,22 @@
 // 自动注册路由
-import { env } from '@/utils'
-import type { Router, RouteRecordRaw } from 'vue-router'
+import type { RouteRecordRaw, Router } from 'vue-router'
 import autoloadModuleRoutes from './modules'
 import getRoutes from './view'
+import { env } from '@/utils'
 
 let routes = [] as RouteRecordRaw[]
 
-if (env.VITE_ROUTE_AUTOLOAD) {
+if (env.VITE_ROUTE_AUTOLOAD)
   routes = getRoutes()
-} else {
+else
   routes = autoloadModuleRoutes()
-}
 
 // 根据权限过滤，动态拼接菜单
 function autoload(router: Router) {
   routes = routes.map((route) => {
-    if (route.children) {
+    if (route.children)
       loopChildren(route.children)
-    }
+
     return route
   })
 
@@ -36,8 +35,9 @@ function loopChildren(route: RouteRecordRaw[]) {
       item.children = item.children.filter((r) => {
         if (r.meta?.permissions?.length) {
           // 需要权限进行访问
-          return userInfo.permissions.some((permission) => r.meta.permissions.some((p) => p === permission)) ?? false
-        } else {
+          return userInfo.permissions.some(permission => r.meta.permissions.includes(permission)) ?? false
+        }
+        else {
           // 不需要权限就能访问
           return true
         }
