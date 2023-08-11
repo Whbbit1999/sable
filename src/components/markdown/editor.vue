@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { useDark } from '@vueuse/core'
-import { MdEditor } from 'md-editor-v3'
+import { MdEditor, MdPreview } from 'md-editor-v3'
 import { uploadImage } from '@/api/uploadApi'
 import 'md-editor-v3/lib/style.css'
 
@@ -9,13 +9,13 @@ const props = withDefaults(
     modelValue: string
     previewTheme?: 'default' | 'github' | 'vuepress' | 'mk-cute' | 'smart-blue' | 'cyanosis'
     codeTheme?: 'atom' | 'a11y' | 'github' | 'gradient' | 'kimbie' | 'paraiso' | 'qtcreator' | 'stackoverflow'
-    previewOnly?: boolean
+    preview?: boolean
     placeholder?: string
   }>(),
   {
     codeTheme: 'atom',
     previewTheme: 'github',
-    previewOnly: false,
+    preview: false,
     placeholder: '请输入markdown格式内容',
   },
 )
@@ -28,6 +28,7 @@ function handleChangeContent(v: string) {
   content.value = v
   emits('update:modelValue', v)
 }
+
 async function handleUpdateImage(files: Array<File>, callback: (urls: string[]) => void) {
   const res = (await Promise.all(
     files.map((file) => {
@@ -35,9 +36,7 @@ async function handleUpdateImage(files: Array<File>, callback: (urls: string[]) 
         const form = new FormData()
         form.append('file', file)
         try {
-          uploadImage(form).then(({ data }) => {
-            resolve(data.url)
-          })
+          uploadImage(form).then(({ data }) => resolve(data.url))
         }
         catch (error) {
           reject(error)
@@ -52,16 +51,18 @@ async function handleUpdateImage(files: Array<File>, callback: (urls: string[]) 
 
 <template>
   <MdEditor
+    v-if="!preview"
     v-model="content"
-    :placeholder="props.placeholder"
+    :placeholder="placeholder"
     :on-change="handleChangeContent"
     :on-upload-img="handleUpdateImage"
     :theme="isDark ? 'dark' : 'light'"
-    :code-theme="props.codeTheme"
-    :preview-theme="props.previewTheme"
-    :preview-only="props.previewOnly"
-    :toolbars-exclude="['github']"
+    :code-theme="codeTheme"
+    :preview-theme="previewTheme"
+    :toolbars-exclude="['github', 'save']"
   />
+
+  <MdPreview v-else v-model="content" :preview-theme="previewTheme" :code-theme="codeTheme" />
 </template>
 
 <style scoped lang="scss"></style>
