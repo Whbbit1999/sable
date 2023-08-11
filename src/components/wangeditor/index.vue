@@ -60,8 +60,8 @@ const mode = ref('default')
       style="height: 500px; overflow-y: hidden"
       :default-config="editorConfig"
       :mode="mode"
-      :on-created="handleCreated"
-      :on-change="handleChange"
+      @on-created="handleCreated"
+      @on-change="handleChange"
     />
   </div>
 </template>

@@ -12,9 +12,7 @@ class Axios {
   public request<T, D = ResponseResult<T>>(config: AxiosRequestConfig) {
     return new Promise((resolve, reject) => {
       try {
-        this.instance.request<D>(config).then((response) => {
-          resolve(response.data)
-        })
+        this.instance.request<D>(config).then(response => resolve(response.data))
       }
       catch (error) {
         reject(error)
@@ -22,20 +20,20 @@ class Axios {
     })
   }
 
-  public get<T>(config: AxiosRequestConfig) {
-    return this.request<T>({ ...config, method: 'GET' })
+  public get<T, D = ResponseResult<T>>(config: AxiosRequestConfig) {
+    return this.request<T>({ ...config, method: 'GET' }) as Promise<D>
   }
 
-  public post<T>(config: AxiosRequestConfig) {
-    return this.request<T>({ ...config, method: 'POST' })
+  public post<T, D = ResponseResult<T>>(config: AxiosRequestConfig) {
+    return this.request<T>({ ...config, method: 'POST' }) as Promise<D>
   }
 
-  public put<T>(config: AxiosRequestConfig) {
-    return this.request<T>({ ...config, method: 'PUT' })
+  public put<T, D = ResponseResult<T>>(config: AxiosRequestConfig) {
+    return this.request<T>({ ...config, method: 'PUT' }) as Promise<D>
   }
 
-  public delete<T>(config: AxiosRequestConfig) {
-    return this.request<T>({ ...config, method: 'DELETE' })
+  public delete<T, D = ResponseResult<T>>(config: AxiosRequestConfig) {
+    return this.request<T>({ ...config, method: 'DELETE' }) as Promise<D>
   }
 
   private interceptors() {

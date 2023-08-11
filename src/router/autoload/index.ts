@@ -4,23 +4,23 @@ import autoloadModuleRoutes from './modules'
 import getRoutes from './view'
 import { env } from '@/utils'
 
-let routes = [] as RouteRecordRaw[]
+let _routes = [] as RouteRecordRaw[]
 
 if (env.VITE_ROUTE_AUTOLOAD)
-  routes = getRoutes()
+  _routes = getRoutes()
 else
-  routes = autoloadModuleRoutes()
+  _routes = autoloadModuleRoutes()
 
 // 根据权限过滤，动态拼接菜单
 function autoload(router: Router) {
-  routes = routes.map((route) => {
+  _routes = _routes.map((route) => {
     if (route.children)
       loopChildren(route.children)
 
     return route
   })
 
-  routes.forEach((route) => {
+  _routes.forEach((route) => {
     router.addRoute(route)
   })
 }
@@ -46,6 +46,6 @@ function loopChildren(route: RouteRecordRaw[]) {
     }
   })
 }
-
+const routes = _routes
 export default autoload
 export { routes }
