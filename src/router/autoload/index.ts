@@ -26,26 +26,25 @@ function autoload(router: Router) {
 }
 
 function loopChildren(route: RouteRecordRaw[]) {
-  const user = userStore()
+  const user = useUserStore()
   const userInfo = user.userInfo
 
   route.forEach((item) => {
     if (item.children) {
-      // console.log(item.children) // 有子元素就继续往下查找
       item.children = item.children.filter((r) => {
-        if (r.meta?.permissions?.length) {
+        if (r.meta?.permissions?.length)
           // 需要权限进行访问
           return userInfo.permissions.some(permission => r.meta.permissions.includes(permission)) ?? false
-        }
-        else {
-          // 不需要权限就能访问
-          return true
-        }
+
+        // 不需要权限就能访问
+        return true
       })
+
       loopChildren(item.children)
     }
   })
 }
+
 const routes = _routes
 export default autoload
 export { routes }

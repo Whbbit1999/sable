@@ -8,7 +8,7 @@ import Qrcode from '@/components/Qrcode/index.vue'
       默认渲染为canvas
     </n-alert>
 
-    <div class="grid lg:grid-cols-2 grid-cols-1 gap-3">
+    <div class="grid lg:grid-cols-3 grid-cols-1 gap-3">
       <n-card title="默认使用">
         <Qrcode value="https://www.whbbit.cn" />
       </n-card>
@@ -21,17 +21,9 @@ import Qrcode from '@/components/Qrcode/index.vue'
         <Qrcode value="https://www.whbbit.cn" front-color="#fff" bg-color="#000" />
       </n-card>
 
-      <!-- <n-card title="logo">
-      <Qrcode value="https://www.whbbit.cn" logo="" />
-    </n-card> -->
-
       <n-card title="大小">
         <Qrcode value="https://www.whbbit.cn" :width="300" />
       </n-card>
-
-      <!-- <n-card title="下载">
-      <Qrcode value="https://www.whbbit.cn" />
-    </n-card> -->
     </div>
   </main>
 </template>

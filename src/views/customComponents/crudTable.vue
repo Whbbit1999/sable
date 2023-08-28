@@ -3,7 +3,6 @@ import { userList } from '@/api/userApi'
 import { UserTableButton, UserTableField } from '@/config/table'
 
 function handleActions() {
-  // console.log(args)
   // TODO 点击操作后
 }
 </script>

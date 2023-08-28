@@ -27,6 +27,7 @@ declare module 'vue' {
     NDescriptionsItem: typeof import('naive-ui')['NDescriptionsItem']
     NDropdown: typeof import('naive-ui')['NDropdown']
     NEmpty: typeof import('naive-ui')['NEmpty']
+    NetworkState: typeof import('./../src/components/Custom/NetworkState.vue')['default']
     NForm: typeof import('naive-ui')['NForm']
     NFormItem: typeof import('naive-ui')['NFormItem']
     NGi: typeof import('naive-ui')['NGi']

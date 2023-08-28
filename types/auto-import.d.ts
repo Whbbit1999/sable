@@ -71,14 +71,16 @@ declare global {
   const toValue: typeof import('vue')['toValue']
   const triggerRef: typeof import('vue')['triggerRef']
   const unref: typeof import('vue')['unref']
+  const useAppStore: typeof import('../src/store/useAppStore')['useAppStore']
   const useAttrs: typeof import('vue')['useAttrs']
   const useCharts: typeof import('../src/composables/useCharts')['default']
   const useCssModule: typeof import('vue')['useCssModule']
   const useCssVars: typeof import('vue')['useCssVars']
   const useDialog: typeof import('naive-ui')['useDialog']
-  const useHistoryMenuStore: typeof import('../src/store/historyMenuStore')['useHistoryMenuStore']
+  const useHistoryMenuStore: typeof import('../src/store/useHistoryMenuStore')['useHistoryMenuStore']
   const useLink: typeof import('vue-router')['useLink']
   const useLoadingBar: typeof import('naive-ui')['useLoadingBar']
+  const useMenuStore: typeof import('../src/store/useMenuStore')['useMenuStore']
   const useMessage: typeof import('naive-ui')['useMessage']
   const useNotification: typeof import('naive-ui')['useNotification']
   const useRoute: typeof import('vue-router')['useRoute']
@@ -86,8 +88,9 @@ declare global {
   const useSlots: typeof import('vue')['useSlots']
   const useTable: typeof import('../src/composables/useTable')['default']
   const useUpload: typeof import('../src/composables/useUpload')['default']
+  const useUserStore: typeof import('../src/store/useUserStore')['useUserStore']
   const useWait: typeof import('../src/composables/useWait')['default']
-  const userStore: typeof import('../src/store/userStore')['userStore']
+  const userStore: typeof import('../src/store/useUserStore')['userStore']
   const watch: typeof import('vue')['watch']
   const watchEffect: typeof import('vue')['watchEffect']
   const watchPostEffect: typeof import('vue')['watchPostEffect']
@@ -96,5 +99,5 @@ declare global {
 // for type re-export
 declare global {
   // @ts-ignore
-  export type { Component, ComponentPublicInstance, ComputedRef, InjectionKey, PropType, Ref, VNode } from 'vue'
+  export type { Component, ComponentPublicInstance, ComputedRef, InjectionKey, PropType, Ref, VNode, WritableComputedRef } from 'vue'
 }

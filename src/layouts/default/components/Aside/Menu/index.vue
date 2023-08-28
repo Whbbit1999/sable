@@ -7,20 +7,19 @@ type IMenuOption = MenuOption & {
 }
 
 const props = withDefaults(
-  defineProps<{
-    collapsed: boolean
-  }>(),
-  {
-    collapsed: false,
-  },
+  defineProps<{ collapsed: boolean }>(),
+  { collapsed: false },
 )
+
 const route = useRoute()
 const router = useRouter()
 const selectedKey = ref(route.name as string)
-const menu = menuStore()
-const menuOptions: IMenuOption[] = menu.getMenus
+
+const menu = useMenuStore()
+
 const defaultExpandedKeys = ref()
-const collapsed = ref<boolean>(props.collapsed)
+const { collapsed } = toRefs(props)
+// const collapsed = ref<boolean>(props.collapsed)
 
 watch(
   () => props.collapsed,
@@ -57,7 +56,7 @@ router.beforeEach((to) => {
 <template>
   <n-menu
     :collapsed="collapsed"
-    :options="menuOptions"
+    :options="menu.getMenus"
     :default-expanded-keys="defaultExpandedKeys"
     accordion
     :indent="18"
@@ -66,10 +65,4 @@ router.beforeEach((to) => {
   />
 </template>
 
-<style scoped lang="scss">
-:deep(.n-menu-item-content--collapsed) {
-  .n-menu-item-content__icon {
-    margin-right: 0 !important;
-  }
-}
-</style>
+<style scoped lang="scss"></style>

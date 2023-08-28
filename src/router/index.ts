@@ -12,7 +12,7 @@ const router = createRouter({
 })
 
 export async function setupRouter(app: App) {
-  const user = userStore()
+  const user = useUserStore()
   await user.getUserInfo()
 
   autoload(router)

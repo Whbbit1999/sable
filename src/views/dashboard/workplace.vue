@@ -1,8 +1,8 @@
 <script lang="ts" setup>
 import Icon from '@/components/Icon'
 
-const user = userStore()
-const userInfo = await user.getUserInfo()
+const userStore = useUserStore()
+const userInfo = await userStore.getUserInfo()
 
 const asideInfo = ref([
   { title: '项目', count: 10 },
@@ -95,17 +95,10 @@ const links = ref([
             <n-grid-item v-for="link in links" :key="link.title">
               <n-card
                 :to="link.link"
-                border="gray/40 1"
                 hoverable
-                block
-                h-full
-                w-full
-                rounded-sm
-                p-4
-                duration-200
-                hover:shadow-md
+                border="gray/40 1" block h-full w-full rounded-sm p-4 duration-200 hover:shadow-md
               >
-                <RouterLink :to="link.link" text-center>
+                <RouterLink :to="link.link" text-center w-full flex="~ items-center col gap-4">
                   <Icon :icon="link.icon" size="24" />
                   <h3>{{ link.title }}</h3>
                 </RouterLink>

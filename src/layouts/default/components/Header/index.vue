@@ -3,26 +3,18 @@ import { LogOutOutline as LogoutIcon, PersonCircleOutline as UserIcon } from '@v
 import dayjs from 'dayjs'
 import ReloadPage from '@/components/Custom/ReloadPage.vue'
 import Notify from '@/components/Notify/index.vue'
+import NetworkState from '@/components/Custom/NetworkState.vue'
 import config from '@/config/config'
 import { renderIcon, storage } from '@/utils'
 
 const router = useRouter()
 
-const user = userStore()
+const user = useUserStore()
 const userInfo = await user.getUserInfo()
 
 const options = ref([
-  {
-    label: '个人空间',
-    key: 'userspace',
-    icon: renderIcon(UserIcon),
-  },
-
-  {
-    label: '退出登录',
-    key: 'logout',
-    icon: renderIcon(LogoutIcon),
-  },
+  { label: '个人空间', key: 'userspace', icon: renderIcon(UserIcon) },
+  { label: '退出登录', key: 'logout', icon: renderIcon(LogoutIcon) },
 ])
 
 function onSelect(key: string) {
@@ -50,7 +42,11 @@ function logout() {
       <Breadcrump v-if="config.layout.showBreadCrump" />
     </div>
 
-    <div class="flex items-center gap-2">
+    <div class="flex-1">
+      <NetworkState hidden />
+    </div>
+
+    <div class="flex items-center gap-2 ">
       <FullScreen />
 
       <Notify />

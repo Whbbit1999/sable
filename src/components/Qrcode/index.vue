@@ -2,17 +2,6 @@
 import type { QRCodeRenderersOptions } from 'qrcode'
 import { toCanvas, toDataURL } from 'qrcode'
 
-export interface IQrcodeLogo {
-  src: string
-  logoSize: number
-  borderColor: string
-  borderSize: number
-  bgColor: string
-  crossOrigin: string
-  borderRadius: number
-  logoRadius: number
-}
-
 export interface IQrcode {
   value: string
 
@@ -65,15 +54,6 @@ const qrcodeOptions: QRCodeRenderersOptions = {
 
 async function renderCanvas() {
   await toCanvas(qrcode.value, props.value, qrcodeOptions)
-  await drawLogo()
-}
-
-// 绘制logo图标
-async function drawLogo() {
-  if (!props.logo)
-    return new Promise(resolve => resolve(true))
-
-  // const canvasWidth = (qrcode.value as HTMLCanvasElement).width
 }
 
 async function renderImg() {

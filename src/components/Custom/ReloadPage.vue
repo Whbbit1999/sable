@@ -1,10 +1,7 @@
-<script lang="ts" setup>
-const router = useRouter()
-const route = useRoute()
-</script>
+<script lang="ts" setup></script>
 
 <template>
-  <div icon-btn @click="router.push({ name: route.name })">
+  <div icon-btn @click="$router.go(0)">
     <i i-carbon-rotate-360 />
   </div>
 </template>
