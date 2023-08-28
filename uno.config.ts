@@ -12,7 +12,7 @@ export default defineConfig({
 
   theme: {
     colors: {
-      containerBgColor: '#fbfbfb',
+      containerBgColor: '#f6f6f7',
       containerTextColor: '#393a34',
       darkContainerBgColor: '#1e1e1e',
       darkContainerTextColor: '#d4cfbf',

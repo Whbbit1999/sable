@@ -11,7 +11,7 @@ export default function setupPlugins(isBuild: boolean) {
     Unocss(),
     autoImport(),
     setupMockPlugin(isBuild),
-    visualizer() as any,
+    visualizer({ gzipSize: true, brotliSize: true }),
     vueDevtools(),
   ]
 }

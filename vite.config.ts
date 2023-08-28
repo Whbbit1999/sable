@@ -25,16 +25,26 @@ export default ({ command }: ConfigEnv) => {
       port: '7788',
     },
 
+    esbuild: {
+      pure: ['console.log'],
+      minify: true,
+    },
     build: {
       rollupOptions: {
         emptyOutDir: true,
         output: {
-          manualChunks(id) {
-            if (id.includes('node_modules'))
-              return id.toString().split('node_modules/')[1].split('/')[0].toString()
+          manualChunks: {
+            echarts: ['echarts'],
+            lodash: ['lodash'],
           },
+
+          // manualChunks(id) {
+          //   if (id.includes('node_modules'))
+          //     return id.toString().split('node_modules/')[1].split('/')[0].toString()
+          // },
         },
       },
+
     },
   }
 }

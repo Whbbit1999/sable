@@ -15,21 +15,12 @@ export default function autoImport(): any {
     AutoImport({
       include: [
         /\.[tj]sx?$/, // .ts, .tsx, .js, .jsx
-        /\.vue$/,
-        /\.vue\?vue/, // .vue
+        /\.vue$/, /\.vue\?vue/, // .vue
         /\.md$/, // .md
       ],
       imports: [
-        'vue',
-        'vue-router',
-        {
-          'naive-ui': [
-            'useDialog',
-            'useMessage',
-            'useNotification',
-            'useLoadingBar',
-          ],
-        },
+        'vue', 'vue-router',
+        { 'naive-ui': ['useDialog', 'useMessage', 'useNotification', 'useLoadingBar'] },
       ], // 自动加载 vue,vue-router api
       dirs: [
         'src/composables/**/*.ts',
@@ -39,14 +30,12 @@ export default function autoImport(): any {
       defaultExportByFilename: true, // 包含文件夹名称，避免命名冲突
       dts: 'types/auto-import.d.ts', // 类型提示文件
     }),
+
     Components({
       // auto import components 自动加载组件
       resolvers: [
         NaiveUiResolver(),
-        IconsResolver({
-          customCollections: ['custom'],
-          componentPrefix: 'icon',
-        }),
+        IconsResolver({ customCollections: ['custom'], componentPrefix: 'icon' }),
       ],
       dirs: ['src/components/Custom'], // 要自动引入组件的目录
       directoryAsNamespace: true, // 包含文件夹名称，避免命名冲突
@@ -59,6 +48,7 @@ export default function autoImport(): any {
       scale: 1,
       defaultClass: 'inline-block',
     }),
+
     createSvgIconsPlugin({
       iconDirs: [customIconPath],
       symbolId: 'icon-custom-[dir]-[name]',

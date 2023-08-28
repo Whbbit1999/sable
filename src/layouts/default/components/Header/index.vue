@@ -3,7 +3,6 @@ import { LogOutOutline as LogoutIcon, PersonCircleOutline as UserIcon } from '@v
 import dayjs from 'dayjs'
 import ReloadPage from '@/components/Custom/ReloadPage.vue'
 import Notify from '@/components/Notify/index.vue'
-import NetworkState from '@/components/Custom/NetworkState.vue'
 import config from '@/config/config'
 import { renderIcon, storage } from '@/utils'
 
@@ -42,9 +41,7 @@ function logout() {
       <Breadcrump v-if="config.layout.showBreadCrump" />
     </div>
 
-    <div class="flex-1">
-      <NetworkState hidden />
-    </div>
+    <div class="flex-1" />
 
     <div class="flex items-center gap-2 ">
       <FullScreen />

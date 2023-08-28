@@ -10,7 +10,7 @@
 - http 请求：`axios`
 - 路由切换： `Vue Router`
 - 全局状态管理： `Pinia`
-- css： `tailwindcss` & `scss`
+- css： `unocss` & `scss`
 - 工具函数：`lodash` & `vueuse`
 - 等
 
