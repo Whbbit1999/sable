@@ -1,6 +1,5 @@
 <script lang="ts" setup>
 import Markdown from '@/components/markdown/editor.vue'
-import WangEditor from '@/components/wangeditor/index.vue'
 import type { FormFieldType } from '@/config/form'
 
 const props = defineProps<{
@@ -53,9 +52,6 @@ const model = ref(props.model)
       </template>
       <template v-if="field.type === 'markdown'">
         <Markdown v-model="model[field.name]" />
-      </template>
-      <template v-if="field.type === 'wangEditor'">
-        <WangEditor v-model="model[field.name]" />
       </template>
     </n-form-item>
     <n-form-item>

@@ -1,4 +1,4 @@
-import type { ImageProps, TagProps } from 'naive-ui'
+import type { ButtonProps, ImageProps, TagProps } from 'naive-ui'
 import { renderImage, renderTag, renderTime } from '@/utils/render'
 
 export interface RenderColumnType {
@@ -14,7 +14,7 @@ export interface RenderColumnType {
 export interface TableButton {
   title: string
   command: string
-  type: 'default' | 'tertiary' | 'primary' | 'info' | 'success' | 'warning' | 'error'
+  type: ButtonProps['type']
 }
 
 export const pageSizes = [
@@ -49,7 +49,8 @@ function makeColumn(column: RenderColumnType[]) {
         },
       }
     }
-    else if (item?.type === 'image') {
+
+    if (item?.type === 'image') {
       return {
         ...item,
         render(row: RenderColumnType) {
@@ -57,16 +58,19 @@ function makeColumn(column: RenderColumnType[]) {
         },
       }
     }
-    else if (item?.type === 'tags') {
+
+    if (item?.type === 'tags') {
       return {
         ...item,
         render(row: RenderColumnType) {
-          return row[item.key].map((tag: string) => renderTag(tag, row?.tagsProps && row.tagsProps))
+          if (Array.isArray(row[item.key]))
+            return row[item.key].map((tag: string) => renderTag(tag, row?.tagsProps && row.tagsProps))
+          else
+            return renderTag(row[item.key], row.tagsProps && row.tagsProps)
         },
       }
     }
-    else {
-      return item
-    }
+
+    return item
   })
 }

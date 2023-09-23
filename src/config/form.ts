@@ -14,7 +14,6 @@ export interface FormFieldType {
   | 'switch'
   | 'inputNumber'
   | 'markdown'
-  | 'wangEditor'
   | undefined
   placeholder?: string | undefined
   disabled?: boolean
@@ -38,7 +37,7 @@ export const SystemFormField = {
     { title: '启用', name: 'used', type: 'switch' },
     { title: '使用人数', name: 'usedCount', type: 'inputNumber' },
     { title: '简介', name: 'content', type: 'markdown' },
-    { title: '征文', name: 'body', type: 'wangEditor' },
+    // { title: '征文', name: 'body', type: 'wangEditor' },
     {
       title: '类型',
       name: 'type',

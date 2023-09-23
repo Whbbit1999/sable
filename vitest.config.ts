@@ -4,13 +4,13 @@ import vue from '@vitejs/plugin-vue'
 export default defineConfig({
   plugins: [vue()],
   test: {
-    coverage: {
-      provider: 'c8',
-    },
+    // coverage: {
+    //   provider: 'istanbul',
+    // },
 
-    transformMode: {
-      web: [/.[jt]sx$/],
-    },
+    // transformMode: {
+    //   web: [/.[jt]sx$/],
+    // },
 
     // reporters: ['html'],
   },

@@ -1,18 +1,24 @@
 {
   "compilerOptions": {
     "target": "esnext",
+    "lib": ["esnext", "dom"],
+    "jsx": "preserve",
     "useDefineForClassFields": true,
     "module": "esnext",
     "moduleResolution": "node",
-    "strict": true,
-    "jsx": "preserve",
-    "sourceMap": true,
+    "types": ["naive-ui/volar"],
     "resolveJsonModule": true,
+    "sourceMap": true,
     "isolatedModules": true,
     "esModuleInterop": true,
-    "lib": ["esnext", "dom"],
+    "strict": true,
     "skipLibCheck": true
   },
+  "references": [
+    {
+      "path": "./tsconfig.node.json"
+    }
+  ],
   "include": [
     // "vite.config.ts",
     // "src/**/*.ts",
@@ -24,10 +30,5 @@
     // "types/**/*.d.ts",
     // "types/**/*.ts",
     // "**/package.json"
-  ],
-  "references": [
-    {
-      "path": "./tsconfig.node.json"
-    }
   ]
 }

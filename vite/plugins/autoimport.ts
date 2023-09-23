@@ -15,11 +15,13 @@ export default function autoImport(): any {
     AutoImport({
       include: [
         /\.[tj]sx?$/, // .ts, .tsx, .js, .jsx
-        /\.vue$/, /\.vue\?vue/, // .vue
+        /\.vue$/,
+        /\.vue\?vue/, // .vue
         /\.md$/, // .md
       ],
       imports: [
-        'vue', 'vue-router',
+        'vue',
+        'vue-router',
         { 'naive-ui': ['useDialog', 'useMessage', 'useNotification', 'useLoadingBar'] },
       ], // 自动加载 vue,vue-router api
       dirs: [

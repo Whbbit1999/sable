@@ -33,31 +33,29 @@ if (props.button) {
       key: 'actions',
       title: '操作',
       type: 'actions',
-      render: row =>
-        h(
-          NSpace,
-          {},
-          {
-            default: () =>
-              props.button.map(action =>
-                h(
-                  NButton,
-                  {
-                    type: action.type || 'default',
-                    onClick() { emit('action', row, action.command) },
-                  },
-                  { default: () => action.title },
-                ),
-              ),
-          },
-        ),
+      render: row => h(
+        NSpace,
+        {},
+        {
+          default: () =>
+            props.button.map(action => h(
+              NButton,
+              {
+                type: action.type || 'default',
+                onClick() { emit('action', row, action.command) },
+              },
+              { default: () => action.title },
+            )),
+        },
+      ),
     })
   }
 }
 
 const loading = ref(false)
-const response = ref(await props.api())
+const response = ref(null)
 
+load(1)
 async function load(page: number) {
   try {
     loading.value = true
@@ -71,9 +69,9 @@ async function load(page: number) {
   }
 }
 const pagination = ref({
-  pageSize: response.value.meta.page_size,
-  pageCount: response.value.meta.total,
-  page: response.value.meta.current_page,
+  pageSize: response.value?.meta?.page_size,
+  pageCount: response.value?.meta?.total,
+  page: response.value?.meta?.current_page,
   pageSizes,
   showQuickJumper: true,
   showSizePicker: true,
@@ -85,7 +83,7 @@ const pagination = ref({
     <n-data-table
       :loading="loading"
       :columns="columns"
-      :data="response.data"
+      :data="response?.data"
       :striped="striped"
       :size="size"
       :max-height="props.height"
