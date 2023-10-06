@@ -1,4 +1,5 @@
 # sable
+[![code style](https://antfu.me/badge-code-style.svg)](https://github.com/antfu/eslint-config)
 
 近日来，总觉所学甚少，所知甚少。写这项目，一来是验证和学习新的知识，二来是对自己内心的一次探寻。
 
