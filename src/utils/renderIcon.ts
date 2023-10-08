@@ -6,7 +6,7 @@ import Icon from '@/components/Icon'
 /**
  * 渲染icon - 从 naive-ui 组件库导出
  * @param icon 图标名称
- * @returns
+ * @returns component
  */
 export function renderIcon(icon: Component) {
   return () => h(NIcon, null, { default: () => h(icon) })
