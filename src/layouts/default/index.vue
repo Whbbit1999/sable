@@ -18,7 +18,7 @@ import config from '@/config/config'
 
     <main flex="~ col 1 " h-full overflow-hidden>
       <Header mb-0 bg="white dark:dark" />
-      <Tags px-2 my-2 />
+      <Tags />
       <div flex-1 mx-2 overflow-hidden rounded-md>
         <n-scrollbar><Main /></n-scrollbar>
       </div>

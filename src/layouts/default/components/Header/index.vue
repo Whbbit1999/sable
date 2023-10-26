@@ -37,7 +37,6 @@ function logout() {
 <template>
   <header class="flex items-center justify-between p-2 m-2 rounded-md">
     <div flex items-center gap-4>
-      <ReloadPage />
       <Breadcrump v-if="config.layout.showBreadCrump" />
     </div>
 

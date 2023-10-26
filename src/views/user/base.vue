@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import dayjs from 'dayjs'
 
-const user = userStore()
+const user = useUserStore()
 const userInfo = await user.getUserInfo()
 </script>
 

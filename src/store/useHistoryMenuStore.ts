@@ -1,6 +1,6 @@
 import type { MenuOption } from 'naive-ui'
 import { defineStore } from 'pinia'
-import type { RouteLocationNormalized } from 'vue-router'
+import type { RouteLocationNormalized, RouteRecordName } from 'vue-router'
 import { storage } from '@/utils'
 import config from '@/config/config'
 
@@ -22,7 +22,7 @@ export const useHistoryMenuStore = defineStore('history-menu', () => {
     const menu = { key: route?.name, label: route?.meta?.menu?.title }
 
     if (isShow && !isHas)
-      historyMenu.value?.push(menu)
+      historyMenu.value?.push(menu as MenuOption)
 
     if (historyMenu.value?.length > config.historyMenuMax)
       historyMenu.value.shift()
@@ -30,33 +30,43 @@ export const useHistoryMenuStore = defineStore('history-menu', () => {
     storage.set(CacheEnum.HISTORY_MENU, historyMenu.value)
   }
 
-  function removeHistoryMenu(key) {
+  function removeHistoryMenu(key: RouteRecordName) {
     if (historyMenu.value?.length === 1) {
       storage.set(CacheEnum.HISTORY_MENU, historyMenu.value)
       return { isCurrent: false, currentIndex: undefined }
     }
-
     const index = historyMenu.value?.findIndex(i => i.key === key)
+    const isCurrent = historyMenu.value[index].key === key
+
     historyMenu.value.splice(index, 1)
     storage.set(CacheEnum.HISTORY_MENU, historyMenu.value)
 
-    const isCurrent = index === historyMenu.value?.length
     return { isCurrent, currentIndex: index }
   }
 
-  function closeRight(key: string) {
+  function closeRight(key: RouteRecordName) {
     const index = historyMenu.value?.findIndex(i => i.key === key)
-    historyMenu.value.splice(index, historyMenu.value?.length - 1)
+    if (index !== -1)
+      historyMenu.value?.splice(index + 1, historyMenu.value?.length - 1)
+
     storage.set(CacheEnum.HISTORY_MENU, historyMenu.value)
+
+    return { isCurrent: false, currentIndex: index }
   }
-  function closeOther(key: string) {
+
+  function closeLeft(key: RouteRecordName) {
+    const index = historyMenu.value?.findIndex(i => i.key === key)
+    historyMenu.value?.splice(0, index)
+    storage.set(CacheEnum.HISTORY_MENU, historyMenu.value)
+
+    return { isCurrent: false, currentIndex: index }
+  }
+
+  function closeOther(key: RouteRecordName) {
     historyMenu.value = historyMenu.value?.filter(i => i.key === key)
     storage.set(CacheEnum.HISTORY_MENU, historyMenu.value)
-  }
-  function closeLeft(key: string) {
-    const index = historyMenu.value?.findIndex(i => i.key === key)
-    historyMenu.value.splice(0, index)
-    storage.set(CacheEnum.HISTORY_MENU, historyMenu.value)
+
+    return { isCurrent: false, currentIndex: 0 }
   }
 
   return {

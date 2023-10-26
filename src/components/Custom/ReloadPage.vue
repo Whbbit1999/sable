@@ -1,7 +1,7 @@
 <script lang="ts" setup></script>
 
 <template>
-  <div icon-btn @click="$router.go(0)">
+  <div icon-btn role="button" @click="$router.go(0)">
     <i i-carbon-rotate-360 />
   </div>
 </template>
