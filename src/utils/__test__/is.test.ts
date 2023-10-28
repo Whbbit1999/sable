@@ -1,13 +1,13 @@
-import { expect, test } from 'vitest'
+import { expect, it } from 'vitest'
 import { is, isShowMenu, isString, isUrl } from '../is'
 
-test('utils.is-isUrl', async () => {
+it('utils.is-isUrl', async () => {
   expect(isUrl('https://www.whbbit.cn')).toBeTruthy()
   expect(isUrl('www.whbbit.cn')).toBeTruthy()
   expect(isUrl('ssss.cn')).toBeFalsy()
 })
 
-test('utils.is-isShowMenu', () => {
+it('utils.is-isShowMenu', () => {
   const hideRoute = {
     path: 'base',
     name: 'user.base',
@@ -25,12 +25,12 @@ test('utils.is-isShowMenu', () => {
   expect(isShowMenu(showRoute)).toBeTruthy()
 })
 
-test('utils.is-isString', () => {
+it('utils.is-isString', () => {
   expect(isString('wer')).toBeTruthy()
   expect(isString({ a: 'b' })).toBeFalsy()
 })
 
-test('utils.is-is', () => {
+it('utils.is-is', () => {
   expect(is({ a: 'b' }, 'Object')).toBeTruthy()
   expect(is([1, 2, 3], 'Array')).toBeTruthy()
   expect(

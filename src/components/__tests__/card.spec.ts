@@ -1,4 +1,4 @@
-import { test } from 'vitest'
+import { it } from 'vitest'
 
-test('card-components', () => {
+it('card-components', () => {
 })

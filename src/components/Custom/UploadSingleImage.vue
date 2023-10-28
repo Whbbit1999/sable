@@ -33,11 +33,11 @@ async function request(options: any) {
 </script>
 
 <template>
-  <n-upload list-type="image-card" :max="1" :on-change="request">
+  <NUpload list-type="image-card" :max="1" :on-change="request">
     <Icon icon="ion:add" :size="32">
       点击上传
     </Icon>
-  </n-upload>
+  </NUpload>
 </template>
 
 <style scoped lang="scss"></style>

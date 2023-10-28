@@ -54,7 +54,7 @@ router.beforeEach((to) => {
 </script>
 
 <template>
-  <n-menu
+  <NMenu
     :collapsed="collapsed"
     :options="menu.getMenus"
     :default-expanded-keys="defaultExpandedKeys"

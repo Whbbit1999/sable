@@ -80,7 +80,7 @@ const pagination = ref({
 
 <template>
   <main pb-2>
-    <n-data-table
+    <NDataTable
       :loading="loading"
       :columns="columns"
       :data="response?.data"
@@ -91,9 +91,9 @@ const pagination = ref({
       :on-update:page="load"
     >
       <template #empty>
-        <n-empty description="暂无数据" />
+        <NEmpty description="暂无数据" />
       </template>
-    </n-data-table>
+    </NDataTable>
   </main>
 </template>
 

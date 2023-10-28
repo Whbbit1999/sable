@@ -14,16 +14,16 @@ const myArray = ref([
 
 <template>
   <div>
-    <n-alert title="文档详见" class="mb-3">
+    <NAlert title="文档详见" class="mb-3">
       <template #icon>
-        <n-icon>
+        <NIcon>
           <AirplaneOutline />
-        </n-icon>
+        </NIcon>
       </template>
-      <n-button quaternary type="primary">
+      <NButton quaternary type="primary">
         <a href="https://github.com/SortableJS/vue.draggable.next" target="_blank" rel="noopener noreferrer">vue.draggable.next</a>
-      </n-button>
-    </n-alert>
+      </NButton>
+    </NAlert>
 
     拖拽示例：
     <Draggable v-model="myArray" item-key="id" class="grid grid-cols-3 gap-3">

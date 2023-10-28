@@ -1,7 +1,6 @@
 <script lang="ts" setup>
 import { LogOutOutline as LogoutIcon, PersonCircleOutline as UserIcon } from '@vicons/ionicons5'
 import dayjs from 'dayjs'
-import ReloadPage from '@/components/Custom/ReloadPage.vue'
 import Notify from '@/components/Notify/index.vue'
 import config from '@/config/config'
 import { renderIcon, storage } from '@/utils'
@@ -49,17 +48,17 @@ function logout() {
 
       <ToggleTheme />
 
-      <n-dropdown :options="options" :on-select="onSelect">
+      <NDropdown :options="options" :on-select="onSelect">
         <div class="flex items-center px-3">
           <!-- 头像 -->
-          <n-avatar class="mr-2" size="medium" :src="userInfo.avatar" />
+          <NAvatar class="mr-2" size="medium" :src="userInfo.avatar" />
           <!-- 用户名/注册时间 -->
           <div class="flex flex-col ml-2">
             <span class="text-sm">{{ userInfo.name }}</span>
             <span class="text-sm text-gray-500">{{ dayjs(userInfo.createdAt).format('YYYY/MM/DD') }}</span>
           </div>
         </div>
-      </n-dropdown>
+      </NDropdown>
     </div>
   </header>
 </template>

@@ -15,10 +15,10 @@ const model = ref(props.model)
 </script>
 
 <template>
-  <n-form :model="model" label-width="auto" label-align="right" label-placement="left" size="large">
-    <n-form-item v-for="field in fields" :key="field.name" :path="field.name" :label="field.title">
+  <NForm :model="model" label-width="auto" label-align="right" label-placement="left" size="large">
+    <NFormItem v-for="field in fields" :key="field.name" :path="field.name" :label="field.title">
       <template v-if="field.type === 'input' || !field.type">
-        <n-input
+        <NInput
           v-model:value="model[field.name]"
           type="text"
           :placeholder="field.placeholder"
@@ -27,41 +27,41 @@ const model = ref(props.model)
         />
       </template>
       <template v-if="field.type === 'select'">
-        <n-select v-model:value="model[field.name]" :options="field.options" />
+        <NSelect v-model:value="model[field.name]" :options="field.options" />
       </template>
       <template v-if="field.type === 'switch'">
-        <n-switch v-model:value="model[field.name]" />
+        <NSwitch v-model:value="model[field.name]" />
       </template>
       <template v-if="field.type === 'radio'">
-        <n-radio-group v-model:value="model[field.name]" name="radiogroup">
-          <n-space>
-            <n-radio v-for="option in field.options" :key="option.value" :value="option.value">
+        <NRadioGroup v-model:value="model[field.name]" name="radiogroup">
+          <NSpace>
+            <NRadio v-for="option in field.options" :key="option.value" :value="option.value">
               {{ option.label }}
-            </n-radio>
-          </n-space>
-        </n-radio-group>
+            </NRadio>
+          </NSpace>
+        </NRadioGroup>
       </template>
       <template v-if="field.type === 'inputNumber'">
-        <n-input-number v-model:value="model[field.name]" clearable />
+        <NInputNumber v-model:value="model[field.name]" clearable />
       </template>
       <template v-if="field.type === 'textarea'">
-        <n-input v-model:value="model[field.name]" type="textarea" :placeholder="field.placeholder" clearable />
+        <NInput v-model:value="model[field.name]" type="textarea" :placeholder="field.placeholder" clearable />
       </template>
       <template v-if="field.type === 'image'">
-        <n-image width="100" :src="model[field.name]" />
+        <NImage width="100" :src="model[field.name]" />
       </template>
       <template v-if="field.type === 'markdown'">
         <Markdown v-model="model[field.name]" />
       </template>
-    </n-form-item>
-    <n-form-item>
+    </NFormItem>
+    <NFormItem>
       <slot v-if="$slots.button" name="button" />
 
-      <n-button v-else attr-type="button" @click="emit('submit', model)">
+      <NButton v-else attr-type="button" @click="emit('submit', model)">
         提交
-      </n-button>
-    </n-form-item>
-  </n-form>
+      </NButton>
+    </NFormItem>
+  </NForm>
 </template>
 
 <style scoped lang="scss"></style>

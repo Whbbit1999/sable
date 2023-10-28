@@ -5,18 +5,18 @@ import { lineChartsOptions, pipeChartsOptions, pipeChartsOptions2, radarsChartOp
 
 <template>
   <main class="grid md:grid-cols-2 grid-cols-1 gap-3">
-    <n-card class="h-[300px]">
+    <NCard class="h-[300px]">
       <Chart :options="lineChartsOptions()" />
-    </n-card>
-    <n-card class="h-[300px]">
+    </NCard>
+    <NCard class="h-[300px]">
       <Chart :options="pipeChartsOptions()" />
-    </n-card>
-    <n-card class="h-[300px]">
+    </NCard>
+    <NCard class="h-[300px]">
       <Chart :options="pipeChartsOptions2()" />
-    </n-card>
-    <n-card class="h-[300px]">
+    </NCard>
+    <NCard class="h-[300px]">
       <Chart :options="radarsChartOptons()" />
-    </n-card>
+    </NCard>
   </main>
 </template>
 

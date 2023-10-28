@@ -47,9 +47,9 @@ function handleChangeMenu({ isCurrent, currentIndex }) {
     flex="~ gap-2 justify-between"
     bg="white dark:dark"
   >
-    <n-scrollbar x-scrollable>
+    <NScrollbar x-scrollable>
       <div flex="~ 1 gap-2 ">
-        <n-tag
+        <NTag
           v-for="tag in historyMenu"
           :key="tag.key"
           :bordered="false"
@@ -63,9 +63,9 @@ function handleChangeMenu({ isCurrent, currentIndex }) {
           @close.stop="handleRemoveTag(tag)"
         >
           {{ tag.label }}
-        </n-tag>
+        </NTag>
       </div>
-    </n-scrollbar>
+    </NScrollbar>
 
     <div flex="~ gap-1">
       <ReloadPage />

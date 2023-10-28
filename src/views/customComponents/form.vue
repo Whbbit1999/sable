@@ -27,14 +27,14 @@ const article = {
     <FormFieldList :model="site" :fields="SystemFormField.site" @submit="submit" />
     <FormFieldList :model="article" :fields="ArticleFormField" @submit="submit">
       <template #button>
-        <n-space>
-          <n-button type="primary" size="medium">
+        <NSpace>
+          <NButton type="primary" size="medium">
             发表文章
-          </n-button>
-          <n-button type="info" size="medium">
+          </NButton>
+          <NButton type="info" size="medium">
             保存草稿
-          </n-button>
-        </n-space>
+          </NButton>
+        </NSpace>
       </template>
     </FormFieldList>
   </main>

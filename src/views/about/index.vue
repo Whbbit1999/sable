@@ -20,70 +20,70 @@ Object.entries(devDependencies).forEach(([key, value]: [string, string]) => {
 
 <template>
   <main class="">
-    <n-space vertical>
-      <n-card title="关于">
+    <NSpace vertical>
+      <NCard title="关于">
         {{ name }} 是一个基于vue3、vite2、TypeScript的中后台解决方案，它可以帮助您快速搭建基础中后台项目。
-      </n-card>
-      <n-card title="项目信息">
-        <n-descriptions label-placement="left" bordered :column="2">
-          <n-descriptions-item label="版本">
-            <n-tag type="info">
+      </NCard>
+      <NCard title="项目信息">
+        <NDescriptions label-placement="left" bordered :column="2">
+          <NDescriptionsItem label="版本">
+            <NTag type="info">
               {{ version }}
-            </n-tag>
-          </n-descriptions-item>
+            </NTag>
+          </NDescriptionsItem>
 
-          <n-descriptions-item label="最后编译时间">
-            <n-tag type="info">
+          <NDescriptionsItem label="最后编译时间">
+            <NTag type="info">
               {{ lastBuildTime }}
-            </n-tag>
-          </n-descriptions-item>
+            </NTag>
+          </NDescriptionsItem>
 
-          <n-descriptions-item label="文档地址">
-            <n-button text tag="a" href="https://www.whbbit.cn/wiki/sable/index.html" target="_blank" type="info">
+          <NDescriptionsItem label="文档地址">
+            <NButton text tag="a" href="https://www.whbbit.cn/wiki/sable/index.html" target="_blank" type="info">
               文档地址
-            </n-button>
-          </n-descriptions-item>
+            </NButton>
+          </NDescriptionsItem>
 
-          <n-descriptions-item label="预览地址">
-            <n-button text tag="a" href="" target="_blank" type="info">
+          <NDescriptionsItem label="预览地址">
+            <NButton text tag="a" href="" target="_blank" type="info">
               预览地址
-            </n-button>
-          </n-descriptions-item>
+            </NButton>
+          </NDescriptionsItem>
 
-          <n-descriptions-item label="仓库地址">
-            <n-space>
-              <n-button text tag="a" href="https://github.com/Whbbit1999/sable" target="_blank" type="info">
+          <NDescriptionsItem label="仓库地址">
+            <NSpace>
+              <NButton text tag="a" href="https://github.com/Whbbit1999/sable" target="_blank" type="info">
                 Github
-              </n-button>
+              </NButton>
               <!-- <n-divider vertical /> -->
               <!-- <n-button text tag="a" href="" target="_blank" type="info"> Gitee </n-button> -->
-            </n-space>
-          </n-descriptions-item>
+            </NSpace>
+          </NDescriptionsItem>
 
-          <n-descriptions-item label="交流">
-            <n-button text tag="a" href="https://pd.qq.com/s/3oksi7bke" target="_blank" type="info">
+          <NDescriptionsItem label="交流">
+            <NButton text tag="a" href="https://pd.qq.com/s/3oksi7bke" target="_blank" type="info">
               交流（QQ频道）
-            </n-button>
-          </n-descriptions-item>
-        </n-descriptions>
-      </n-card>
+            </NButton>
+          </NDescriptionsItem>
+        </NDescriptions>
+      </NCard>
 
-      <n-card title="生产环境依赖">
-        <n-descriptions label-placement="left" bordered>
-          <n-descriptions-item v-for="item in schema" :key="item.field" :label="item.label">
+      <NCard title="生产环境依赖">
+        <NDescriptions label-placement="left" bordered>
+          <NDescriptionsItem v-for="item in schema" :key="item.field" :label="item.label">
             {{ item.field }}
-          </n-descriptions-item>
-        </n-descriptions>
-      </n-card>
+          </NDescriptionsItem>
+        </NDescriptions>
+      </NCard>
 
-      <n-card title="开发环境依赖">
-        <n-descriptions label-placement="left" bordered>
-          <n-descriptions-item v-for="item in devSchema" :key="item.field" :label="item.label">
+      <NCard title="开发环境依赖">
+        <NDescriptions label-placement="left" bordered>
+          <NDescriptionsItem v-for="item in devSchema" :key="item.field" :label="item.label">
             {{ item.field }}
-          </n-descriptions-item>
-        </n-descriptions>
-      </n-card>
-    </n-space>
+          </NDescriptionsItem>
+        </NDescriptions>
+      </NCard>
+    </NSpace>
   </main>
 </template>
 

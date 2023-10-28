@@ -6,7 +6,7 @@ useDark()
 
 <template>
   <main class="bg-white dark:bg-dark">
-    <router-view />
+    <RouterView />
   </main>
 </template>
 

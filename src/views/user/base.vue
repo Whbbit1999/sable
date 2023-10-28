@@ -8,7 +8,7 @@ const userInfo = await user.getUserInfo()
 <template>
   <main>
     <div class="flex gap-2">
-      <n-card>
+      <NCard>
         <template #cover>
           <img :src="userInfo.avatar">
         </template>
@@ -22,7 +22,7 @@ const userInfo = await user.getUserInfo()
         <p class="text-gray-600">
           <span>注册于：</span><span>{{ dayjs(userInfo.createdAt).fromNow() }}</span>
         </p>
-      </n-card>
+      </NCard>
 
       <div class="flex-1">
         <h2>网站设置</h2>

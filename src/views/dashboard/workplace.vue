@@ -31,13 +31,13 @@ const links = ref([
 
 <template>
   <div>
-    <n-card>
+    <NCard>
       <template #header>
         工作台
       </template>
       <div flex justify-between>
         <div flex items-center gap-3>
-          <n-avatar :size="64" :src="userInfo.avatar" />
+          <NAvatar :size="64" :src="userInfo.avatar" />
 
           <div h-full flex flex-col justify-start>
             <h2 text-xl>
@@ -55,22 +55,22 @@ const links = ref([
               {{ info.title }}
             </h2>
             <p text-center text-2xl>
-              <n-number-animation :from="0" :to="info.count" />
+              <NNumberAnimation :from="0" :to="info.count" />
             </p>
           </div>
         </div>
       </div>
-    </n-card>
+    </NCard>
 
-    <n-grid :cols="2" mt-4 :x-gap="12" :y-gap="8">
-      <n-grid-item>
-        <n-card>
+    <NGrid :cols="2" mt-4 :x-gap="12" :y-gap="8">
+      <NGridItem>
+        <NCard>
           <template #header>
             项目
           </template>
-          <n-grid :x-gap="8" :y-gap="8" :cols="3">
-            <n-grid-item v-for="project in projects" :key="project.title">
-              <n-card hoverable>
+          <NGrid :x-gap="8" :y-gap="8" :cols="3">
+            <NGridItem v-for="project in projects" :key="project.title">
+              <NCard hoverable>
                 <template #header>
                   <div flex items-center gap-2>
                     <Icon :icon="project.icon" size="24" />
@@ -80,20 +80,20 @@ const links = ref([
                 <p text="black/40 dark:white/40">
                   {{ project.desc }}
                 </p>
-              </n-card>
-            </n-grid-item>
-          </n-grid>
-        </n-card>
-      </n-grid-item>
+              </NCard>
+            </NGridItem>
+          </NGrid>
+        </NCard>
+      </NGridItem>
 
-      <n-grid-item>
-        <n-card>
+      <NGridItem>
+        <NCard>
           <template #header>
             快捷操作
           </template>
-          <n-grid :x-gap="8" :y-gap="8" :cols="3">
-            <n-grid-item v-for="link in links" :key="link.title">
-              <n-card
+          <NGrid :x-gap="8" :y-gap="8" :cols="3">
+            <NGridItem v-for="link in links" :key="link.title">
+              <NCard
                 :to="link.link"
                 hoverable
                 border="gray/40 1" block h-full w-full rounded-sm p-4 duration-200 hover:shadow-md
@@ -102,12 +102,12 @@ const links = ref([
                   <Icon :icon="link.icon" size="24" />
                   <h3>{{ link.title }}</h3>
                 </RouterLink>
-              </n-card>
-            </n-grid-item>
-          </n-grid>
-        </n-card>
-      </n-grid-item>
-    </n-grid>
+              </NCard>
+            </NGridItem>
+          </NGrid>
+        </NCard>
+      </NGridItem>
+    </NGrid>
   </div>
 </template>
 

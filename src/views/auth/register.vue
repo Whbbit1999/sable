@@ -30,41 +30,41 @@ async function onSubmit() {
 <template>
   <div>
     <main class="flex flex-col gap-2">
-      <n-h2 class="text-center">
+      <NH2 class="text-center">
         用户注册
-      </n-h2>
+      </NH2>
       <div class="flex flex-col">
         <span class="mb-1">用户名</span>
-        <n-input v-model:value="loginFormData.username" />
+        <NInput v-model:value="loginFormData.username" />
       </div>
       <div class="flex flex-col">
         <span class="mb-1">邮箱</span>
-        <n-input v-model:value="loginFormData.username" />
+        <NInput v-model:value="loginFormData.username" />
       </div>
       <div class="flex flex-col">
         <span class="mb-1">密码</span>
-        <n-input v-model:value="loginFormData.password" type="password" show-password-on="mousedown" />
+        <NInput v-model:value="loginFormData.password" type="password" show-password-on="mousedown" />
       </div>
       <div class="flex flex-col">
         <span class="mb-1">确认密码</span>
-        <n-input v-model:value="loginFormData.password" type="password" show-password-on="mousedown" />
+        <NInput v-model:value="loginFormData.password" type="password" show-password-on="mousedown" />
       </div>
     </main>
 
     <div class="flex flex-col justify-center gap-3 mt-4">
-      <n-button type="primary" :loading="loading" @click="onSubmit">
+      <NButton type="primary" :loading="loading" @click="onSubmit">
         注册
-      </n-button>
+      </NButton>
     </div>
     <div class="flex justify-end mt-2">
-      <n-space>
-        <n-button type="primary" text @click="$router.push({ name: 'auth.forgetPassword' })">
+      <NSpace>
+        <NButton type="primary" text @click="$router.push({ name: 'auth.forgetPassword' })">
           忘记密码
-        </n-button>
-        <n-button type="primary" text @click="$router.push({ name: 'auth.login' })">
+        </NButton>
+        <NButton type="primary" text @click="$router.push({ name: 'auth.login' })">
           登录
-        </n-button>
-      </n-space>
+        </NButton>
+      </NSpace>
     </div>
   </div>
 </template>

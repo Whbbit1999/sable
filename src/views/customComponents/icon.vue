@@ -5,35 +5,35 @@ import Icon from '@/components/Icon'
 <template>
   <div>
     <div flex="~ col " gap-4>
-      <n-alert title="使用本地svg图标" type="info">
+      <NAlert title="使用本地svg图标" type="info">
         将图标导入 /src/assets/svg 进行使用，名称为 `icon-custom-[svg名称]`
-      </n-alert>
+      </NAlert>
 
-      <n-icon text-8xl>
-        <icon-custom-axios />
-      </n-icon>
+      <NIcon text-8xl>
+        <IconCustomAxios />
+      </NIcon>
     </div>
 
     <div>
-      <n-alert title="使用icones查找图标" type="info">
+      <NAlert title="使用icones查找图标" type="info">
         可以去
-        <n-button text tag="a" href="https://icones.js.org/" target="_blank" type="primary">
+        <NButton text tag="a" href="https://icones.js.org/" target="_blank" type="primary">
           icones
-        </n-button>
+        </NButton>
         查看海量图标并直接复制类名进行使用
-      </n-alert>
+      </NAlert>
       <Icon icon="logos:axios" />
       <Icon icon="logos:vitejs" />
     </div>
 
     <div>
-      <n-alert title="下载对应图标集，使用类名直接使用" type="info">
+      <NAlert title="下载对应图标集，使用类名直接使用" type="info">
         可以去
-        <n-button text tag="a" href="https://unocss.dev/presets/icons" target="_blank" type="primary">
+        <NButton text tag="a" href="https://unocss.dev/presets/icons" target="_blank" type="primary">
           unocss
-        </n-button>
+        </NButton>
         查看文档
-      </n-alert>
+      </NAlert>
       这里使用系统集成的 carbon 图标集进行演示
       <div i-carbon-4k-filled />
     </div>

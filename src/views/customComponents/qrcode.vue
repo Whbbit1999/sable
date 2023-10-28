@@ -4,26 +4,26 @@ import Qrcode from '@/components/Qrcode/index.vue'
 
 <template>
   <main>
-    <n-alert type="info" class="mb-3" :show-icon="false">
+    <NAlert type="info" class="mb-3" :show-icon="false">
       默认渲染为canvas
-    </n-alert>
+    </NAlert>
 
     <div class="grid lg:grid-cols-3 grid-cols-1 gap-3">
-      <n-card title="默认使用">
+      <NCard title="默认使用">
         <Qrcode value="https://www.whbbit.cn" />
-      </n-card>
+      </NCard>
 
-      <n-card title="渲染为img">
+      <NCard title="渲染为img">
         <Qrcode value="https://www.whbbit.cn" tag="img" />
-      </n-card>
+      </NCard>
 
-      <n-card title="配置样式">
+      <NCard title="配置样式">
         <Qrcode value="https://www.whbbit.cn" front-color="#fff" bg-color="#000" />
-      </n-card>
+      </NCard>
 
-      <n-card title="大小">
+      <NCard title="大小">
         <Qrcode value="https://www.whbbit.cn" :width="300" />
-      </n-card>
+      </NCard>
     </div>
   </main>
 </template>

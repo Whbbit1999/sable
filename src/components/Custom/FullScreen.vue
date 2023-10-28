@@ -5,17 +5,15 @@ const { toggle, isFullscreen } = useFullscreen()
 </script>
 
 <template>
-  <n-tooltip trigger="hover">
+  <NTooltip trigger="hover">
     <template #trigger>
-      <Transition>
-        <div icon-btn @click="toggle">
-          <div v-if="!isFullscreen" i-carbon-maximize />
-          <div v-else i-carbon-minimize />
-        </div>
-      </Transition>
+      <div icon-btn @click="toggle">
+        <div v-if="!isFullscreen" i-carbon-maximize />
+        <div v-else i-carbon-minimize />
+      </div>
     </template>
     {{ isFullscreen ? '退出全屏' : '全屏' }}
-  </n-tooltip>
+  </NTooltip>
 </template>
 
 <style scoped lang="scss"></style>

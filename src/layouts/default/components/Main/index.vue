@@ -2,7 +2,7 @@
 
 <template>
   <main>
-    <n-back-top :right="0" />
+    <NBackTop :right="0" />
 
     <RouterView v-slot="{ Component }">
       <Transition appear mode="out-in" name="nested">

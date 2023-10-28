@@ -6,16 +6,16 @@ const route = useRoute()
 </script>
 
 <template>
-  <n-breadcrumb>
+  <NBreadcrumb>
     <template v-if="route">
-      <n-breadcrumb-item v-for="(r, i) in route.matched" :key="i" :clickable="false">
+      <NBreadcrumbItem v-for="(r, i) in route.matched" :key="i" :clickable="false">
         <div flex items-center gap-1>
           <Icon :icon="r.meta?.menu?.icon ?? config.menu.defaultRouteIcon" size="14" />
           {{ r.meta.menu.title }}
         </div>
-      </n-breadcrumb-item>
+      </NBreadcrumbItem>
     </template>
-  </n-breadcrumb>
+  </NBreadcrumb>
 </template>
 
 <style scoped lang="scss"></style>

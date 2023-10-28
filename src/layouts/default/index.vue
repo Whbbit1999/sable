@@ -20,7 +20,7 @@ import config from '@/config/config'
       <Header mb-0 bg="white dark:dark" />
       <Tags />
       <div flex-1 mx-2 overflow-hidden rounded-md>
-        <n-scrollbar><Main /></n-scrollbar>
+        <NScrollbar><Main /></NScrollbar>
       </div>
       <Footer v-if="config.layout.showFooter" p-2 m-2 bg="white dark:dark" text="dark:white/80" />
     </main>

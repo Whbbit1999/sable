@@ -7,13 +7,13 @@ const isDark = useDark()
 </script>
 
 <template>
-  <n-config-provider :locale="zhCN" :date-locale="dateZhCN" :theme="isDark ? darkTheme : undefined">
-    <n-notification-provider :max="config.naiveUI.notificationMax">
+  <NConfigProvider :locale="zhCN" :date-locale="dateZhCN" :theme="isDark ? darkTheme : undefined">
+    <NNotificationProvider :max="config.naiveUI.notificationMax">
       <Suspense>
-        <router-view />
+        <RouterView />
       </Suspense>
-    </n-notification-provider>
-  </n-config-provider>
+    </NNotificationProvider>
+  </NConfigProvider>
 </template>
 
 <style>

@@ -21,9 +21,9 @@ watch(
     <Logo px-2 :collapsed="collapsed" />
 
     <div flex-1 overflow-auto>
-      <n-scrollbar>
+      <NScrollbar>
         <Menu :collapsed="collapsed" />
-      </n-scrollbar>
+      </NScrollbar>
     </div>
 
     <div flex w-full p-2 border="t t-gray/20" :class="[collapsed ? 'justify-center' : 'justify-end']">

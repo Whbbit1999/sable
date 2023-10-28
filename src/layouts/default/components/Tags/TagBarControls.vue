@@ -32,7 +32,7 @@ function handleSelect(key) {
 </script>
 
 <template>
-  <n-dropdown
+  <NDropdown
     trigger="hover"
     :options="options"
     @select="handleSelect"
@@ -40,7 +40,7 @@ function handleSelect(key) {
     <div role="button" icon-btn>
       <div i-carbon-chevron-down />
     </div>
-  </n-dropdown>
+  </NDropdown>
 </template>
 
 <style scoped lang="scss"></style>

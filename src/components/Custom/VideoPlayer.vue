@@ -9,6 +9,7 @@ const props = defineProps<{
 const artplayer = ref()
 
 function initPlayer() {
+  // eslint-disable-next-line no-new
   new Artplayer({
     container: artplayer.value,
     url: props.url,

@@ -3,9 +3,9 @@
     "composite": true,
     "target": "es2017",
     "jsx": "preserve",
+    "baseUrl": "./",
     "module": "esnext",
     "moduleResolution": "node",
-    "baseUrl": "./",
     "paths": {
       "@/*": ["src/*"]
     },
