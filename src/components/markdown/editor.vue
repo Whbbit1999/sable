@@ -4,14 +4,18 @@ import { MdEditor, MdPreview } from 'md-editor-v3'
 import { uploadImage } from '@/api/uploadApi'
 import 'md-editor-v3/lib/style.css'
 
+type MdEditorPreviewTheme = 'default' | 'github' | 'vuepress' | 'mk-cute' | 'smart-blue' | 'cyanosis'
+type MdEditorCodeTheme = 'atom' | 'a11y' | 'github' | 'gradient' | 'kimbie' | 'paraiso' | 'qtcreator' | 'stackoverflow'
+interface MdEditorProps {
+  modelValue: string
+  previewTheme?: MdEditorPreviewTheme
+  codeTheme?: MdEditorCodeTheme
+  preview?: boolean
+  placeholder?: string
+}
+
 const props = withDefaults(
-  defineProps<{
-    modelValue: string
-    previewTheme?: 'default' | 'github' | 'vuepress' | 'mk-cute' | 'smart-blue' | 'cyanosis'
-    codeTheme?: 'atom' | 'a11y' | 'github' | 'gradient' | 'kimbie' | 'paraiso' | 'qtcreator' | 'stackoverflow'
-    preview?: boolean
-    placeholder?: string
-  }>(),
+  defineProps<MdEditorProps>(),
   {
     codeTheme: 'atom',
     previewTheme: 'github',
@@ -23,6 +27,8 @@ const emits = defineEmits(['update:modelValue'])
 // docs https://imzbf.github.io/md-editor-v3/docs#%F0%9F%A7%B1%20toolbarsExclude
 
 const isDark = useDark()
+const editorTheme = computed(() => isDark.value ? 'dark' : 'light')
+
 const content = ref(props.modelValue)
 function handleChangeContent(v: string) {
   content.value = v
@@ -56,13 +62,20 @@ async function handleUpdateImage(files: Array<File>, callback: (urls: string[]) 
     :placeholder="placeholder"
     :on-change="handleChangeContent"
     :on-upload-img="handleUpdateImage"
-    :theme="isDark ? 'dark' : 'light'"
+    :theme="editorTheme"
     :code-theme="codeTheme"
     :preview-theme="previewTheme"
     :toolbars-exclude="['github', 'save']"
   />
 
-  <MdPreview v-else v-model="content" :preview-theme="previewTheme" :code-theme="codeTheme" />
+  <MdPreview
+    v-else
+    v-model="content"
+    :preview-theme="previewTheme"
+    :code-theme="codeTheme"
+    :theme="editorTheme"
+    :on-change="handleChangeContent"
+  />
 </template>
 
 <style scoped lang="scss"></style>
