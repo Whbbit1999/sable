@@ -4,14 +4,6 @@ import vue from '@vitejs/plugin-vue'
 export default defineConfig({
   plugins: [vue()],
   test: {
-    // coverage: {
-    //   provider: 'istanbul',
-    // },
-
-    // transformMode: {
-    //   web: [/.[jt]sx$/],
-    // },
-
-    // reporters: ['html'],
+    
   },
 })

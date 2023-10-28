@@ -19,16 +19,5 @@
       "path": "./tsconfig.node.json"
     }
   ],
-  "include": [
-    // "vite.config.ts",
-    // "src/**/*.ts",
-    // "src/**/*.d.ts",
-    // "src/**/*.tsx",
-    // "src/**/*.vue",
-    // "vite/**/*.ts",
-    // "mock/**/*.ts",
-    // "types/**/*.d.ts",
-    // "types/**/*.ts",
-    // "**/package.json"
-  ]
+  "include": []
 }
