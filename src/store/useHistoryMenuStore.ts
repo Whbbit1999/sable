@@ -8,14 +8,14 @@ export const useHistoryMenuStore = defineStore('history-menu', () => {
   const historyMenu = ref<MenuOption[]>([])
 
   function getHistoryMenu() {
-    return storage.get(CacheEnum.HISTORY_MENU) as MenuOption[]
+    return storage.get(CacheEnum.HISTORY_MENU) as MenuOption[] || []
   }
 
   function addHistoryMenu(route: RouteLocationNormalized) {
     historyMenu.value = getHistoryMenu()
+
     const isHas = historyMenu.value?.some(i => i.label === route.meta?.menu?.title)
     const isShow = route.meta.menu?.showTag !== false
-
     if (!isShow)
       return
 
