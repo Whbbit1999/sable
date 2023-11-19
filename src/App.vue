@@ -2,6 +2,8 @@
 import { useDark } from '@vueuse/core'
 import { darkTheme, dateZhCN, zhCN } from 'naive-ui'
 import config from './config/config'
+import SuspenseFallback from './components/SuspenseFallback.vue'
+import WaterMark from './components/WaterMark.vue'
 
 const isDark = useDark()
 </script>
@@ -10,7 +12,14 @@ const isDark = useDark()
   <NConfigProvider :locale="zhCN" :date-locale="dateZhCN" :theme="isDark ? darkTheme : undefined">
     <NNotificationProvider :max="config.naiveUI.notificationMax">
       <Suspense>
-        <RouterView />
+        <div>
+          <WaterMark />
+          <RouterView />
+        </div>
+
+        <template #fallback>
+          <SuspenseFallback />
+        </template>
       </Suspense>
     </NNotificationProvider>
   </NConfigProvider>

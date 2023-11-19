@@ -14,4 +14,20 @@ export default {
   naiveUI: {
     notificationMax: 3,
   },
+  watermark: {
+    show: false,
+    fontSize: 16,
+    lineHeight: 16,
+    width: 200,
+    height: 200,
+    xOffset: 0,
+    yOffset: 30,
+    rotate: -20,
+    content: 'SableAdmin',
+  },
+  loading: {
+    // loadingIcon: '',
+    title: 'Sable Admin',
+    content: '一阴一阳谓之道',
+  },
 }
