@@ -14,16 +14,18 @@ import config from '@/config/config'
     bg="containerBgColor dark:darkContainerBgColor"
     text="containerTextColor dark:darkContainerTextColor"
   >
-    <Aside />
+    <NLayout has-sider>
+      <Aside />
 
-    <main flex="~ col 1 " h-full overflow-hidden>
-      <Header mb-0 bg="white dark:dark" />
-      <Tags />
-      <div flex-1 mx-2 overflow-hidden rounded-md>
-        <NScrollbar><Main /></NScrollbar>
-      </div>
-      <Footer v-if="config.layout.showFooter" p-2 m-2 bg="white dark:dark" text="dark:white/80" />
-    </main>
+      <main flex="~ col 1 " h-full overflow-hidden>
+        <Header mb-0 bg="white dark:dark" />
+        <Tags />
+        <div flex-1 mx-2 overflow-hidden>
+          <NScrollbar><Main /></NScrollbar>
+        </div>
+        <Footer v-if="config.layout.showFooter" p-2 m-2 bg="white dark:dark" text="dark:white/80" />
+      </main>
+    </NLayout>
   </main>
 </template>
 

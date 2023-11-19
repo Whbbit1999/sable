@@ -16,6 +16,8 @@ export default defineConfig({
       containerTextColor: '#393a34',
       darkContainerBgColor: '#1e1e1e',
       darkContainerTextColor: '#d4cfbf',
+      dark: 'rgb(24,24,28)',
+      light: '#fff',
     },
   },
 

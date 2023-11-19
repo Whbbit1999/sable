@@ -3,12 +3,7 @@ import Logo from './Logo/index.vue'
 import Menu from './Menu/index.vue'
 
 const { changeCollapsed } = useAppStore()
-const collapsed = ref<boolean>(useAppStore().collapsed)
-
-watch(
-  () => useAppStore().collapsed,
-  (val) => { collapsed.value = val },
-)
+const collapsed = computed(() => useAppStore().collapsed)
 </script>
 
 <template>
@@ -18,19 +13,25 @@ watch(
     flex="~ col"
     :class="[collapsed ? 'w-[48px]' : 'w-[200px]']"
   >
-    <Logo px-2 :collapsed="collapsed" />
+    <NLayoutSider
+      class="h-full"
+      collapse-mode="width"
+      :collapsed-width="48"
+      :width="200"
+      :collapsed="collapsed"
+      show-trigger="bar"
+      :native-scrollbar="false"
+      @collapse="changeCollapsed"
+      @expand="changeCollapsed"
+    >
+      <Logo px-2 :collapsed="collapsed" />
 
-    <div flex-1 overflow-auto>
-      <NScrollbar>
-        <Menu :collapsed="collapsed" />
-      </NScrollbar>
-    </div>
-
-    <div flex w-full p-2 border="t t-gray/20" :class="[collapsed ? 'justify-center' : 'justify-end']">
-      <button icon-btn :class="[collapsed ? 'rotate-180' : '']" @click="changeCollapsed">
-        <i i-carbon-chevron-right />
-      </button>
-    </div>
+      <div flex-1 overflow-hidden>
+        <NScrollbar>
+          <Menu :collapsed="collapsed" />
+        </NScrollbar>
+      </div>
+    </NLayoutSider>
   </aside>
 </template>
 
