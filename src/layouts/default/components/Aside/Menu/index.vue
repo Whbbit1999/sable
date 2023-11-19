@@ -15,31 +15,26 @@ const route = useRoute()
 const router = useRouter()
 const selectedKey = ref(route.name as string)
 
-const menu = useMenuStore()
+const menuStore = useMenuStore()
+menuStore.composeMenus()
+const options = computed(() => menuStore.menu)
 
 const defaultExpandedKeys = ref()
 const { collapsed } = toRefs(props)
-// const collapsed = ref<boolean>(props.collapsed)
-
-watch(
-  () => props.collapsed,
-  (val: boolean) => {
-    collapsed.value = val
-  },
-)
 
 // -------------------- 点击menu，选中项的处理 START --------------------
 const historyMenuStore = useHistoryMenuStore()
 function handleMenuSelect(key: string, item: IMenuOption) {
-  if (isExternal(item?.path)) {
-    window.open(item.path)
-  }
-  else {
-    selectedKey.value = key
-    router.push({ name: key })
-    // 增加历史菜单
-    historyMenuStore.addHistoryMenu(unref(route))
-  }
+  if (isExternal(item?.path))
+    return window.open(item.path)
+
+  if (!key)
+    return
+
+  selectedKey.value = key
+  router.push({ name: key })
+  // 增加历史菜单
+  historyMenuStore.addHistoryMenu(unref(route))
 }
 // -------------------- 点击menu，选中项的处理 END ----------------------
 
@@ -56,7 +51,7 @@ router.beforeEach((to) => {
 <template>
   <NMenu
     :collapsed="collapsed"
-    :options="menu.getMenus"
+    :options="options"
     :default-expanded-keys="defaultExpandedKeys"
     accordion
     :indent="18"

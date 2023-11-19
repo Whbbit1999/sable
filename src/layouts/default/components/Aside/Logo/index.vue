@@ -5,14 +5,7 @@ const props = defineProps<{
   collapsed: boolean
 }>()
 
-const collapsed = ref<boolean>(props.collapsed)
-
-watch(
-  () => props.collapsed,
-  (newVal) => {
-    collapsed.value = newVal
-  },
-)
+const collapsed = computed(() => props.collapsed)
 </script>
 
 <template>

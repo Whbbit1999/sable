@@ -3,7 +3,8 @@ import Logo from './Logo/index.vue'
 import Menu from './Menu/index.vue'
 
 const { changeCollapsed } = useAppStore()
-const collapsed = computed(() => useAppStore().collapsed)
+
+const collapsed = computed(() => useAppStore().getCollapsed)
 </script>
 
 <template>

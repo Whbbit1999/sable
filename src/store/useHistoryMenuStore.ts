@@ -4,78 +4,72 @@ import type { RouteLocationNormalized, RouteRecordName } from 'vue-router'
 import { storage } from '@/utils'
 import config from '@/config/config'
 
-export const useHistoryMenuStore = defineStore('history-menu', () => {
-  const historyMenu = ref<MenuOption[]>([])
+export const useHistoryMenuStore = defineStore('history-menu', {
+  state: () => ({
+    historyMenu: [],
+  }),
+  getters: {
+    getHistoryMenu() {
+      return storage.get(CacheEnum.HISTORY_MENU) as MenuOption[] || []
+    },
+  },
+  actions: {
+    addHistoryMenu(route: RouteLocationNormalized) {
+      this.historyMenu = this.getHistoryMenu
 
-  function getHistoryMenu() {
-    return storage.get(CacheEnum.HISTORY_MENU) as MenuOption[] || []
-  }
+      const isHas = this.historyMenu.some(i => i.label === route.meta?.menu?.title)
+      const isShow = route.meta.menu?.showTag !== false
+      if (!isShow)
+        return
 
-  function addHistoryMenu(route: RouteLocationNormalized) {
-    historyMenu.value = getHistoryMenu()
+      const menu = { key: route?.name, label: route?.meta?.menu?.title }
 
-    const isHas = historyMenu.value?.some(i => i.label === route.meta?.menu?.title)
-    const isShow = route.meta.menu?.showTag !== false
-    if (!isShow)
-      return
+      if (isShow && !isHas)
+        this.historyMenu?.push(menu as MenuOption)
 
-    const menu = { key: route?.name, label: route?.meta?.menu?.title }
+      if (this.historyMenu?.length > config.historyMenuMax)
+        this.historyMenu.shift()
 
-    if (isShow && !isHas)
-      historyMenu.value?.push(menu as MenuOption)
+      storage.set(CacheEnum.HISTORY_MENU, this.historyMenu)
+    },
+    removeHistoryMenu(key: RouteRecordName) {
+      if (this.historyMenu?.length === 1) {
+        storage.set(CacheEnum.HISTORY_MENU, this.historyMenu)
+        return { isCurrent: false, currentIndex: undefined }
+      }
+      const index = this.historyMenu?.findIndex(i => i.key === key)
+      const isCurrent = this.historyMenu[index].key === key
 
-    if (historyMenu.value?.length > config.historyMenuMax)
-      historyMenu.value.shift()
+      this.historyMenu.splice(index, 1)
+      storage.set(CacheEnum.HISTORY_MENU, this.historyMenu)
 
-    storage.set(CacheEnum.HISTORY_MENU, historyMenu.value)
-  }
+      return { isCurrent, currentIndex: index }
+    },
 
-  function removeHistoryMenu(key: RouteRecordName) {
-    if (historyMenu.value?.length === 1) {
-      storage.set(CacheEnum.HISTORY_MENU, historyMenu.value)
-      return { isCurrent: false, currentIndex: undefined }
-    }
-    const index = historyMenu.value?.findIndex(i => i.key === key)
-    const isCurrent = historyMenu.value[index].key === key
+    closeRight(key: RouteRecordName) {
+      const index = this.historyMenu?.findIndex(i => i.key === key)
+      if (index !== -1)
+        this.historyMenu?.splice(index + 1, this.historyMenu?.length - 1)
 
-    historyMenu.value.splice(index, 1)
-    storage.set(CacheEnum.HISTORY_MENU, historyMenu.value)
+      storage.set(CacheEnum.HISTORY_MENU, this.historyMenu)
 
-    return { isCurrent, currentIndex: index }
-  }
+      return { isCurrent: false, currentIndex: index }
+    },
 
-  function closeRight(key: RouteRecordName) {
-    const index = historyMenu.value?.findIndex(i => i.key === key)
-    if (index !== -1)
-      historyMenu.value?.splice(index + 1, historyMenu.value?.length - 1)
+    closeLeft(key: RouteRecordName) {
+      const index = this.historyMenu?.findIndex(i => i.key === key)
+      this.historyMenu?.splice(0, index)
+      storage.set(CacheEnum.HISTORY_MENU, this.historyMenu)
 
-    storage.set(CacheEnum.HISTORY_MENU, historyMenu.value)
+      return { isCurrent: false, currentIndex: index }
+    },
 
-    return { isCurrent: false, currentIndex: index }
-  }
+    closeOther(key: RouteRecordName) {
+      this.historyMenu = this.historyMenu?.filter(i => i.key === key)
+      storage.set(CacheEnum.HISTORY_MENU, this.historyMenu)
 
-  function closeLeft(key: RouteRecordName) {
-    const index = historyMenu.value?.findIndex(i => i.key === key)
-    historyMenu.value?.splice(0, index)
-    storage.set(CacheEnum.HISTORY_MENU, historyMenu.value)
+      return { isCurrent: false, currentIndex: 0 }
+    },
 
-    return { isCurrent: false, currentIndex: index }
-  }
-
-  function closeOther(key: RouteRecordName) {
-    historyMenu.value = historyMenu.value?.filter(i => i.key === key)
-    storage.set(CacheEnum.HISTORY_MENU, historyMenu.value)
-
-    return { isCurrent: false, currentIndex: 0 }
-  }
-
-  return {
-    historyMenu,
-    addHistoryMenu,
-    closeLeft,
-    closeOther,
-    closeRight,
-    getHistoryMenu,
-    removeHistoryMenu,
-  }
+  },
 })

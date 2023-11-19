@@ -26,8 +26,8 @@ function autoload(router: Router) {
 }
 
 function loopChildren(route: RouteRecordRaw[]) {
-  const user = useUserStore()
-  const userInfo = user.userInfo
+  const userStore = useUserStore()
+  const userInfo = userStore.userInfo
 
   route.forEach((item) => {
     if (item.children) {

@@ -1,18 +1,17 @@
 import { defineStore } from 'pinia'
 import { getUserInfoApi } from '@/api/userApi'
 
-export const useUserStore = defineStore('user', () => {
-  const userInfo = ref<IUserModel>(null)
+export const useUserStore = defineStore('user', {
+  state: () => ({
+    userInfo: null,
+  }),
+  getters: {},
+  actions: {
+    async getUserInfo(): Promise<IUserModel> {
+      const { data } = await getUserInfoApi()
 
-  async function getUserInfo(): Promise<IUserModel> {
-    const { data } = await getUserInfoApi()
-
-    userInfo.value = data
-    return userInfo.value
-  }
-
-  return {
-    userInfo,
-    getUserInfo,
-  }
+      this.userInfo = data
+      return this.userInfo
+    },
+  },
 })

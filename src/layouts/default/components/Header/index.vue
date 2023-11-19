@@ -7,8 +7,8 @@ import { renderIcon, storage } from '@/utils'
 
 const router = useRouter()
 
-const user = useUserStore()
-const userInfo = await user.getUserInfo()
+const userStore = useUserStore()
+const userInfo = await userStore.getUserInfo()
 
 const options = ref([
   { label: '个人空间', key: 'userspace', icon: renderIcon(UserIcon) },

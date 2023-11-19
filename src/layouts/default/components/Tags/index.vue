@@ -20,7 +20,7 @@ function addHistoryMenu(route: RouteLocationNormalizedLoaded) {
     return
 
   historyMenuStore.addHistoryMenu(route)
-  historyMenu.value = historyMenuStore.getHistoryMenu()
+  historyMenu.value = historyMenuStore.getHistoryMenu
 }
 
 async function handleRemoveTag(tag) {
@@ -30,14 +30,14 @@ async function handleRemoveTag(tag) {
   if (isCurrent)
     router.push({ name: historyMenu.value[currentIndex - 1].key })
 
-  historyMenu.value = historyMenuStore.getHistoryMenu()
+  historyMenu.value = historyMenuStore.getHistoryMenu
 }
 
 function handleChangeMenu({ isCurrent, currentIndex }) {
   if (isCurrent)
     router.push({ name: historyMenu.value[currentIndex - 1].key })
 
-  historyMenu.value = historyMenuStore.getHistoryMenu()
+  historyMenu.value = historyMenuStore.getHistoryMenu
 }
 </script>
 
