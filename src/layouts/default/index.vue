@@ -14,7 +14,10 @@ import config from '@/config/config'
     bg="containerBgColor dark:darkContainerBgColor"
     text="containerTextColor dark:darkContainerTextColor"
   >
-    <NLayout has-sider>
+    <NLayout
+      has-sider
+      bg="containerBgColor! dark:darkContainerBgColor!"
+    >
       <Aside />
 
       <main flex="~ col 1 " h-full overflow-hidden>

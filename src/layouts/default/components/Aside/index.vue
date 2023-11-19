@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import Logo from './Logo/index.vue'
 import Menu from './Menu/index.vue'
+import config from '@/config/config'
 
 const { changeCollapsed } = useAppStore()
 
@@ -20,8 +21,8 @@ const collapsed = computed(() => useAppStore().getCollapsed)
       :collapsed-width="48"
       :width="200"
       :collapsed="collapsed"
-      show-trigger="bar"
-      :native-scrollbar="false"
+      :show-trigger="config.layout.aside.trigger"
+      :native-scrollbar="config.layout.aside['native-scrollbar']"
       @collapse="changeCollapsed"
       @expand="changeCollapsed"
     >

@@ -7,6 +7,10 @@ export default {
   layout: {
     showFooter: true, // 显示网页底部
     showBreadCrump: true, // 显示面包屑导航
+    aside: {
+      'trigger': 'bar' as 'bar' | 'arrow-circle', // bar | arrow-circle
+      'native-scrollbar': false, // 是否使用系统滚动条
+    },
   },
   routes: {
     home: { path: '/', redirect: '/dashboard/home' }, // 默认首页
