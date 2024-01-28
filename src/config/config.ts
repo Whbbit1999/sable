@@ -1,3 +1,26 @@
+// loading page config
+const loading = {
+  // https://icones.js.org/collection/svg-spinners
+  title: 'Sable Admin',
+  content: '一阴一阳谓之道',
+}
+
+const watermark = {
+  show: false,
+  fontSize: 16,
+  lineHeight: 16,
+  width: 200,
+  height: 200,
+  xOffset: 0,
+  yOffset: 30,
+  rotate: -20,
+  content: 'SableAdmin',
+}
+
+const naiveUI = {
+  notificationMax: 3,
+}
+
 export default {
   menu: {
     showChildrenRouteIcon: false, // 是否显示子路由图标
@@ -15,23 +38,7 @@ export default {
   routes: {
     home: { path: '/', redirect: '/dashboard/home' }, // 默认首页
   },
-  naiveUI: {
-    notificationMax: 3,
-  },
-  watermark: {
-    show: false,
-    fontSize: 16,
-    lineHeight: 16,
-    width: 200,
-    height: 200,
-    xOffset: 0,
-    yOffset: 30,
-    rotate: -20,
-    content: 'SableAdmin',
-  },
-  loading: {
-    // loadingIcon: '',
-    title: 'Sable Admin',
-    content: '一阴一阳谓之道',
-  },
+  naiveUI,
+  watermark,
+  loading,
 }

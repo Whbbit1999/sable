@@ -37,11 +37,11 @@ const links = ref([
       </template>
       <div flex justify-between>
         <div flex items-center gap-3>
-          <NAvatar :size="64" :src="userInfo.avatar" />
+          <NAvatar :size="64" :src="userInfo?.avatar" />
 
           <div h-full flex flex-col justify-start>
             <h2 text-xl>
-              您好：{{ userInfo.name }}， 开始您一天的工作吧！
+              您好：{{ userInfo?.name }}， 开始您一天的工作吧！
             </h2>
             <p text="black/50 dark:white/50">
               每日一言

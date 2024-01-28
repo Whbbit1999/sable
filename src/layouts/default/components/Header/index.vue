@@ -51,11 +51,11 @@ function logout() {
       <NDropdown :options="options" :on-select="onSelect">
         <div class="flex items-center px-3">
           <!-- 头像 -->
-          <NAvatar class="mr-2" size="medium" :src="userInfo.avatar" />
+          <NAvatar class="mr-2" size="medium" :src="userInfo?.avatar" />
           <!-- 用户名/注册时间 -->
           <div class="flex flex-col ml-2">
-            <span class="text-sm">{{ userInfo.name }}</span>
-            <span class="text-sm text-gray-500">{{ dayjs(userInfo.createdAt).format('YYYY/MM/DD') }}</span>
+            <span class="text-sm">{{ userInfo?.name }}</span>
+            <span class="text-sm text-gray-500">{{ dayjs(userInfo?.createdAt).format('YYYY/MM/DD') }}</span>
           </div>
         </div>
       </NDropdown>

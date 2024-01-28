@@ -8,10 +8,10 @@ import config from '@/config/config'
     flex="~ items-center justify-center col"
     bg="white dark:dark" text="dark dark:white"
   >
-    <i i-carbon-contour-finding class="animate-spin" text="7xl green" />
+    <i i-svg-spinners-180-ring text="7xl" opacity-70 />
 
-    <div>
-      <h2 class="text-lg">
+    <div text="center" m="t-4">
+      <h2 text="4xl">
         {{ config.loading.title }}
       </h2>
       <span>{{ config.loading.content }}</span>

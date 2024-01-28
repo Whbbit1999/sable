@@ -1,30 +1,15 @@
 <script lang="ts" setup>
-import Qrcode from '@/components/Qrcode/index.vue'
+const text = ref('雨淋湿了天空')
 </script>
 
 <template>
   <main>
-    <NAlert type="info" class="mb-3" :show-icon="false">
-      默认渲染为canvas
-    </NAlert>
+    使用NutUI的QR Code组件实现二维码的生成和显示功能。
 
-    <div class="grid lg:grid-cols-3 grid-cols-1 gap-3">
-      <NCard title="默认使用">
-        <Qrcode value="https://www.whbbit.cn" />
-      </NCard>
-
-      <NCard title="渲染为img">
-        <Qrcode value="https://www.whbbit.cn" tag="img" />
-      </NCard>
-
-      <NCard title="配置样式">
-        <Qrcode value="https://www.whbbit.cn" front-color="#fff" bg-color="#000" />
-      </NCard>
-
-      <NCard title="大小">
-        <Qrcode value="https://www.whbbit.cn" :width="300" />
-      </NCard>
-    </div>
+    <n-space vertical>
+      <n-qr-code :value="text" />
+      <n-input v-model:value="text" :maxlength="60" type="text" />
+    </n-space>
   </main>
 </template>
 
