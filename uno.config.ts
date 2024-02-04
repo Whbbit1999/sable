@@ -8,6 +8,10 @@ export default defineConfig({
       'icon-btn',
       'text-[0.9em] inline-block cursor-pointer select-none opacity-75 transition duration-200 ease-in-out hover:opacity-100 opacity-75 text-black dark:text-white bg-gray/20 px-2 py-1 rounded-md !outline-none',
     ],
+    [
+      'container-color',
+      'bg-containerBgColor text-containerTextColor dark:bg-darkContainerBgColor dark:text-darkContainerTextColor',
+    ],
   ],
 
   theme: {

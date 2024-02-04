@@ -13,5 +13,5 @@ export enum ContentTypeEnum {
   // form data: upload file use
   FORM_DATA = 'multipart/form-data;charset=UTF-8',
   // form data: qs -> import Qs from 'qs' --> { data: Qs.stringify(data) }
-  FOTM_URL_ENCODED = 'application/x-www-form-urlencoded;charset=UTF-8',
+  FORM_URL_ENCODED = 'application/x-www-form-urlencoded;charset=UTF-8',
 }

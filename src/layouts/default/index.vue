@@ -21,8 +21,8 @@ import config from '@/config/config'
       <Aside />
 
       <main flex="~ col 1 " h-full overflow-hidden>
-        <Header mb-0 bg="white dark:dark" />
-        <Tags />
+        <Header mb-2 bg="white dark:dark" />
+        <!-- <Tags /> -->
         <div flex-1 mx-2 overflow-hidden>
           <NScrollbar><Main /></NScrollbar>
         </div>

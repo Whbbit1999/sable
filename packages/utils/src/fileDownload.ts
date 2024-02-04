@@ -2,8 +2,8 @@ interface DownloadByUrlProps {
   url: string
   filename: string
   target?: '_self' | '_blank'
-
 }
+
 export function downloadByUrl({ url, filename, target = '_blank' }: DownloadByUrlProps) {
   const isChrome = window.navigator.userAgent.toLowerCase().includes('chrome')
   const isSafari = window.navigator.userAgent.toLowerCase().includes('safari')
@@ -63,7 +63,7 @@ export function downloadByOnlineUrl(url: string, filename: string, mime?: string
 export function dataURLToBlob(base64Buf: string): Blob {
   const arr = base64Buf.split(',')
   const typeItem = arr[0]
-  const mime = typeItem.match('/:(.*?);/')[1]
+  const mime = typeItem.match('/:(.*?);/')![1]
   const bstr = window.atob(arr[1])
   let n = bstr.length
   const u8arr = new Uint8Array(n)
@@ -76,7 +76,7 @@ export function dataURLToBlob(base64Buf: string): Blob {
 
 export function urlToBase64(url: string, mineType?: string): Promise<string> {
   return new Promise((resolve, reject) => {
-    let canvas = document.createElement('canvas') as HTMLCanvasElement
+    const canvas = document.createElement('canvas') as HTMLCanvasElement
     const ctx = canvas.getContext('2d')
 
     const img = new Image()
@@ -89,7 +89,6 @@ export function urlToBase64(url: string, mineType?: string): Promise<string> {
       canvas.width = img.width
       ctx.drawImage(img, 0, 0)
       const dataURL = canvas.toDataURL(mineType || 'image/png')
-      canvas = null
       resolve(dataURL)
     }
     img.src = url

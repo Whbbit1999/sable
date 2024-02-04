@@ -1,0 +1,11 @@
+{
+  "name": "@sable/utils",
+  "version": "0.0.1",
+  "private": true,
+  "description": "Monorepo test utils",
+  "author": "",
+  "main": "./src/index.ts",
+  "dependencies": {
+    "lodash-es": "^4.17.21"
+  }
+}

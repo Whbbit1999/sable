@@ -1,4 +1,4 @@
-import Axios from './Axios'
+import Axios from '@sable/axios'
 
 const http = new Axios({
   baseURL: '/api',

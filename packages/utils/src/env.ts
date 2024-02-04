@@ -1,7 +1,7 @@
 // 格式化.env文件参数
 import { cloneDeep } from 'lodash-es'
 
-export function parseEnv(env: Record<string, any>): ViteEnv {
+export function parseEnv(env: Record<string, any>) {
   const envs: any = cloneDeep(env)
   Object.entries(env).forEach(([key, value]) => {
     if (value === 'true')

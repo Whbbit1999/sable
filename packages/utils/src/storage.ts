@@ -3,7 +3,7 @@ interface IData {
   [key: string]: any // 数据
 }
 
-export default {
+export const storage = {
   // 存储缓存数据
   set(key: string, data: IData): void {
     if (data?.expire)

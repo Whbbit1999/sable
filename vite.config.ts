@@ -35,8 +35,8 @@ export default ({ command }: ConfigEnv) => {
         emptyOutDir: true,
         output: {
           manualChunks: {
-            echarts: ['echarts'],
-            lodash: ['lodash'],
+            'echarts': ['echarts'],
+            'lodash-es': ['lodash-es'],
           },
         },
       },
