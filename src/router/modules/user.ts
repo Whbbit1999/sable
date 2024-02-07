@@ -7,7 +7,7 @@ export default {
   name: 'user',
   meta: {
     auth: true,
-    menu: { title: '编辑器', order: 80, showParentMenu: false, icon: 'ion:person' },
+    menu: { title: '编辑器', order: 80, showParentMenu: false, icon: 'carbon:user' },
     type: 'layout',
   },
   children: [
@@ -15,7 +15,7 @@ export default {
       path: 'base',
       name: 'user.base',
       component: () => import('@/views/user/base.vue'),
-      meta: { menu: { title: '个人空间', icon: 'ion:person' } },
+      meta: { menu: { title: '个人空间', icon: 'carbon:user' } },
     },
   ],
 } as RouteRecordRaw

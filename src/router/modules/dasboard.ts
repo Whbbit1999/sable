@@ -7,7 +7,7 @@ export default {
   name: 'dashboard',
   meta: {
     auth: true,
-    menu: { title: '工作台', key: 'dashboard', order: 1, showParentMenu: false, icon: 'ion:home' },
+    menu: { title: '工作台', key: 'dashboard', order: 1, showParentMenu: false, icon: 'carbon:home' },
     type: 'layout',
   },
 

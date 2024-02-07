@@ -5,7 +5,7 @@ export default {
   path: '/components',
   component: Layout,
   name: 'components',
-  meta: { auth: true, menu: { title: '自定义组件', order: 10, icon: 'ion:layers' }, type: 'layout' },
+  meta: { auth: true, menu: { title: '自定义组件', order: 10, icon: 'carbon:layers' }, type: 'layout' },
 
   children: [
     {

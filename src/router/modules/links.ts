@@ -5,7 +5,7 @@ export default {
   path: '',
   component: () => import('@/layouts/default/index.vue'),
   name: 'links',
-  meta: { menu: { title: '外链', order: 99, showParentMenu: false, icon: 'ion:link' }, type: 'layout' },
+  meta: { menu: { title: '外链', order: 99, showParentMenu: false, icon: 'carbon:attachment' }, type: 'layout' },
   children: [
     {
       name: 'whbit',

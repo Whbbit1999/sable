@@ -13,7 +13,7 @@ const props = withDefaults(
     api: (page?: number) => Promise<ResponseResult<Record<any, any>>>
   }>(),
   {
-    height: 250,
+    height: null,
     size: 'medium',
     striped: true,
   },

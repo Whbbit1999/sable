@@ -7,7 +7,7 @@ export default {
   name: 'editor',
   meta: {
     auth: true,
-    menu: { title: '编辑器', order: 2, showParentMenu: false, icon: 'ion:document' },
+    menu: { title: '编辑器', order: 2, showParentMenu: false, icon: 'carbon:document-blank' },
     type: 'layout',
   },
   children: [

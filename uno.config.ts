@@ -1,12 +1,18 @@
 import presetIcons from '@unocss/preset-icons'
 import presetRemToPx from '@unocss/preset-rem-to-px'
-import { defineConfig, presetAttributify, presetUno, transformerVariantGroup } from 'unocss'
+import {
+  defineConfig,
+  presetAttributify,
+  presetUno,
+  transformerDirectives,
+  transformerVariantGroup,
+} from 'unocss'
 
 export default defineConfig({
   shortcuts: [
     [
       'icon-btn',
-      'text-[0.9em] inline-block cursor-pointer select-none opacity-75 transition duration-200 ease-in-out hover:opacity-100 opacity-75 text-black dark:text-white bg-gray/20 px-2 py-1 rounded-md !outline-none',
+      'text-[1em] inline-block cursor-pointer select-none opacity-75 transition duration-200 ease-in-out hover:opacity-100 opacity-75 text-black dark:text-white bg-gray/20 px-2 py-1 rounded-md !outline-none',
     ],
     [
       'container-color',
@@ -26,7 +32,7 @@ export default defineConfig({
   },
 
   presets: [
-    presetUno(),
+    presetUno({ dark: 'class' }),
     presetRemToPx(),
     presetAttributify(),
 
@@ -45,5 +51,5 @@ export default defineConfig({
     }),
   ],
   // 可以使用括号省略前缀，https://unocss.dev/transformers/variant-group
-  transformers: [transformerVariantGroup()],
+  transformers: [transformerDirectives(), transformerVariantGroup()],
 })

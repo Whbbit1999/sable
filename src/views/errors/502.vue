@@ -3,7 +3,7 @@ import Icon from '@/components/Icon'
 </script>
 
 <template>
-  <div class="flex flex-col items-center justify-center h-screen p-10">
+  <div class="flex flex-col items-center justify-center h-full p-10">
     <NResult title="502 服务器错误" description="服务器出错可能说明该雇更多程序员了" size="huge">
       <template #icon>
         <Icon icon="twemoji:anxious-face-with-sweat" size="125" />

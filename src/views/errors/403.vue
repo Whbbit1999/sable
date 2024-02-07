@@ -3,8 +3,8 @@ import Icon from '@/components/Icon'
 </script>
 
 <template>
-  <div class="flex flex-col items-center justify-center h-full p-10">
-    <NResult status="500" title="500 服务器错误" description="服务器出错可能说明该雇更多程序员了" size="huge">
+  <div flex flex-col items-center justify-center h-full p-10>
+    <NResult status="403" title="403 禁止访问" description="总有些门是对你关闭的" size="huge">
       <template #footer>
         <NButton @click="$router.push({ name: 'dashboard.home' })">
           <Icon icon="ion:arrow-back" size="16" class="mr-2" />

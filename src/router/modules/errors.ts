@@ -1,13 +1,22 @@
 import type { RouteRecordRaw } from 'vue-router'
-import BlankLayout from '@/layouts/blank.vue'
+
+// import BlankLayout from '@/layouts/blank.vue'
+import Layout from '@/layouts/default/index.vue'
 
 export default {
   path: '/error',
-  component: BlankLayout,
+  component: Layout,
   name: 'error',
-  meta: { menu: { title: '错误页面', order: 3, icon: 'ion:ios-close-circle' }, type: 'layout' },
+  meta: { menu: { title: '错误页面', order: 3, icon: 'carbon:error-outline' }, type: 'layout' },
 
   children: [
+    {
+      path: '403',
+      name: 'error.403',
+      component: () => import('@/views/errors/403.vue'),
+      meta: { menu: { title: '403页面' } },
+    },
+
     {
       path: '404',
       name: 'error.404',

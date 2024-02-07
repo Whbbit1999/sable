@@ -12,7 +12,6 @@ function handleActions() {
     <BasicTable
       :columns="UserTableField"
       :api="userList"
-      :height="800"
       :button="UserTableButton"
       @action="handleActions"
     />

@@ -5,7 +5,7 @@ export default {
   path: '/menu',
   component: () => import('@/layouts/default/index.vue'),
   name: 'menu',
-  meta: { menu: { title: '多级菜单', order: 98, icon: 'ion:md-list-box' }, type: 'layout' },
+  meta: { menu: { title: '多级菜单', order: 98, icon: 'carbon:document-multiple-01' }, type: 'layout' },
   children: [
     {
       path: 'menu-children-1',
