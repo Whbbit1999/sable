@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { AirplaneOutline } from '@vicons/ionicons5'
-import Draggable from 'vuedraggable'
+import { VueDraggable } from 'vue-draggable-plus'
 
 const myArray = ref([
   { id: 1, name: 1 },
@@ -21,18 +21,19 @@ const myArray = ref([
         </NIcon>
       </template>
       <NButton quaternary type="primary">
-        <a href="https://github.com/SortableJS/vue.draggable.next" target="_blank" rel="noopener noreferrer">vue.draggable.next</a>
+        <a href="https://alfred-skyblue.github.io/vue-draggable-plus/" target="_blank" rel="noopener noreferrer">vue-draggable-plus</a>
       </NButton>
     </NAlert>
 
     拖拽示例：
-    <Draggable v-model="myArray" item-key="id" class="grid grid-cols-3 gap-3">
-      <template #item="{ element }">
-        <div class="bg-white dark:bg-black flex items-center justify-center p-3 border cursor-pointer">
-          {{ element.name }}
-        </div>
-      </template>
-    </Draggable>
+    <VueDraggable v-model="myArray" ghost-class="ghost" :animation="150" class="grid grid-cols-3 gap-3">
+      <div
+        v-for="item in myArray" :key="item.id"
+        bg="gray-500/5" rounded-md overflow-hidden p="x-5 y-2" cursor-move
+      >
+        {{ item.name }}
+      </div>
+    </VueDraggable>
   </div>
 </template>
 
