@@ -36,8 +36,10 @@ export const useMenuStore = defineStore('menu', {
         ? route?.children?.filter(item => item.name && (item?.meta?.menu?.show ?? true))
         : []
 
-      if (!visibleChildren.length)
+      if (!visibleChildren.length) {
+        delete menuItem.children
         return menuItem
+      }
 
       if (visibleChildren.length === 1) {
         const singleRoute = visibleChildren[0]
