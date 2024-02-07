@@ -11,7 +11,6 @@ const collapsed = computed(() => useAppStore().getCollapsed)
 <template>
   <NLayoutSider
     rounded-md m-2 mr-0
-    class="h-full"
     collapse-mode="width"
     :collapsed-width="48"
     :width="200"
