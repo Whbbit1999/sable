@@ -11,23 +11,27 @@ import config from '@/config/config'
   <main
     flex
     h-screen
-    bg="containerBgColor dark:darkContainerBgColor"
+    bg="bodyBgColor dark:darkBodyBgColor"
     text="containerTextColor dark:darkContainerTextColor"
   >
     <NLayout
       has-sider
-      bg="containerBgColor! dark:darkContainerBgColor!"
+      bg="bodyBgColor! dark:darkBodyBgColor!"
     >
       <Aside />
 
-      <main flex="~ col 1 " h-full overflow-hidden>
-        <Header mb-2 bg="white dark:dark" />
-        <!-- <Tags /> -->
-        <div flex-1 mx-2 overflow-hidden>
-          <NScrollbar><Main /></NScrollbar>
-        </div>
-        <Footer v-if="config.layout.showFooter" p-2 m-2 bg="white dark:dark" text="dark:white/80" />
-      </main>
+      <NScrollbar>
+        <main flex="~ col 1 " h-full min-h-screen>
+          <div bg="bodyBgColor/60 dark:darkBodyBgColor/60" backdrop-blur-sm sticky top-0 z-30>
+            <Header mb-2 />
+          </div>
+          <!-- <Tags /> -->
+          <div mx-5 flex-1>
+            <Main />
+          </div>
+          <Footer v-if="config.layout.showFooter" p-2 m-2 bg="white dark:dark" text="dark:white/80" />
+        </main>
+      </NScrollbar>
     </NLayout>
   </main>
 </template>

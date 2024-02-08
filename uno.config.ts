@@ -16,15 +16,15 @@ export default defineConfig({
     ],
     [
       'container-color',
-      'bg-containerBgColor text-containerTextColor dark:bg-darkContainerBgColor dark:text-darkContainerTextColor',
+      'bg-bodyBgColor text-containerTextColor dark:bg-darkBodyBgColor dark:text-darkContainerTextColor',
     ],
   ],
 
   theme: {
     colors: {
-      containerBgColor: '#f6f6f7',
+      bodyBgColor: '#f5f7f9',
       containerTextColor: '#393a34',
-      darkContainerBgColor: '#1e1e1e',
+      darkBodyBgColor: '#1e1e1e',
       darkContainerTextColor: '#d4cfbf',
       dark: 'rgb(24,24,28)',
       light: '#fff',

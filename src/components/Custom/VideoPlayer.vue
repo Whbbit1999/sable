@@ -1,10 +1,23 @@
 <script lang="ts" setup>
 import Artplayer from 'artplayer'
 
-const props = defineProps<{
+const props = withDefaults(defineProps<{
   url: string
   poster: string
-}>()
+  theme?: string
+  volume?: number
+  isLive?: boolean
+  autoplay?: boolean
+  screenshot?: boolean
+  miniProgressBar?: boolean
+}>(), {
+  theme: '#18a058',
+  volume: 0.5,
+  isLive: false,
+  autoplay: false,
+  screenshot: true,
+  miniProgressBar: true,
+})
 
 const artplayer = ref()
 
@@ -14,9 +27,9 @@ function initPlayer() {
     container: artplayer.value,
     url: props.url,
     poster: props.poster,
-    theme: '#ffad00',
+    theme: props.theme,
     autoMini: true,
-    screenshot: true,
+    screenshot: props.screenshot,
     hotkey: true,
     pip: true,
     mutex: true,
@@ -27,6 +40,10 @@ function initPlayer() {
     flip: true,
     playbackRate: true,
     aspectRatio: true,
+    volume: props.volume,
+    isLive: props.isLive,
+    autoplay: props.autoplay,
+    miniProgressBar: props.miniProgressBar,
   })
 }
 onMounted(() => {

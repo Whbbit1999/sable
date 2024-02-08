@@ -54,7 +54,7 @@ router.beforeEach((to) => {
     :options="options"
     :default-expanded-keys="defaultExpandedKeys"
     accordion
-    :indent="18"
+    :indent="24"
     :value="selectedKey"
     :on-update:value="handleMenuSelect"
   />

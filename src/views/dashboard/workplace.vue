@@ -44,7 +44,7 @@ const links = ref([
               您好：{{ userInfo?.name }}， 开始您一天的工作吧！
             </h2>
             <p text="black/50 dark:white/50">
-              每日一言
+              农历腊月二十九， 天气晴朗， 祝您生活愉快！
             </p>
           </div>
         </div>
@@ -62,52 +62,46 @@ const links = ref([
       </div>
     </NCard>
 
-    <NGrid :cols="2" mt-4 :x-gap="12" :y-gap="8">
-      <NGridItem>
-        <NCard>
-          <template #header>
-            项目
-          </template>
-          <NGrid :x-gap="8" :y-gap="8" :cols="3">
-            <NGridItem v-for="project in projects" :key="project.title">
-              <NCard hoverable>
-                <template #header>
-                  <div flex items-center gap-2>
-                    <Icon :icon="project.icon" size="24" />
-                    {{ project.title }}
-                  </div>
-                </template>
-                <p text="black/40 dark:white/40">
-                  {{ project.desc }}
-                </p>
-              </NCard>
-            </NGridItem>
-          </NGrid>
-        </NCard>
-      </NGridItem>
+    <NCard mt-2>
+      <template #header>
+        项目
+      </template>
+      <NGrid :x-gap="8" :y-gap="8" :cols="3">
+        <NGridItem v-for="project in projects" :key="project.title">
+          <NCard hoverable>
+            <template #header>
+              <div flex items-center gap-2>
+                <Icon :icon="project.icon" size="24" />
+                {{ project.title }}
+              </div>
+            </template>
+            <p text="black/40 dark:white/40">
+              {{ project.desc }}
+            </p>
+          </NCard>
+        </NGridItem>
+      </NGrid>
+    </NCard>
 
-      <NGridItem>
-        <NCard>
-          <template #header>
-            快捷操作
-          </template>
-          <NGrid :x-gap="8" :y-gap="8" :cols="3">
-            <NGridItem v-for="link in links" :key="link.title">
-              <NCard
-                :to="link.link"
-                hoverable
-                border="gray/40 1" block h-full w-full rounded-sm p-4 duration-200 hover:shadow-md
-              >
-                <RouterLink :to="link.link" text-center w-full flex="~ items-center col gap-4">
-                  <Icon :icon="link.icon" size="24" />
-                  <h3>{{ link.title }}</h3>
-                </RouterLink>
-              </NCard>
-            </NGridItem>
-          </NGrid>
-        </NCard>
-      </NGridItem>
-    </NGrid>
+    <NCard mt-2>
+      <template #header>
+        快捷操作
+      </template>
+      <NGrid :x-gap="8" :y-gap="8" :cols="3">
+        <NGridItem v-for="link in links" :key="link.title">
+          <NCard
+            :to="link.link"
+            hoverable
+            border="gray/40 1" block h-full w-full rounded-sm p-4 duration-200 hover:shadow-md
+          >
+            <RouterLink :to="link.link" text-center w-full flex="~ items-center col gap-4">
+              <Icon :icon="link.icon" size="24" />
+              <h3>{{ link.title }}</h3>
+            </RouterLink>
+          </NCard>
+        </NGridItem>
+      </NGrid>
+    </NCard>
   </div>
 </template>
 

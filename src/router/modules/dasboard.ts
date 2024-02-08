@@ -13,16 +13,17 @@ export default {
 
   children: [
     {
-      path: 'home',
-      name: 'dashboard.home',
-      component: () => import('@/views/dashboard/home.vue'),
-      meta: { auth: true, menu: { title: '首页' } },
-    },
-    {
       path: 'workplace',
       name: 'dashboard.workplace',
       component: () => import('@/views/dashboard/workplace.vue'),
       meta: { auth: true, menu: { title: '工作台' } },
     },
+    {
+      path: 'home',
+      name: 'dashboard.home',
+      component: () => import('@/views/dashboard/home.vue'),
+      meta: { auth: true, menu: { title: '仪表盘' } },
+    },
+
   ],
 } as RouteRecordRaw

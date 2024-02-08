@@ -40,7 +40,7 @@ export default {
     },
   },
   routes: {
-    home: { path: '/', redirect: '/dashboard/home' }, // 默认首页
+    home: { path: '/', redirect: '/dashboard/workplace' }, // 默认首页
   },
   naiveUI,
   watermark,

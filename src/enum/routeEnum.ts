@@ -7,5 +7,5 @@ export enum RouteEnum {
 export enum RouteNameEnum {
   LOGIN = 'auth.login',
   REGISTER = 'auth.register',
-  HOME = 'dashboard.home',
+  HOME = 'dashboard.workplace',
 }
