@@ -56,5 +56,12 @@ export default {
       component: () => import('@/views/customComponents/form.vue'),
       meta: { auth: true, menu: { title: '自动生成表单', icon: 'ion:md-list-box' } },
     },
+
+    {
+      path: 'directives',
+      name: 'components.directives',
+      component: () => import('@/views/customComponents/directives.vue'),
+      meta: { auth: true, menu: { title: '自定义指令' } },
+    },
   ],
 } as RouteRecordRaw

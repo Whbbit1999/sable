@@ -15,6 +15,7 @@ export const useMenuStore = defineStore('menu', {
     resolvePath(basePath, path) {
       if (isExternal(path))
         return path
+
       return `/${[basePath, path]
         .filter(path => path && path !== '/')
         .map(path => path.replace(/(^\/)|(\/$)/g, ''))

@@ -83,6 +83,7 @@ declare global {
   const useMenuStore: typeof import('../src/store/useMenuStore')['useMenuStore']
   const useMessage: typeof import('naive-ui')['useMessage']
   const useNotification: typeof import('naive-ui')['useNotification']
+  const usePermissionStore: typeof import('../src/store/usePermissionStore')['usePermissionStore']
   const useRoute: typeof import('vue-router')['useRoute']
   const useRouter: typeof import('vue-router')['useRouter']
   const useSlots: typeof import('vue')['useSlots']
