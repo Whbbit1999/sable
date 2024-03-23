@@ -58,6 +58,10 @@ async function onSubmit() {
         </NButton>
       </NSpace>
     </div>
+    <div class="absolute top-10px right-10px flex items-center gap-2">
+      <FullScreen />
+      <ToggleTheme />
+    </div>
   </div>
 </template>
 

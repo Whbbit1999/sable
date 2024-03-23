@@ -29,7 +29,7 @@ import config from '@/config/config'
           <div mx-5 flex-1>
             <Main />
           </div>
-          <Footer v-if="config.layout.showFooter" p-2 m-2 bg="white dark:dark" text="dark:white/80" />
+          <Footer v-if="config.layout.showFooter" p-2 m-2 text="dark:white/50 gray-400" />
         </main>
       </NScrollbar>
     </NLayout>
