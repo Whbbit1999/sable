@@ -7,7 +7,7 @@ export default {
   name: 'user',
   meta: {
     auth: true,
-    menu: { title: '编辑器', order: 80, showParentMenu: false, icon: 'carbon:user' },
+    menu: { title: '个人中心', order: 80, showParentMenu: false, icon: 'carbon:user' },
     type: 'layout',
   },
   children: [

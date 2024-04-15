@@ -14,7 +14,8 @@ export function parseEnv(env: Record<string, any>): ViteEnv {
       envs[key] = null
     else if (/^\d+$/.test(value))
       envs[key] = Number(value)
-    else envs[key] = value
+    else
+      envs[key] = value
   })
   return envs
 }
