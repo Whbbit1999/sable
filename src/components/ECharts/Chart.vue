@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-import { useWindowSize } from '@vueuse/core'
 import * as echarts from 'echarts'
 
 const props = withDefaults(
@@ -15,12 +14,18 @@ const props = withDefaults(
 
 const container = shallowRef(null)
 const chart = shallowRef(null)
+
+const resizeObserver = new ResizeObserver(() => {
+  chart.value.resize()
+})
+
 onMounted(() => {
   chart.value = echarts.init(container.value, props.theme, {
     locale: 'ZH',
     renderer: 'svg',
   })
   chart.value.setOption(props.options)
+  resizeObserver.observe(container.value)
 })
 
 const { options } = toRefs(props)
@@ -31,21 +36,6 @@ watch(
   },
   { deep: true },
 )
-
-const { width, height } = useWindowSize()
-const timer = ref(null)
-watch([width, height], () => {
-  if (!timer.value) {
-    timer.value = setTimeout(() => {
-      chart.value.resize()
-      timer.value = null
-    }, 500)
-  }
-})
-
-onUnmounted(() => {
-  timer.value = null
-})
 </script>
 
 <template>
