@@ -15,20 +15,25 @@ const props = withDefaults(
 const container = shallowRef(null)
 const chart = shallowRef(null)
 
+const { options, theme } = toRefs(props)
+
 const resizeObserver = new ResizeObserver(() => {
   chart.value.resize()
 })
 
 onMounted(() => {
-  chart.value = echarts.init(container.value, props.theme, {
+  chart.value = echarts.init(container.value, theme.value, {
     locale: 'ZH',
-    renderer: 'svg',
+    renderer: 'canvas',
   })
   chart.value.setOption(props.options)
   resizeObserver.observe(container.value)
 })
 
-const { options } = toRefs(props)
+onBeforeUnmount(() => {
+  resizeObserver.unobserve(container.value)
+})
+
 watch(
   options,
   (newOptions) => {

@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import Chart from '@/components/ECharts/Chart.vue'
-import { lineChartsOptions, pipeChartsOptions, pipeChartsOptions2, radarsChartOptons } from '@/config/charts'
+import { lineChartsOptions, pipeChartsOptions, pipeChartsOptions2, radarsChartOptions } from '@/config/charts'
 </script>
 
 <template>
@@ -15,7 +15,7 @@ import { lineChartsOptions, pipeChartsOptions, pipeChartsOptions2, radarsChartOp
       <Chart :options="pipeChartsOptions2()" />
     </NCard>
     <NCard class="h-[300px]">
-      <Chart :options="radarsChartOptons()" />
+      <Chart :options="radarsChartOptions()" />
     </NCard>
   </main>
 </template>

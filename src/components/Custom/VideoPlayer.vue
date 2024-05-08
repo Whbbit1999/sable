@@ -1,7 +1,7 @@
 <script lang="ts" setup>
-import Artplayer from 'artplayer'
+import ArtPlayer from 'artplayer'
 
-const props = withDefaults(defineProps<{
+interface IProps {
   url: string
   poster: string
   theme?: string
@@ -10,7 +10,9 @@ const props = withDefaults(defineProps<{
   autoplay?: boolean
   screenshot?: boolean
   miniProgressBar?: boolean
-}>(), {
+}
+
+const props = withDefaults(defineProps<IProps>(), {
   theme: '#18a058',
   volume: 0.5,
   isLive: false,
@@ -19,12 +21,12 @@ const props = withDefaults(defineProps<{
   miniProgressBar: true,
 })
 
-const artplayer = ref()
+const artPlayer = ref()
 
 function initPlayer() {
   // eslint-disable-next-line no-new
-  new Artplayer({
-    container: artplayer.value,
+  new ArtPlayer({
+    container: artPlayer.value,
     url: props.url,
     poster: props.poster,
     theme: props.theme,
@@ -52,7 +54,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div ref="artplayer" />
+  <div ref="artPlayer" />
 </template>
 
 <style scoped lang="scss"></style>

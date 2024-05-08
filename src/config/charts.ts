@@ -299,7 +299,7 @@ export function pipeChartsOptions2() {
   }
 }
 
-export function radarsChartOptons(): echarts.EChartsOption {
+export function radarsChartOptions(): echarts.EChartsOption {
   return {
     legend: {
       data: ['Allocated Budget', 'Actual Spending'],
