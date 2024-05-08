@@ -7,29 +7,32 @@ class Guard {
 
   // 启动路由守卫
   public run() {
-    this.router.beforeEach((to, from) => {
-      const token = storage.get('token')
-
-      // 对需要登录的路由进行拦截
-      if (this.isLogin(to, token) === false)
-        return { name: RouteNameEnum.LOGIN }
-
-      // 对已经登录的用户限制不能访问游客可以访问的路径——登录等页面
-      if (this.isGuest(to, token) === false)
-        return from
-
-      // TODO: 对用户权限进行限制
-    })
+    this.router.beforeEach(this.beforeEach.bind(this))
   }
 
-  private isLogin(route: RouteLocationNormalized, token: any): boolean {
-    return Boolean(!route.meta?.auth || (route.meta.auth && token))
+  // 是否登录可访问
+  private isLogin(route: RouteLocationNormalized): boolean {
+    return Boolean(!route.meta?.auth || (route.meta.auth && this.token()))
   }
 
-  private isGuest(route: RouteLocationNormalized, token: any): boolean {
-    return Boolean(!route.meta?.guest || (route.meta.guest && !token))
+  // 是否游客可访问
+  private isGuest(route: RouteLocationNormalized): boolean {
+    return Boolean(!route.meta?.guest || (route.meta.guest && !this.token()))
+  }
+
+  private beforeEach(to: RouteLocationNormalized, from: RouteLocationNormalized) {
+    if (this.isLogin(to) === false)
+      return { name: RouteNameEnum.LOGIN }
+
+    if (this.isGuest(to) === false)
+      return from
+  }
+
+  private token() {
+    return storage.get('token')
   }
 }
+
 export default (router: Router) => {
   new Guard(router).run()
 }

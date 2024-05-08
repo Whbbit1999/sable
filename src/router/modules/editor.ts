@@ -15,16 +15,13 @@ export default {
       path: 'base',
       name: 'editor.base',
       component: () => import('@/views/editor/base.vue'),
-      meta: { menu: { title: '富文本编辑器', icon: 'ion:edit' } },
+      meta: { auth: true, menu: { title: '富文本编辑器', icon: 'ion:edit' } },
     },
     {
       path: 'markdown',
       name: 'editor.markdown',
       component: () => import('@/views/editor/markdown.vue'),
-      meta: {
-        permissions: ['admin'],
-        menu: { title: 'markdown编辑器', icon: 'ion:logo-markdown' },
-      },
+      meta: { auth: true, permissions: ['admin'], menu: { title: 'markdown编辑器', icon: 'ion:logo-markdown' } },
     },
   ],
 } as RouteRecordRaw

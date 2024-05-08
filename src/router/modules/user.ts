@@ -15,7 +15,7 @@ export default {
       path: 'base',
       name: 'user.base',
       component: () => import('@/views/user/base.vue'),
-      meta: { menu: { title: '个人空间', icon: 'carbon:user' } },
+      meta: { menu: { title: '个人空间', icon: 'carbon:user' }, auth: true },
     },
   ],
 } as RouteRecordRaw

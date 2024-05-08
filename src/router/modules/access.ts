@@ -15,19 +15,19 @@ export default {
       path: 'base',
       name: 'access.base',
       component: () => import('@/views/access/base.vue'),
-      meta: { menu: { title: '用户管理', icon: 'i-carbon-user-data' } },
+      meta: { auth: true, menu: { title: '用户管理', icon: 'i-carbon-user-data' } },
     },
     {
       path: 'base',
       name: 'access.base',
       component: () => import('@/views/access/base.vue'),
-      meta: { menu: { title: '角色管理', icon: 'i-carbon-scis-control-tower' } },
+      meta: { auth: true, menu: { title: '角色管理', icon: 'i-carbon-scis-control-tower' } },
     },
     {
       path: 'base',
       name: 'access.base',
       component: () => import('@/views/access/base.vue'),
-      meta: { menu: { title: '菜单管理', icon: 'i-carbon-list-boxes' } },
+      meta: { auth: true, menu: { title: '菜单管理', icon: 'i-carbon-list-boxes' } },
     },
   ],
 } as RouteRecordRaw
