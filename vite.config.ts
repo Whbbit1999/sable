@@ -35,6 +35,7 @@ export default ({ command }: ConfigEnv) => {
         emptyOutDir: true,
         output: {
           manualChunks: {
+            'dayjs': ['dayjs'],
             'echarts': ['echarts'],
             'lodash-es': ['lodash-es'],
           },
