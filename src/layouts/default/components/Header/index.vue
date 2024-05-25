@@ -29,6 +29,9 @@ function onSelect(key: string) {
 function logout() {
   // 清空缓存
   storage.remove('token')
+  // 清空pinia中的数据
+  userStore.$reset()
+
   router.push({ name: RouteNameEnum.LOGIN })
 }
 </script>

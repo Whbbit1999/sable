@@ -83,7 +83,7 @@ declare global {
   const useMenuStore: typeof import('../src/store/useMenuStore')['useMenuStore']
   const useMessage: typeof import('naive-ui')['useMessage']
   const useNotification: typeof import('naive-ui')['useNotification']
-  const usePermissionStore: typeof import('../src/store/usePermissionStore')['usePermissionStore']
+  const usePermissionStore: typeof import('../src/composables/usePermissionStore')['usePermissionStore']
   const useRoute: typeof import('vue-router')['useRoute']
   const useRouter: typeof import('vue-router')['useRouter']
   const useSlots: typeof import('vue')['useSlots']
@@ -102,4 +102,13 @@ declare global {
   // @ts-ignore
   export type { Component, ComponentPublicInstance, ComputedRef, ExtractDefaultPropTypes, ExtractPropTypes, ExtractPublicPropTypes, InjectionKey, PropType, Ref, VNode, WritableComputedRef } from 'vue'
   import('vue')
+  // @ts-ignore
+  export type { CacheEnum } from '../src/enum/cacheEnums'
+  import('../src/enum/cacheEnums')
+  // @ts-ignore
+  export type { RequestMethodEnum, ContentTypeEnum } from '../src/enum/httpEnums'
+  import('../src/enum/httpEnums')
+  // @ts-ignore
+  export type { RouteEnum, RouteNameEnum } from '../src/enum/routeEnum'
+  import('../src/enum/routeEnum')
 }

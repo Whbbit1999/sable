@@ -12,10 +12,7 @@ async function onSubmit() {
   try {
     loading.value = true
     const res = await login(unref(loginFormData))
-    storage.set('token', {
-      token: res.data.token,
-      expire: 60 * 30,
-    })
+    storage.set('token', res.data.token, 30)
     router.push({ name: RouteNameEnum.HOME })
   }
   catch (error) {

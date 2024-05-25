@@ -22,9 +22,7 @@ const emit = defineEmits<{
   (e: 'action', mode: Record<string, any>, command: string): void
 }>()
 
-const columns = computed(() => {
-  return props.columns
-})
+const { size, columns } = toRefs(props)
 
 if (props.button) {
   const hasAction = columns.value.some(item => item.key === 'actions')
@@ -41,15 +39,19 @@ if (props.button) {
             props.button.map(action => h(
               NButton,
               {
-                type: action.type || 'default',
+                ...action.props,
                 onClick() { emit('action', row, action.command) },
               },
-              { default: () => action.title },
+              { default: isRenderButtonText(action) ? null : () => action.title },
             )),
         },
       ),
     })
   }
+}
+
+function isRenderButtonText(action: TableButton) {
+  return action.props.renderIcon && !action.title
 }
 
 const loading = ref(false)

@@ -3,8 +3,7 @@ import type { MenuOption } from 'naive-ui'
 import type { RouteRecordNormalized, RouteRecordRaw } from 'vue-router'
 import config from '@/config/config'
 import { routes as allRoutes } from '@/router/autoload'
-import { isExternal, isShowMenu } from '@/utils'
-import { renderCustomIcon } from '@/utils/renderIcon'
+import { isExternal, isShowMenu, renderCustomIcon } from '@/utils'
 
 export const useMenuStore = defineStore('menu', {
   state: (): any => ({

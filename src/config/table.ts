@@ -1,5 +1,6 @@
 import type { ButtonProps, ImageProps, TagProps } from 'naive-ui'
-import { renderImage, renderTag, renderTime } from '@/utils/render'
+import { CashOutline } from '@vicons/ionicons5'
+import { renderCustomIcon, renderIcon, renderImage, renderTag, renderTime } from '@/utils'
 
 export interface RenderColumnType {
   key: string
@@ -14,7 +15,9 @@ export interface RenderColumnType {
 export interface TableButton {
   title: string
   command: string
-  type: ButtonProps['type']
+  props: {
+    [key in keyof ButtonProps]: ButtonProps[key]
+  }
 }
 
 export const pageSizes = [
@@ -30,13 +33,26 @@ export const UserTableField = makeColumn([
   { key: 'avatar', title: '头像', type: 'image', width: 100 },
   { key: 'email', title: '邮箱' },
   { key: 'tags', title: '标签', type: 'tags' },
-  { key: 'created_at', title: '创建时间', type: 'date' },
-  { key: 'updated_at', title: '更新时间', type: 'date' },
+  { key: 'created_at', title: '创建时间', type: 'date', width: 140 },
+  { key: 'updated_at', title: '更新时间', type: 'date', width: 140 },
 ] as RenderColumnType[])
 
 export const UserTableButton: TableButton[] = [
-  { title: '编辑', type: 'primary', command: 'edit' },
-  { title: '删除', type: 'error', command: 'delete' },
+  { title: '编辑', command: 'edit', props: {
+    type: 'primary',
+    quaternary: true,
+    renderIcon: renderCustomIcon('carbon:edit'),
+  } },
+  { title: '', command: 'disabled', props: {
+    type: 'warning',
+    circle: true,
+    quaternary: false,
+    renderIcon: renderIcon(CashOutline),
+  } },
+  { title: '删除', command: 'delete', props: {
+    type: 'error',
+    quaternary: true,
+  } },
 ]
 
 function makeColumn(column: RenderColumnType[]) {

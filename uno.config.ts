@@ -22,7 +22,7 @@ export default defineConfig({
 
   theme: {
     colors: {
-      bodyBgColor: '#f5f7f9',
+      bodyBgColor: '#f4f4f4',
       containerTextColor: '#393a34',
       darkBodyBgColor: '#1e1e1e',
       darkContainerTextColor: '#d4cfbf',

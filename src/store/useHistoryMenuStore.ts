@@ -10,7 +10,7 @@ export const useHistoryMenuStore = defineStore('history-menu', {
   }),
   getters: {
     getHistoryMenu() {
-      return storage.get(CacheEnum.HISTORY_MENU) as MenuOption[] || []
+      return storage.get(CacheEnum.HISTORY_MENU) as unknown as MenuOption[] || []
     },
   },
   actions: {
