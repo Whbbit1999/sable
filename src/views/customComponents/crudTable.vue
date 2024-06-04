@@ -1,9 +1,16 @@
+<!-- eslint-disable no-console -->
 <script setup lang="ts">
 import { userList } from '@/api/userApi'
+import type { TableButton } from '@/config/table'
 import { UserTableButton, UserTableField } from '@/config/table'
 
-function handleActions() {
+function handleActions(row: any, key: TableButton['command']) {
   // TODO 点击操作后
+  if (key === 'edit')
+    console.log(row, key)
+
+  if (key === 'delete')
+    console.log(row, key)
 }
 </script>
 
@@ -12,7 +19,8 @@ function handleActions() {
     <BasicTable
       :columns="UserTableField"
       :api="userList"
-      :button="UserTableButton"
+      :actions="UserTableButton"
+      :show-search="true"
       @action="handleActions"
     />
   </div>

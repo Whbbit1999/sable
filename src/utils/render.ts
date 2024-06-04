@@ -9,8 +9,13 @@ export function renderImage(src, props: ImageProps = { width: 50, lazy: true }) 
   return h(NImage, { src, ...props })
 }
 
-export function renderTime(time: string, format = 'YYYY-MM-DD') {
-  return h('span', null, dayjs(time).format(format))
+export function renderTime(time: string, format = 'YYYY-MM-DD', showIcon: boolean = true, icon: string = 'carbon:calendar') {
+  return h('span', {
+    style: { display: 'inline-flex', alignItems: 'center', gap: '4px' },
+  }, [
+    showIcon && renderCustomIcon(icon)(),
+    dayjs(time).format(format),
+  ])
 }
 
 export function renderTag(tag: string, props: TagProps = { type: 'success' }) {
