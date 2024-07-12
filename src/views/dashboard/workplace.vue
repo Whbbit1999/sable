@@ -94,7 +94,7 @@ const links = ref([
             hoverable
             border="gray/40 1" block h-full w-full rounded-sm p-4 duration-200 hover:shadow-md
           >
-            <RouterLink :to="link.link" text-center w-full flex="~ items-center col gap-4">
+            <RouterLink :to="link.link" w-full text-center flex="~ items-center col gap-4">
               <Icon :icon="link.icon" size="24" />
               <h3>{{ link.title }}</h3>
             </RouterLink>

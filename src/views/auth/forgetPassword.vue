@@ -40,12 +40,12 @@ async function onSubmit() {
       </div>
     </main>
 
-    <div class="flex flex-col justify-center gap-3 mt-4">
+    <div class="mt-4 flex flex-col justify-center gap-3">
       <NButton type="primary" :loading="loading" @click="onSubmit">
         找回密码
       </NButton>
     </div>
-    <div class="flex justify-end mt-2">
+    <div class="mt-2 flex justify-end">
       <NSpace>
         <NButton type="primary" text @click="$router.push({ name: 'auth.login' })">
           返回登录

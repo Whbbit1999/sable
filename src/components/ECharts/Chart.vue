@@ -44,7 +44,7 @@ watch(
 </script>
 
 <template>
-  <div ref="container" w-full h-full />
+  <div ref="container" h-full w-full />
 </template>
 
 <style scoped lang="scss"></style>

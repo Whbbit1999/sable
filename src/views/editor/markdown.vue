@@ -5,11 +5,11 @@ const content = ref('# 标题 \n\n> 引用文本\n\n```ts\n const a: number = 10
 </script>
 
 <template>
-  <div bg="white dark:dark" p-2 rounded-md>
+  <div bg="white dark:dark" rounded-md p-2>
     <NTabs type="line" animated>
       <NTabPane name="edit" tab="编辑">
         <Editor v-model="content" />
-        <div bg="white dark:dark" my-2 p-2 rounded-md>
+        <div bg="white dark:dark" my-2 rounded-md p-2>
           <h2 text-lg>
             解析后的内容
           </h2>

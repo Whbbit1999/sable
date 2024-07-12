@@ -4,7 +4,7 @@ import { lineChartsOptions, pipeChartsOptions, pipeChartsOptions2, radarsChartOp
 </script>
 
 <template>
-  <main class="grid md:grid-cols-2 grid-cols-1 gap-3">
+  <main class="grid grid-cols-1 gap-3 md:grid-cols-2">
     <NCard class="h-[300px]">
       <Chart :options="lineChartsOptions()" />
     </NCard>

@@ -29,7 +29,7 @@ const myArray = ref([
     <VueDraggable v-model="myArray" ghost-class="ghost" :animation="150" class="grid grid-cols-3 gap-3">
       <div
         v-for="item in myArray" :key="item.id"
-        bg="gray-500/5" rounded-md overflow-hidden p="x-5 y-2" cursor-move
+        bg="gray-500/5" p="x-5 y-2" cursor-move overflow-hidden rounded-md
       >
         {{ item.name }}
       </div>

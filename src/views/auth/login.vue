@@ -40,12 +40,12 @@ async function onSubmit() {
       </div>
     </main>
 
-    <div class="flex flex-col justify-center gap-3 mt-4">
+    <div class="mt-4 flex flex-col justify-center gap-3">
       <NButton type="primary" :loading="loading" @click="onSubmit">
         登录
       </NButton>
     </div>
-    <div class="flex justify-end mt-2">
+    <div class="mt-2 flex justify-end">
       <NSpace>
         <NButton type="primary" text @click="$router.push({ name: 'auth.forgetPassword' })">
           忘记密码
@@ -55,7 +55,7 @@ async function onSubmit() {
         </NButton>
       </NSpace>
     </div>
-    <div class="absolute top-10px right-10px flex items-center gap-2">
+    <div class="absolute right-10px top-10px flex items-center gap-2">
       <FullScreen />
       <ToggleTheme />
     </div>
