@@ -9,3 +9,5 @@ export interface ResponseResult<T> {
     total: number // 总页数
   }
 }
+
+export type ErrorMessageMode = 'none' | 'modal' | 'message' | undefined
