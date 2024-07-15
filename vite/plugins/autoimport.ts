@@ -53,7 +53,7 @@ export default function autoImport(): any {
 
     createSvgIconsPlugin({
       iconDirs: [customIconPath],
-      symbolId: 'icon-custom-[dir]-[name]',
+      symbolId: 'icon-[dir]-[name]',
       inject: 'body-last',
       customDomId: '__CUSTOM_SVG_ICON__',
     }),

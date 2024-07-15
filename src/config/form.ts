@@ -5,16 +5,16 @@ export interface FormFieldType {
   name: string
   err_name?: string | undefined
   type?:
-  | 'input'
-  | 'radio'
-  | 'textarea'
-  | 'radio'
-  | 'image'
-  | 'select'
-  | 'switch'
-  | 'inputNumber'
-  | 'markdown'
-  | undefined
+    | 'input'
+    | 'radio'
+    | 'textarea'
+    | 'radio'
+    | 'image'
+    | 'select'
+    | 'switch'
+    | 'inputNumber'
+    | 'markdown'
+    | undefined
   placeholder?: string | undefined
   disabled?: boolean
   options?: Array<SelectOption | SelectGroupOption>

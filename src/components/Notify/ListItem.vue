@@ -28,7 +28,7 @@ defineProps<{
     </template>
 
     <template #footer>
-      <span class="text-gray text-xs">{{ new Date().toLocaleString() }}</span>
+      <span class="text-xs text-gray">{{ new Date().toLocaleString() }}</span>
     </template>
   </n-thing>
   <n-divider />

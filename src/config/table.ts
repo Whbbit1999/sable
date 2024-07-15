@@ -1,15 +1,15 @@
-import type { ButtonProps, ImageProps, TagProps } from 'naive-ui'
+import type { ButtonProps, DataTableColumn, ImageProps, TagProps } from 'naive-ui'
 import { CashOutline } from '@vicons/ionicons5'
 import { renderCustomIcon, renderIcon, renderImage, renderTag, renderTime } from '@/utils'
 
-export interface RenderColumnType {
+export type RenderColumnType = {
   key: string
   title: string
   width: number
   type?: 'image' | 'date' | 'tags'
   tagsProps?: TagProps
   imageProps?: ImageProps
-}
+} & DataTableColumn
 
 // 需要操作栏时，传递此参数
 export interface TableButton {
@@ -28,13 +28,13 @@ export const pageSizes = [
 ]
 
 export const UserTableField = makeColumn([
-  { key: 'id', title: 'ID', width: 50 },
+  { key: 'id', title: 'ID', width: 50, search: false },
   { key: 'name', title: '昵称', width: 100 },
-  { key: 'avatar', title: '头像', type: 'image', width: 100 },
+  { key: 'avatar', title: '头像', type: 'image', width: 100, search: false },
   { key: 'email', title: '邮箱' },
   { key: 'tags', title: '标签', type: 'tags' },
-  { key: 'created_at', title: '创建时间', type: 'date', width: 140 },
-  { key: 'updated_at', title: '更新时间', type: 'date', width: 140 },
+  { key: 'created_at', title: '创建时间', type: 'date', width: 140, searchType: 'date' },
+  { key: 'updated_at', title: '更新时间', type: 'date', width: 140, searchType: 'date' },
 ] as RenderColumnType[])
 
 export const UserTableButton: TableButton[] = [

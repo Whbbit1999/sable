@@ -10,8 +10,8 @@ useDark()
   <main>
     <NGrid cols="12" item-responsive responsive="screen" x-gap="10" h-screen bg="gray-100 dark:darkBodyBgColor">
       <NGridItem span="0 m:8 l:8">
-        <div flex flex-col items-center justify-center flex-1 w-full h-screen bg-dark>
-          <img src="/sable_cover.png" alt="" class="w-full  object-cover">
+        <div h-screen w-full flex flex-1 flex-col items-center justify-center bg-dark>
+          <img src="/sable_cover.png" alt="" class="w-full object-cover">
         </div>
       </NGridItem>
 
@@ -20,8 +20,8 @@ useDark()
           flex="~ items-center justify-center 1"
           bg="white dark:dark"
           text="dark dark:white"
-          w-full h-full
-          rounded-md
+
+          h-full w-full rounded-md
         >
           <Page class="w-4/5">
             <RouterView />

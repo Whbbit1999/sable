@@ -253,7 +253,7 @@ export function pipeChartsOptions(): echarts.EChartsOption {
   }
 }
 
-export function pipeChartsOptions2() {
+export function pipeChartsOptions2(): echarts.EChartsOption {
   return {
     tooltip: {
       trigger: 'item',

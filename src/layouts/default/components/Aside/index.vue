@@ -10,7 +10,7 @@ const collapsed = computed(() => useAppStore().getCollapsed)
 
 <template>
   <NLayoutSider
-    rounded-md m-2 mr-0
+    m-2 mr-0 rounded-md
     collapse-mode="width"
     :collapsed-width="48"
     :width="200"

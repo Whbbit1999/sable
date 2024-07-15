@@ -13,8 +13,9 @@ export async function login(data: ILoginForm) {
   })
 }
 
-export async function userList(page = 1) {
+export async function userList(params: Record<string, any>) {
   return http.get<IUserModel[]>({
-    url: `users?page=${page}`,
+    url: `users`,
+    params,
   })
 }

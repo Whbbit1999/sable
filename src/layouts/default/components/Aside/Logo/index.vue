@@ -16,8 +16,8 @@ const collapsed = computed(() => props.collapsed)
     text="dark dark:white" p-2
     :class="[collapsed ? 'justify-center ' : '']"
   >
-    <img :src="logoSrc" alt="logo" class="w-8 h-8" draggable="false">
-    <div v-show="!collapsed" flex="~ items-center justify-center" text-xl px-2 font-light>
+    <img :src="logoSrc" alt="logo" class="h-8 w-8" draggable="false">
+    <div v-show="!collapsed" flex="~ items-center justify-center" px-2 text-xl font-light>
       {{ config.site?.title }}
     </div>
   </section>

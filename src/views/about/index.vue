@@ -22,7 +22,7 @@ Object.entries(devDependencies).forEach(([key, value]: [string, string]) => {
   <main class="">
     <NSpace vertical>
       <NCard title="关于">
-        {{ name }} 是一个基于vue3、vite2、TypeScript的中后台解决方案，它可以帮助您快速搭建基础中后台项目。
+        {{ name }} 是一个基于vue3、vite、TypeScript的中后台解决方案，它可以帮助您快速搭建基础中后台项目。
       </NCard>
       <NCard title="项目信息">
         <NDescriptions label-placement="left" bordered :column="2">

@@ -6,11 +6,11 @@ import Icon from '@/components/Icon'
   <div>
     <div flex="~ col " gap-4>
       <NAlert title="使用本地svg图标" type="info">
-        将图标导入 /src/assets/svg 进行使用，名称为 `icon-custom-[svg名称]`
+        将图标导入 /src/assets/svg 进行使用，名称为 `icon-[svg名称]`
       </NAlert>
 
       <NIcon text-8xl>
-        <IconCustomAxios />
+        <IconAxios />
       </NIcon>
     </div>
 

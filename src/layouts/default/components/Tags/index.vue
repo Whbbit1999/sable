@@ -43,7 +43,7 @@ function handleChangeMenu({ isCurrent, currentIndex }) {
 
 <template>
   <nav
-    class="m-2 p-2 rounded-md overflow-x-hidden"
+    class="m-2 overflow-x-hidden rounded-md p-2"
     flex="~ gap-2 justify-between"
     bg="white dark:dark"
   >
@@ -56,7 +56,7 @@ function handleChangeMenu({ isCurrent, currentIndex }) {
           :type="$route.name === tag.key ? 'primary' : 'default'"
           closable
           trigger-click-on-close
-          class="duration-300 cursor-pointer! text-sm"
+          class="text-sm duration-300 cursor-pointer!"
           flex="~ justify-between items-center"
           p="x-3 y-2"
           @click="$router.push({ name: tag.key as string })"

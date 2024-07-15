@@ -4,7 +4,7 @@ import config from '@/config/config'
 
 <template>
   <div
-    class="w-screen h-screen"
+    class="h-screen w-screen"
     flex="~ items-center justify-center col"
     bg="white dark:dark" text="dark dark:white"
   >
