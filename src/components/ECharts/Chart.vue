@@ -1,5 +1,6 @@
 <script lang="ts" setup>
-import * as echarts from 'echarts'
+// import * as echarts from 'echarts'
+import echarts from './echarts'
 
 const props = withDefaults(
   defineProps<{
