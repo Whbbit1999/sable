@@ -1,22 +1,23 @@
 <script lang="ts" setup>
-// import * as echarts from 'echarts'
 import echarts from './echarts'
 
 const props = withDefaults(
   defineProps<{
     options: Record<string, any>
     theme?: 'dark' | null
+    renderer?: 'svg' | 'canvas'
   }>(),
   {
     theme: null,
     options: null,
+    renderer: 'canvas',
   },
 )
 
 const container = shallowRef(null)
 const chart = shallowRef(null)
 
-const { options, theme } = toRefs(props)
+const { options, theme, renderer } = toRefs(props)
 
 const resizeObserver = new ResizeObserver(() => {
   chart.value.resize()
@@ -25,7 +26,7 @@ const resizeObserver = new ResizeObserver(() => {
 onMounted(() => {
   chart.value = echarts.init(container.value, theme.value, {
     locale: 'ZH',
-    renderer: 'canvas',
+    renderer: unref(renderer),
   })
   chart.value.setOption(props.options)
   resizeObserver.observe(container.value)
