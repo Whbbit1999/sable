@@ -8,7 +8,7 @@ import config from '@/config/config'
     flex="~ items-center justify-center col"
     bg="white dark:dark" text="dark dark:white"
   >
-    <i i-svg-spinners-blocks-wave text="7xl" opacity-70 />
+    <i text="7xl" i-svg-spinners-blocks-wave opacity-70 />
 
     <div text="center" m="t-4">
       <h2 text="4xl">
