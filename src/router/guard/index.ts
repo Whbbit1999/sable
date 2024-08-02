@@ -1,4 +1,5 @@
 import type { RouteLocationNormalized, Router } from 'vue-router'
+import nprogress from 'nprogress'
 import { storage } from '@/utils'
 
 // 路由守卫
@@ -7,6 +8,7 @@ class Guard {
 
   // 启动路由守卫
   public run() {
+    nprogress.start()
     this.router.beforeEach(this.beforeEach.bind(this))
   }
 
@@ -35,4 +37,11 @@ class Guard {
 
 export default (router: Router) => {
   new Guard(router).run()
+
+  router.afterEach(() => {
+    nprogress.done()
+  })
+  router.onError(() => {
+    nprogress.done()
+  })
 }
