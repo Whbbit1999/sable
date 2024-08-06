@@ -44,7 +44,6 @@
     "@types/marked": "^6.0.0",
     "@types/mockjs": "^1.0.10",
     "@types/node": "^20.14.13",
-    "@types/qrcode": "^1.5.5",
     "@unocss/preset-attributify": "^0.61.6",
     "@unocss/preset-icons": "^0.61.6",
     "@unocss/preset-rem-to-px": "^0.61.6",
