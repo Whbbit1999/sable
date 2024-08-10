@@ -6,7 +6,6 @@ import IconsResolver from 'unplugin-icons/resolver'
 import Icons from 'unplugin-icons/vite'
 import { NaiveUiResolver } from 'unplugin-vue-components/resolvers'
 import Components from 'unplugin-vue-components/vite'
-import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
 
 const customIconPath = resolve(process.cwd(), 'src/assets/svg')
 
@@ -37,7 +36,7 @@ export default function autoImport(): any {
       // auto import components 自动加载组件
       resolvers: [
         NaiveUiResolver(),
-        IconsResolver({ customCollections: ['custom'], componentPrefix: 'icon' }),
+        IconsResolver({ customCollections: ['svg'] }),
       ],
       dirs: ['src/components/Custom'], // 要自动引入组件的目录
       directoryAsNamespace: true, // 包含文件夹名称，避免命名冲突
@@ -46,16 +45,14 @@ export default function autoImport(): any {
 
     Icons({
       compiler: 'vue3',
-      customCollections: { custom: FileSystemIconLoader(customIconPath) },
-      scale: 1,
+      customCollections: {
+        svg: FileSystemIconLoader(
+          customIconPath,
+          svg => svg.replace(/^<svg /, '<svg fill="currentColor" '),
+        ),
+      },
+      scale: 1.2,
       defaultClass: 'inline-block',
-    }),
-
-    createSvgIconsPlugin({
-      iconDirs: [customIconPath],
-      symbolId: 'icon-[dir]-[name]',
-      inject: 'body-last',
-      customDomId: '__CUSTOM_SVG_ICON__',
     }),
   ]
 }

@@ -1,17 +1,20 @@
 <script lang="ts" setup>
 import Icon from '@/components/Icon'
+import SvgIcon from '@/components/Icon/SvgIcon.vue'
 </script>
 
 <template>
   <div>
     <div flex="~ col " gap-4>
       <NAlert title="使用本地svg图标" type="info">
-        将图标导入 /src/assets/svg 进行使用，名称为 `icon-[svg名称]`
+        将图标导入 /src/assets/svg 进行使用，名称为 `icon-svg-[svg名称]`
       </NAlert>
 
-      <NIcon text-8xl>
-        <IconAxios />
-      </NIcon>
+      <div>
+        <i-svg-download-count />
+        <i-svg-sun />
+        <i-svg-moon />
+      </div>
     </div>
 
     <div>
@@ -22,8 +25,8 @@ import Icon from '@/components/Icon'
         </NButton>
         查看海量图标并直接复制类名进行使用
       </NAlert>
-      <Icon icon="logos:axios" />
-      <Icon icon="logos:vitejs" />
+      <Icon icon="logos-axios" />
+      <Icon icon="logos-vitejs" />
     </div>
 
     <div>
