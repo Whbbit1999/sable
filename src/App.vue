@@ -4,12 +4,17 @@ import { NMessageProvider, darkTheme, dateZhCN, zhCN } from 'naive-ui'
 import config from './config/config'
 import SuspenseFallback from './components/SuspenseFallback.vue'
 import WaterMark from './components/WaterMark.vue'
+import { darkThemeOverrides, lightThemeOverrides } from './config/theme'
 
 const isDark = useDark()
 </script>
 
 <template>
-  <NConfigProvider :locale="zhCN" :date-locale="dateZhCN" :theme="isDark ? darkTheme : undefined">
+  <NConfigProvider
+    :locale="zhCN" :date-locale="dateZhCN"
+    :theme="isDark ? darkTheme : undefined"
+    :theme-overrides="isDark ? darkThemeOverrides : lightThemeOverrides"
+  >
     <NNotificationProvider :max="config.naiveUI.notificationMax">
       <NMessageProvider>
         <Suspense>

@@ -6,7 +6,12 @@
 
     <RouterView v-slot="{ Component }">
       <Transition appear mode="out-in" name="nested">
-        <component :is="Component" />
+        <keep-alive v-if="$route.meta?.menu?.keepAlive">
+          <component :is="Component" />
+        </keep-alive>
+        <template v-else>
+          <component :is="Component" />
+        </template>
       </Transition>
     </RouterView>
   </main>

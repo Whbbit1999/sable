@@ -24,7 +24,7 @@ export default defineConfig({
     colors: {
       bodyBgColor: '#f4f4f4',
       containerTextColor: '#393a34',
-      darkBodyBgColor: '#1e1e1e',
+      darkBodyBgColor: '#101014',
       darkContainerTextColor: '#d4cfbf',
       dark: 'rgb(24,24,28)',
       light: '#fff',

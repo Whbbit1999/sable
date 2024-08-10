@@ -8,7 +8,7 @@ import config from '@/config/config'
 
 <template>
   <main
-
+    class="shading"
     h-screen flex
     bg="bodyBgColor dark:darkBodyBgColor"
     text="containerTextColor dark:darkContainerTextColor"
@@ -20,7 +20,7 @@ import config from '@/config/config'
       <Aside />
 
       <NScrollbar>
-        <main flex="~ col 1 " h-full min-h-screen>
+        <main class="shading" flex="~ col 1 " h-full min-h-screen>
           <div bg="bodyBgColor/60 dark:darkBodyBgColor/60" sticky top-0 z-30 backdrop-blur-sm>
             <Header mb-2 />
           </div>

@@ -1,4 +1,4 @@
-#app {
+.shading {
   background-image: url('../../assets/images/texture.png');
   transition: background-color 2s ease-in;
 }
