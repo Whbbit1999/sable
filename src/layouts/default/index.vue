@@ -3,6 +3,7 @@ import Aside from './components/Aside/index.vue'
 import Footer from './components/Footer/index.vue'
 import Header from './components/Header/index.vue'
 import Main from './components/Main/index.vue'
+// import TabBar from './components/TabBar/index.vue'
 import config from '@/config/config'
 </script>
 
@@ -24,7 +25,7 @@ import config from '@/config/config'
           <div bg="bodyBgColor/60 dark:darkBodyBgColor/60" sticky top-0 z-30 backdrop-blur-sm>
             <Header mb-2 />
           </div>
-          <!-- <Tags /> -->
+          <!-- <TabBar /> -->
           <div mx-5 flex-1>
             <Main />
           </div>

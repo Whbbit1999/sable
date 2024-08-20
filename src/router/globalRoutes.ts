@@ -17,6 +17,18 @@ const routes = [
         component: () => import('@/views/auth/login.vue'),
       },
       {
+        path: 'mobile',
+        name: 'auth.mobile',
+        meta: { guest: true },
+        component: () => import('@/views/auth/mobile-login.vue'),
+      },
+      {
+        path: 'qrcode',
+        name: 'auth.qrcode',
+        meta: { guest: true },
+        component: () => import('@/views/auth/qrcode-login.vue'),
+      },
+      {
         path: 'register',
         name: 'auth.register',
         meta: { guest: true },

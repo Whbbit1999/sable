@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import Editor from '@/components/markdown/editor.vue'
+import { MarkdownEditor as Editor } from '@sable/components'
 
 const content = ref('# 标题 \n\n> 引用文本\n\n```ts\n const a: number = 10 \n const b: string = "hello world"\n ```')
 </script>

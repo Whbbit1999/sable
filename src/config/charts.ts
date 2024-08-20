@@ -1,6 +1,7 @@
-import * as echarts from 'echarts'
+import { graphic } from 'echarts'
+import type { EChartsOption } from 'echarts'
 
-export function lineChartsOptions(): echarts.EChartsOption {
+export function lineChartsOptions(): EChartsOption {
   return {
     color: ['#80FFA5', '#00DDFF', '#37A2FF', '#FF0087', '#FFBF00'],
     title: {
@@ -54,7 +55,7 @@ export function lineChartsOptions(): echarts.EChartsOption {
         showSymbol: false,
         areaStyle: {
           opacity: 0.8,
-          color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+          color: new graphic.LinearGradient(0, 0, 0, 1, [
             {
               offset: 0,
               color: 'rgb(128, 255, 165)',
@@ -81,7 +82,7 @@ export function lineChartsOptions(): echarts.EChartsOption {
         showSymbol: false,
         areaStyle: {
           opacity: 0.8,
-          color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+          color: new graphic.LinearGradient(0, 0, 0, 1, [
             {
               offset: 0,
               color: 'rgb(0, 221, 255)',
@@ -108,7 +109,7 @@ export function lineChartsOptions(): echarts.EChartsOption {
         showSymbol: false,
         areaStyle: {
           opacity: 0.8,
-          color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+          color: new graphic.LinearGradient(0, 0, 0, 1, [
             {
               offset: 0,
               color: 'rgb(55, 162, 255)',
@@ -135,7 +136,7 @@ export function lineChartsOptions(): echarts.EChartsOption {
         showSymbol: false,
         areaStyle: {
           opacity: 0.8,
-          color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+          color: new graphic.LinearGradient(0, 0, 0, 1, [
             {
               offset: 0,
               color: 'rgb(255, 0, 135)',
@@ -166,7 +167,7 @@ export function lineChartsOptions(): echarts.EChartsOption {
         },
         areaStyle: {
           opacity: 0.8,
-          color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+          color: new graphic.LinearGradient(0, 0, 0, 1, [
             {
               offset: 0,
               color: 'rgb(255, 191, 0)',
@@ -186,7 +187,7 @@ export function lineChartsOptions(): echarts.EChartsOption {
   }
 }
 
-export function pipeChartsOptions(): echarts.EChartsOption {
+export function pipeChartsOptions(): EChartsOption {
   return {
     backgroundColor: '#2c343c',
     title: {
@@ -253,7 +254,7 @@ export function pipeChartsOptions(): echarts.EChartsOption {
   }
 }
 
-export function pipeChartsOptions2(): echarts.EChartsOption {
+export function pipeChartsOptions2(): EChartsOption {
   return {
     tooltip: {
       trigger: 'item',
@@ -299,7 +300,7 @@ export function pipeChartsOptions2(): echarts.EChartsOption {
   }
 }
 
-export function radarsChartOptions(): echarts.EChartsOption {
+export function radarsChartOptions(): EChartsOption {
   return {
     legend: {
       data: ['Allocated Budget', 'Actual Spending'],
@@ -329,6 +330,127 @@ export function radarsChartOptions(): echarts.EChartsOption {
             name: 'Actual Spending',
           },
         ],
+      },
+    ],
+  }
+}
+
+export function radarChartOptions2(): EChartsOption {
+  return {
+    title: {
+      text: '达标率统计',
+    },
+
+    radar: {
+      // shape: 'circle',
+      indicator: [
+        { name: '销售部', max: 100 },
+        { name: '研发部', max: 100 },
+        { name: '后勤部', max: 100 },
+        { name: '无尘工作车间', max: 100 },
+      ],
+    },
+    series: [
+      {
+        name: 'Budget vs spending',
+        type: 'radar',
+        data: [
+
+          {
+            value: [70, 95, 89, 99],
+          },
+        ],
+      },
+    ],
+  }
+}
+
+export function countChartsOptions(): EChartsOption {
+  return {
+    title: {
+      text: 'Stacked Line',
+    },
+    tooltip: {
+      trigger: 'axis',
+    },
+    legend: {
+      data: ['Email', 'Union Ads', 'Video Ads', 'Direct', 'Search Engine'],
+    },
+    grid: {
+      left: '3%',
+      right: '4%',
+      bottom: '3%',
+      containLabel: true,
+    },
+    toolbox: {
+      feature: {
+        saveAsImage: {},
+      },
+    },
+    xAxis: {
+      type: 'category',
+      boundaryGap: false,
+      data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+    },
+    yAxis: {
+      type: 'value',
+    },
+    series: [
+      {
+        name: 'Email',
+        type: 'line',
+        stack: 'Total',
+        smooth: true,
+        data: [120, 132, 101, 134, 90, 230, 210],
+      },
+      {
+        name: 'Union Ads',
+        type: 'line',
+        stack: 'Total',
+        smooth: true,
+        data: [220, 182, 191, 234, 290, 330, 310],
+      },
+      {
+        name: 'Video Ads',
+        type: 'line',
+        stack: 'Total',
+        smooth: true,
+        data: [150, 232, 201, 154, 190, 330, 410],
+      },
+      {
+        name: 'Direct',
+        type: 'line',
+        stack: 'Total',
+        smooth: true,
+        data: [320, 332, 301, 334, 390, 330, 320],
+      },
+      {
+        name: 'Search Engine',
+        type: 'line',
+        stack: 'Total',
+        smooth: true,
+        data: [820, 932, 901, 934, 1290, 1330, 1320],
+      },
+    ],
+  }
+}
+export function viewChartsOptions(): EChartsOption {
+  return {
+    xAxis: {
+      type: 'category',
+      data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+    },
+    yAxis: {
+      type: 'value',
+    },
+    series: [
+      {
+        data: [120, 200, 150, 80, 70, 110, 130],
+        type: 'bar',
+        showBackground: true,
+        backgroundStyle: {
+          color: 'rgba(180, 180, 180, 0.2)',
+        },
       },
     ],
   }

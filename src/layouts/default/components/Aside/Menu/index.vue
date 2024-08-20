@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import type { MenuOption } from 'naive-ui'
-import { isExternal } from '@/utils'
+import { isExternal } from '@sable/utils'
 
 type IMenuOption = MenuOption & {
   path: string | null
@@ -23,7 +23,7 @@ const defaultExpandedKeys = ref()
 const { collapsed } = toRefs(props)
 
 // -------------------- 点击menu，选中项的处理 START --------------------
-const historyMenuStore = useHistoryMenuStore()
+// const historyMenuStore = useHistoryMenuStore()
 function handleMenuSelect(key: string, item: IMenuOption) {
   if (isExternal(item?.path))
     return window.open(item.path)
@@ -34,7 +34,7 @@ function handleMenuSelect(key: string, item: IMenuOption) {
   selectedKey.value = key
   router.push({ name: key })
   // 增加历史菜单
-  historyMenuStore.addHistoryMenu(unref(route))
+  // historyMenuStore.addHistoryMenu(unref(route))
 }
 // -------------------- 点击menu，选中项的处理 END ----------------------
 

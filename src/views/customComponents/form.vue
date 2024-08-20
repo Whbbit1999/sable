@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import { FormField } from '@sable/components'
 import { ArticleFormField, SystemFormField } from '@/config/form'
 
 const site = {
@@ -16,7 +17,7 @@ function submit() {
   // TODO submit function
 }
 const article = {
-  title: '',
+  title: 'hello',
   desc: '',
   article: '',
 }
@@ -24,8 +25,8 @@ const article = {
 
 <template>
   <main>
-    <FormFieldList :model="site" :fields="SystemFormField.site" @submit="submit" />
-    <FormFieldList :model="article" :fields="ArticleFormField" @submit="submit">
+    <FormField :model="site" :fields="SystemFormField.site" @submit="submit" />
+    <FormField :model="article" :fields="ArticleFormField" @submit="submit">
       <template #button>
         <NSpace>
           <NButton type="primary" size="medium">
@@ -36,7 +37,7 @@ const article = {
           </NButton>
         </NSpace>
       </template>
-    </FormFieldList>
+    </FormField>
   </main>
 </template>
 

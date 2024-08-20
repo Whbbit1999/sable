@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import Quill from '@/components/Editor/Quill.vue'
+import { Quill } from '@sable/components'
 
 const content = ref()
 </script>

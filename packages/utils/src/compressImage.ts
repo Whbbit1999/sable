@@ -1,11 +1,22 @@
 import { dataURLToBlob } from './fileDownload'
 
-const defaultOptions = {
+interface Option {
+  maxSize: number
+  quality: number
+}
+
+const defaultOption = {
   maxSize: 1024 * 1024 * 2, // 2MB
   quality: 0.8,
 }
 
-export async function compressImage(file: File, option = defaultOptions) {
+/**
+ * compress image
+ * @param file file
+ * @param option option
+ * @returns newFile
+ */
+export function compressImage(file: File, option: Option = defaultOption): File {
   const fileSize = file.size
   const { maxSize, quality } = option
 

@@ -24,7 +24,7 @@ const naiveUI = {
 const site = {
   title: 'SableAdmin',
 }
-export default {
+const siteConfig: SiteConfig = {
   site,
   menu: {
     showChildrenRouteIcon: false, // 是否显示子路由图标
@@ -45,4 +45,59 @@ export default {
   naiveUI,
   watermark,
   loading,
+}
+
+export default siteConfig
+
+interface SiteConfig {
+  watermark: Watermark
+  loading: Loading
+  naiveUI: NaiveUI
+  site: Site
+  menu: Menu
+  historyMenuMax: number
+  layout: Layout
+  routes: Routes
+}
+interface Watermark {
+  show: boolean
+  fontSize: number
+  lineHeight: number
+  width: number
+  height: number
+  xOffset: number
+  yOffset: number
+  rotate: number
+  content: string
+}
+
+interface Loading {
+  title: string
+  content: string
+}
+
+interface NaiveUI {
+  notificationMax: number
+}
+
+interface Site {
+  title: string
+}
+
+interface Menu {
+  showChildrenRouteIcon: boolean
+  defaultRouteIcon: string
+}
+
+interface Layout {
+  showFooter: boolean
+  showBreadCrump: boolean
+  aside: {
+    'trigger': 'bar' | 'arrow-circle'
+    'native-scrollbar': boolean
+  }
+}
+interface Routes {
+  home: { path: string, redirect: string }
+  [k: string]: { path: string, redirect?: string }
 }

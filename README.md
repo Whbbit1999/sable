@@ -1,4 +1,5 @@
 # sable
+
 [![code style](https://antfu.me/badge-code-style.svg)](https://github.com/antfu/eslint-config)
 
 ![cover](./public/sable_cover.png)
@@ -17,7 +18,7 @@
 - 工具函数：`lodash` & `vueuse`
 - 等
 
-  > 详细文档查看 https://www.whbbit.cn/wiki/sable/index.html 【正在编写中】
+  > 详细文档查看 <https://www.whbbit.cn/wiki/sable/index.html> 【正在编写中】
 
 ## 项目配置文件
 
@@ -73,7 +74,51 @@ export default {
 ```
 
 ## TODO
+
+灰色
+
+- #363433
+- #393733
+
 主题
 鹤 红、白、黑
+
+- #4a4035 #d42517
+
 虎 橙、白、黑
+
+- #eaad1a
+
 竹 绿、白、黑
+
+- #1ba784
+梅
+
+- #f1939c
+
+兰
+
+- #c08eaf
+菊
+
+- #e9ddb6
+
+---
+
+## 待办
+
+1. 自动引入本地svg图标
+2. 表格API优化
+3. tab栏实现
+4. keep-alive
+5. 全局菜单搜索
+6. 富文本编辑器集成
+7. 下载文件组件
+8. 上传文件组件
+9. 网络请求封装
+10. 地图API集成
+11. 页面切换动画 『可配置』
+12. 外链路由可配置为跳转至新窗口或iframe打开
+13. 权限控制
+14. 菜单icon
+15. 主题配置

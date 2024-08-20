@@ -1,6 +1,6 @@
 import type { ButtonProps, DataTableColumn, ImageProps, TagProps } from 'naive-ui'
 import { CashOutline } from '@vicons/ionicons5'
-import { renderCustomIcon, renderIcon, renderImage, renderTag, renderTime } from '@/utils'
+import { renderCustomIcon, renderIcon, renderImage, renderTag, renderTime } from '@sable/utils'
 
 export type RenderColumnType = {
   key: string

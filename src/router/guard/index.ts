@@ -1,7 +1,7 @@
 import type { RouteLocationNormalized, Router } from 'vue-router'
 import nprogress from 'nprogress'
-import { storage } from '@/utils'
-
+import { RouteNameEnum } from '@sable/enum'
+import { storage } from '@sable/utils'
 // 路由守卫
 class Guard {
   constructor(private router: Router) {}

@@ -1,8 +1,9 @@
 import dayjs from 'dayjs'
 import type { ConfigEnv } from 'vite'
 import pkg from './package.json'
-import alias from './vite/alias'
-import setupPlugins from './vite/plugins'
+import alias from './vite-config/alias'
+import setupPlugins from './vite-config/plugins'
+import { build } from './vite-config/build'
 
 const { name, dependencies, devDependencies, version } = pkg
 const __APP_INFO__ = {
@@ -27,25 +28,8 @@ export default ({ command }: ConfigEnv) => {
 
     esbuild: {
       pure: ['console.log'],
-      minify: true,
+      minify: 'terser',
     },
-
-    build: {
-      rollupOptions: {
-        emptyOutDir: true,
-        output: {
-          manualChunks: {
-            'dayjs': ['dayjs'],
-            'echarts': ['echarts'],
-            'lodash-es': ['lodash-es'],
-            'artplayer': ['artplayer'],
-            'md-editor-v3': ['md-editor-v3'],
-            'vue-draggable-plus': ['vue-draggable-plus'],
-            'vue': ['vue', 'pinia', 'pinia-plugin-persistedstate', 'vue-router'],
-            'naive-ui': ['naive-ui'],
-          },
-        },
-      },
-    },
+    build,
   }
 }

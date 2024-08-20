@@ -6,6 +6,8 @@
   "author": "",
   "main": "./src/index.ts",
   "dependencies": {
+    "@sable/enum": "workspace:^",
+    "@sable/types": "workspace:^",
     "axios": "^1.7.2",
     "axios-retry": "^4.4.2",
     "qs": "^6.12.3"

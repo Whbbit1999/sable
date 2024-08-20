@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { onClickOutside, useToggle } from '@vueuse/core'
+import { getMessages, getNotifies } from '@sable/api'
 import ListItem from './ListItem.vue'
-import { getMessages, getNotifies } from '@/api/notifyApi'
 
 const count = ref(0)
 

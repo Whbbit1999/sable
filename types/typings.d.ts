@@ -24,5 +24,19 @@ declare module 'vue-router' {
       keepAlive?: boolean // 是否可以缓存
       showTag?: boolean // 是否在历史菜单中显示 default => true
     }
+    /**
+     * 是否固定标签页
+     * @default false
+     */
+    affixTab?: boolean
+    /**
+     * 固定标签页的顺序
+     * @default 0
+     */
+    affixTabOrder?: number
+
+    hideInTab?: boolean
+
+    keepAlive?: boolean
   }
 }

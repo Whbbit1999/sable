@@ -1,5 +1,5 @@
 import type { App } from 'vue'
-import { ref, watchEffect } from 'vue'
+import { ref } from 'vue'
 import { storeToRefs } from 'pinia'
 
 /**

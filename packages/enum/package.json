@@ -1,0 +1,9 @@
+{
+  "name": "@sable/enum",
+  "version": "1.0.0",
+  "description": "",
+  "author": "",
+  "license": "ISC",
+  "keywords": [],
+  "main": "./src/index.ts"
+}

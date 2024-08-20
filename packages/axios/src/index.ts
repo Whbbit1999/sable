@@ -1,10 +1,11 @@
 import axios from 'axios'
 import axiosRetry from 'axios-retry'
 import { stringify as qsStringify } from 'qs'
-
+import { HttpCodeEnum, RouteNameEnum } from '@sable/enum'
 import type { AxiosInstance, AxiosRequestConfig } from 'axios'
 import type { IAxiosRetryConfig } from 'axios-retry'
-import type { ErrorMessageMode, ResponseResult } from './type'
+import { useRouter } from 'vue-router'
+import type { ResponseResult } from '@sable/types'
 
 interface CustomConfig {
   axiosRetryConfig?: IAxiosRetryConfig
@@ -20,10 +21,7 @@ const defaultConfig: CustomConfig = {
 
 class Axios {
   private instance: AxiosInstance
-  constructor(
-    config: AxiosRequestConfig,
-    public customConfig: CustomConfig = defaultConfig,
-  ) {
+  constructor(config: AxiosRequestConfig, public customConfig: CustomConfig = defaultConfig) {
     this.instance = axios.create(config)
     this.setupAxiosRetry(this.customConfig?.axiosRetryConfig || defaultConfig.axiosRetryConfig)
     this.interceptors()
@@ -59,6 +57,18 @@ class Axios {
         return response
       },
       (error) => {
+        const {
+          response: { status },
+        } = error
+
+        const router = useRouter()
+
+        switch (status) {
+          case HttpCodeEnum.UNAUTHORIZED:
+            localStorage.removeItem(this.customConfig.tokenKey)
+            router.push({ name: RouteNameEnum.LOGIN })
+            return
+        }
         return Promise.reject(error)
       },
     )

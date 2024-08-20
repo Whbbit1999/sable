@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-const emit = defineEmits(['changeMenu'])
-const historyMenuStore = useHistoryMenuStore()
+// const emit = defineEmits(['changeMenu'])
+// const historyMenuStore = useHistoryMenuStore()
 const route = useRoute()
 const options = computed(() => [
   // { label: '重新加载', key: 'reload', icon: 'i-carbon-rotate-360' },
@@ -17,17 +17,17 @@ const current = ref(route.name)
 watchEffect(() => {
   current.value = route.name
 })
-const actionMap = new Map([
-  ['close', () => { return historyMenuStore.removeHistoryMenu(current.value) }],
-  ['close-other', () => { return historyMenuStore.closeOther(current.value) }],
-  ['close-left', () => { return historyMenuStore.closeLeft(current.value) }],
-  ['close-right', () => { return historyMenuStore.closeRight(current.value) }],
-])
+// const actionMap = new Map([
+//   // ['close', () => { return historyMenuStore.removeHistoryMenu(current.value) }],
+//   // ['close-other', () => { return historyMenuStore.closeOther(current.value) }],
+//   // ['close-left', () => { return historyMenuStore.closeLeft(current.value) }],
+//   // ['close-right', () => { return historyMenuStore.closeRight(current.value) }],
+// ])
 
 function handleSelect(key) {
-  const actionFn = actionMap.get(key)
-  const result = actionFn && actionFn()
-  emit('changeMenu', { key, ...result })
+  // const actionFn = actionMap.get(key)
+  // const result = actionFn && actionFn()
+  // emit('changeMenu', { key, ...result })
 }
 </script>
 

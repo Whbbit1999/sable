@@ -1,12 +1,17 @@
 <script lang="ts" setup>
 import type { RouteLocationNormalizedLoaded } from 'vue-router'
+import { storeToRefs } from 'pinia'
+import { isExternal } from '@sable/utils'
 import TagBarControls from './TagBarControls.vue'
-import { isExternal } from '@/utils'
+
+const tabStore = useTabStore()
+const { tabs } = storeToRefs(tabStore)
+const { addTab } = tabStore
 
 const historyMenu = ref()
 const router = useRouter()
 const route = useRoute()
-const historyMenuStore = useHistoryMenuStore()
+
 onMounted(() => {
   addHistoryMenu(route)
 })
@@ -19,25 +24,18 @@ function addHistoryMenu(route: RouteLocationNormalizedLoaded) {
   if (isExternal(route.path))
     return
 
-  historyMenuStore.addHistoryMenu(route)
-  historyMenu.value = historyMenuStore.getHistoryMenu
+  addTab(route)
 }
 
 async function handleRemoveTag(tag) {
-  const { isCurrent, currentIndex } = historyMenuStore.removeHistoryMenu(tag.key)
-
-  // 移除当前元素，页面跳转至上一个标签
-  if (isCurrent)
-    router.push({ name: historyMenu.value[currentIndex - 1].key })
-
-  historyMenu.value = historyMenuStore.getHistoryMenu
+  tabStore.closeCurrentTab(tag, router)
 }
 
 function handleChangeMenu({ isCurrent, currentIndex }) {
   if (isCurrent)
     router.push({ name: historyMenu.value[currentIndex - 1].key })
 
-  historyMenu.value = historyMenuStore.getHistoryMenu
+  // historyMenu.value = historyMenuStore.getHistoryMenu
 }
 </script>
 
@@ -50,7 +48,7 @@ function handleChangeMenu({ isCurrent, currentIndex }) {
     <NScrollbar x-scrollable>
       <div flex="~ 1 gap-2 ">
         <NTag
-          v-for="tag in historyMenu"
+          v-for="tag in tabs"
           :key="tag.key"
           :bordered="false"
           :type="$route.name === tag.key ? 'primary' : 'default'"
@@ -70,7 +68,7 @@ function handleChangeMenu({ isCurrent, currentIndex }) {
     <div flex="~ gap-1">
       <ReloadPage />
 
-      <TagBarControls @change-menu="handleChangeMenu" />
+      <TagBarControls />
     </div>
   </nav>
 </template>

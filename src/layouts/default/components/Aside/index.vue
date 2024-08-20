@@ -1,11 +1,12 @@
 <script lang="ts" setup>
+import { storeToRefs } from 'pinia'
 import Logo from './Logo/index.vue'
 import Menu from './Menu/index.vue'
 import config from '@/config/config'
 
-const { changeCollapsed } = useAppStore()
-
-const collapsed = computed(() => useAppStore().getCollapsed)
+const appStore = useAppStore()
+const { toggleCollapsed } = appStore
+const { collapsed } = storeToRefs(appStore)
 </script>
 
 <template>
@@ -17,8 +18,8 @@ const collapsed = computed(() => useAppStore().getCollapsed)
     :collapsed="collapsed"
     :show-trigger="config.layout.aside.trigger"
     :native-scrollbar="config.layout.aside['native-scrollbar']"
-    @collapse="changeCollapsed"
-    @expand="changeCollapsed"
+    @collapse="toggleCollapsed"
+    @expand="toggleCollapsed"
   >
     <Logo px-2 :collapsed="collapsed" />
 

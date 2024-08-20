@@ -1,6 +1,6 @@
 <!-- eslint-disable no-console -->
 <script setup lang="ts">
-import { userList } from '@/api/userApi'
+import { userList } from '@sable/api'
 import type { TableButton } from '@/config/table'
 import { UserTableButton, UserTableField } from '@/config/table'
 

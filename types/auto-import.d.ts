@@ -71,8 +71,10 @@ declare global {
   const toValue: typeof import('vue')['toValue']
   const triggerRef: typeof import('vue')['triggerRef']
   const unref: typeof import('vue')['unref']
+  const useAccessStore: typeof import('../src/store/access')['useAccessStore']
   const useAppStore: typeof import('../src/store/useAppStore')['useAppStore']
   const useAttrs: typeof import('vue')['useAttrs']
+  const useAuth: typeof import('../src/composables/useAuth')['default']
   const useCharts: typeof import('../src/composables/useCharts')['default']
   const useCssModule: typeof import('vue')['useCssModule']
   const useCssVars: typeof import('vue')['useCssVars']
@@ -80,13 +82,17 @@ declare global {
   const useHistoryMenuStore: typeof import('../src/store/useHistoryMenuStore')['useHistoryMenuStore']
   const useLink: typeof import('vue-router')['useLink']
   const useLoadingBar: typeof import('naive-ui')['useLoadingBar']
+  const useLockStore: typeof import('../src/store/lock')['useLockStore']
   const useMenuStore: typeof import('../src/store/useMenuStore')['useMenuStore']
   const useMessage: typeof import('naive-ui')['useMessage']
   const useNotification: typeof import('naive-ui')['useNotification']
   const usePermissionStore: typeof import('../src/composables/usePermissionStore')['usePermissionStore']
+  const useRefresh: typeof import('../src/composables/useRefresh')['useRefresh']
   const useRoute: typeof import('vue-router')['useRoute']
   const useRouter: typeof import('vue-router')['useRouter']
+  const useSiteStore: typeof import('../src/store/useSite')['useSiteStore']
   const useSlots: typeof import('vue')['useSlots']
+  const useTabStore: typeof import('../src/store/useTabStore')['useTabStore']
   const useTable: typeof import('../src/composables/useTable')['default']
   const useUpload: typeof import('../src/composables/useUpload')['default']
   const useUserStore: typeof import('../src/store/useUserStore')['useUserStore']
@@ -102,13 +108,4 @@ declare global {
   // @ts-ignore
   export type { Component, ComponentPublicInstance, ComputedRef, ExtractDefaultPropTypes, ExtractPropTypes, ExtractPublicPropTypes, InjectionKey, PropType, Ref, VNode, WritableComputedRef } from 'vue'
   import('vue')
-  // @ts-ignore
-  export type { CacheEnum } from '../src/enum/cacheEnums'
-  import('../src/enum/cacheEnums')
-  // @ts-ignore
-  export type { RequestMethodEnum, ContentTypeEnum } from '../src/enum/httpEnums'
-  import('../src/enum/httpEnums')
-  // @ts-ignore
-  export type { RouteEnum, RouteNameEnum } from '../src/enum/routeEnum'
-  import('../src/enum/routeEnum')
 }

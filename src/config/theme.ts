@@ -1,3 +1,1 @@
-import { darkThemeOverrides, lightThemeOverrides } from '@/plugins/naive-ui/index'
-
-export { lightThemeOverrides, darkThemeOverrides }
+export * from '@/plugins/naive-ui/index'

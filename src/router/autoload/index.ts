@@ -2,7 +2,7 @@
 import type { RouteRecordRaw, Router } from 'vue-router'
 import autoloadModuleRoutes from './modules'
 import getRoutes from './view'
-import { env } from '@/utils'
+import { env } from '@/config/env'
 
 let _routes = [] as RouteRecordRaw[]
 

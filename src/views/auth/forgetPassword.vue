@@ -1,6 +1,7 @@
 <script lang="ts" setup>
-import { login } from '@/api/userApi'
-import { storage } from '@/utils'
+import { RouteNameEnum } from '@sable/enum'
+import { login } from '@sable/api'
+import { storage } from '@sable/utils'
 
 const loading = ref<boolean>(false)
 const loginFormData = ref<ILoginForm>({

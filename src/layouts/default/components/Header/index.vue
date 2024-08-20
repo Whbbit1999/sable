@@ -1,9 +1,12 @@
 <script lang="ts" setup>
 import { LogOutOutline as LogoutIcon, PersonCircleOutline as UserIcon } from '@vicons/ionicons5'
+import { FullScreen, ToggleTheme } from '@sable/components'
+import { renderIcon } from '@sable/utils'
 import Notify from '@/components/Notify/index.vue'
 import config from '@/config/config'
-import { renderIcon, storage } from '@/utils'
+import useAuth from '@/composables/useAuth'
 
+const { logout } = useAuth()
 const router = useRouter()
 
 const userStore = useUserStore()
@@ -24,21 +27,12 @@ function onSelect(key: string) {
       break
   }
 }
-
-function logout() {
-  // 清空缓存
-  storage.remove('token')
-  // 清空pinia中的数据
-  userStore.$reset()
-
-  router.push({ name: RouteNameEnum.LOGIN })
-}
 </script>
 
 <template>
   <header class="m-2 flex items-center justify-between rounded-md p-2">
     <div flex items-center gap-4>
-      <Breadcrump v-if="config.layout.showBreadCrump" />
+      <Breadcrumb v-if="config.layout.showBreadCrump" />
     </div>
 
     <div class="flex-1" />

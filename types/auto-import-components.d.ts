@@ -8,10 +8,12 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     BasicTable: typeof import('./../src/components/Custom/BasicTable.vue')['default']
-    Breadcrump: typeof import('./../src/components/Custom/Breadcrump.vue')['default']
+    Breadcrumb: typeof import('./../src/components/Custom/Breadcrumb.vue')['default']
     FormFieldList: typeof import('./../src/components/Custom/FormFieldList.vue')['default']
     FullScreen: typeof import('./../src/components/Custom/FullScreen.vue')['default']
-    IconCustomAxios: typeof import('~icons/custom/axios')['default']
+    ISvgDownloadCount: typeof import('~icons/svg/download-count')['default']
+    ISvgMoon: typeof import('~icons/svg/moon')['default']
+    ISvgSun: typeof import('~icons/svg/sun')['default']
     NAlert: typeof import('naive-ui')['NAlert']
     NAvatar: typeof import('naive-ui')['NAvatar']
     NBackTop: typeof import('naive-ui')['NBackTop']
@@ -20,6 +22,7 @@ declare module 'vue' {
     NBreadcrumbItem: typeof import('naive-ui')['NBreadcrumbItem']
     NButton: typeof import('naive-ui')['NButton']
     NCard: typeof import('naive-ui')['NCard']
+    NCarousel: typeof import('naive-ui')['NCarousel']
     NConfigProvider: typeof import('naive-ui')['NConfigProvider']
     NDataTable: typeof import('naive-ui')['NDataTable']
     NDatePicker: typeof import('naive-ui')['NDatePicker']
@@ -65,6 +68,5 @@ declare module 'vue' {
     RouterView: typeof import('vue-router')['RouterView']
     ToggleTheme: typeof import('./../src/components/Custom/ToggleTheme.vue')['default']
     UploadSingleImage: typeof import('./../src/components/Custom/UploadSingleImage.vue')['default']
-    VideoPlayer: typeof import('./../src/components/Custom/VideoPlayer.vue')['default']
   }
 }

@@ -1,0 +1,13 @@
+{
+  "name": "@sable/api",
+  "version": "1.0.0",
+  "description": "",
+  "author": "",
+  "license": "ISC",
+  "keywords": [],
+  "main": "./src/index.ts",
+  "dependencies": {
+    "@sable/axios": "workspace:^",
+    "@sable/enum": "workspace:^"
+  }
+}

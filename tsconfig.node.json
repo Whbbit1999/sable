@@ -19,10 +19,12 @@
     "src/**/*.d.ts",
     "src/**/*.tsx",
     "src/**/*.vue",
-    "vite/**/*.ts",
+    "vite-config/**/*.ts",
     "mock/**/*.ts",
     "types/**/*.d.ts",
     "types/**/*.ts",
-    "**/package.json"
+    "**/package.json",
+    "packages/**/*.ts",
+    "packages/**/*.vue"
   ]
 }

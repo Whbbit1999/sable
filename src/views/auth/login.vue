@@ -1,48 +1,42 @@
 <script lang="ts" setup>
-import { login } from '@/api/userApi'
-import { storage } from '@/utils'
+import useAuth from '@/composables/useAuth'
 
-const loading = ref<boolean>(false)
-const loginFormData = ref<ILoginForm>({
-  username: 'sable',
-  password: '123456',
-})
-const router = useRouter()
+const { accountLogin, accountLoginForm, loading } = useAuth()
+
 async function onSubmit() {
-  try {
-    loading.value = true
-    const res = await login(unref(loginFormData))
-    storage.set('token', res.data.token, 30)
-    router.push({ name: RouteNameEnum.HOME })
-  }
-  catch (error) {
-    throw new Error(error)
-  }
-  finally {
-    loading.value = false
-  }
+  // TODO 表单校验
+  accountLogin()
 }
 </script>
 
 <template>
   <div>
     <main class="flex flex-col gap-2">
-      <NH2 class="text-center">
-        用户登录
+      <NH2 class="text-left">
+        欢迎回来
       </NH2>
+      <span />
       <div class="flex flex-col">
         <span class="mb-1">用户名</span>
-        <NInput v-model:value="loginFormData.username" />
+        <NInput v-model:value="accountLoginForm.username" />
       </div>
       <div class="flex flex-col">
         <span class="mb-1">密码</span>
-        <NInput v-model:value="loginFormData.password" type="password" show-password-on="mousedown" />
+        <NInput v-model:value="accountLoginForm.password" type="password" show-password-on="mousedown" />
       </div>
     </main>
 
     <div class="mt-4 flex flex-col justify-center gap-3">
       <NButton type="primary" :loading="loading" @click="onSubmit">
         登录
+      </NButton>
+    </div>
+    <div class="grid grid-cols-2 mt-4 gap-3">
+      <NButton @click="$router.push({ name: 'auth.mobile' })">
+        手机号登录
+      </NButton>
+      <NButton @click="$router.push({ name: 'auth.qrcode' })">
+        扫码登录
       </NButton>
     </div>
     <div class="mt-2 flex justify-end">
@@ -54,10 +48,6 @@ async function onSubmit() {
           注册
         </NButton>
       </NSpace>
-    </div>
-    <div class="absolute right-10px top-10px flex items-center gap-2">
-      <FullScreen />
-      <ToggleTheme />
     </div>
   </div>
 </template>
