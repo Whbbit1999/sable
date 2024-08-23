@@ -5,5 +5,5 @@ export async function getNotifies() {
 }
 
 export async function getMessages() {
-  return http.post({ url: 'messages' })
+  return http.post({ url: 'message' })
 }

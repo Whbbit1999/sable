@@ -1,12 +1,13 @@
 <script lang="ts" setup>
 import { useDark, useToggle } from '@vueuse/core'
 import { useSiteStore } from '@sable/store'
-import { storeToRefs } from 'pinia'
 
 const siteStore = useSiteStore()
 const { setIsDark } = siteStore
 const isDark = useDark()
-watch(isDark, () => { setIsDark(isDark.value) })
+watch(isDark, () => {
+  setIsDark(isDark.value)
+})
 const toggleDark = useToggle(isDark)
 
 function toggle() {

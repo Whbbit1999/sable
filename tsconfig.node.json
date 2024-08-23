@@ -25,6 +25,8 @@
     "types/**/*.ts",
     "**/package.json",
     "packages/**/*.ts",
-    "packages/**/*.vue"
+    "packages/**/*.vue",
+    "apps/**/*.vue",
+    "apps/**/*.ts"
   ]
 }
