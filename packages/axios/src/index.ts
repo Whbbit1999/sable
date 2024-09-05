@@ -1,11 +1,11 @@
 import axios from 'axios'
 import axiosRetry from 'axios-retry'
 import { stringify as qsStringify } from 'qs'
-import { HttpCodeEnum, RouteNameEnum } from '@sable/enum'
+import { HttpCodeEnum, RouteEnum } from '@sable/enum'
 import type { AxiosInstance, AxiosRequestConfig } from 'axios'
 import type { IAxiosRetryConfig } from 'axios-retry'
-import { useRouter } from 'vue-router'
 import type { ResponseResult } from '@sable/types'
+import { createMessage, onClose, throttleErrorCallback } from './utils'
 
 interface CustomConfig {
   axiosRetryConfig?: IAxiosRetryConfig
@@ -61,13 +61,20 @@ class Axios {
           response: { status },
         } = error
 
-        const router = useRouter()
-
         switch (status) {
           case HttpCodeEnum.UNAUTHORIZED:
             localStorage.removeItem(this.customConfig.tokenKey)
-            router.push({ name: RouteNameEnum.LOGIN })
-            return
+            location.href = RouteEnum.LOGIN
+            break
+          case HttpCodeEnum.INTERNAL_SERVER_ERROR:
+            throttleErrorCallback(error, createMessage('notification', {
+              type: 'error',
+              title: `提示`,
+              message: `网络错误${error}`,
+              onClose: onClose(error),
+            }))
+
+            break
         }
         return Promise.reject(error)
       },
@@ -83,12 +90,9 @@ class Axios {
 
   public request<T, D = ResponseResult<T>>(config: AxiosRequestConfig) {
     return new Promise((resolve, reject) => {
-      try {
-        this.instance.request<D>(config).then(response => resolve(response.data))
-      }
-      catch (error) {
-        reject(error)
-      }
+      this.instance.request<D>(config)
+        .then(response => resolve(response.data))
+        .catch(error => reject(error))
     })
   }
 

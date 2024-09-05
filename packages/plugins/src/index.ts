@@ -6,7 +6,7 @@ import './unocss'
 import setupDirectives from './directives'
 import { setupNProgress } from './nprogress'
 
-export default function (app: App) {
+export function setup(app: App) {
   setupNaiveUI()
   setupPinia(app)
   setupDirectives(app)

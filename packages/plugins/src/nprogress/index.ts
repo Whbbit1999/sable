@@ -5,7 +5,6 @@ import 'nprogress/nprogress.css'
 export function setupNProgress() {
   nprogress.configure({
     showSpinner: true,
-    ease: 'ease',
     speed: 500,
     trickleSpeed: 200,
   })
